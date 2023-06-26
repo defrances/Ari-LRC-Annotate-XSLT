@@ -1,61 +1,52 @@
-name: Create Release
+name: Create Release Pull Request!
 
 on:
   push:
-    tags:
-      - v*.*.*
+    branches:
+      - LCD-77-debug-branch-v2
 
 jobs:
-  build:
+  create_release_pull_request:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          fetch-depth: 0 # to allow getting previous tags
-      
-      # Only release from main branch
-      - name: Exit if not on main branch
-        if: endsWith(github.event.base_ref, 'main') == false
-        run: exit -1
+          node-version: 14
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-
-      - run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
-      # Update the version in package.json from the tag number
-      - run: npm version $(echo $GITHUB_REF | cut -d / -f 3 | sed 's/^v//') --no-git-tag-version
-      - run: npm install -g npm
-      - run: npm ci
-
-      # Commit the new version to the repo 
-      - name: Commit new version
+      - name: Extract commit SHA from ref
         run: |
-          git checkout main 
-          git config --local user.email "arihershowitz@gmail.com"
-          git config --local user.name "Ari Hershowitz"
-          git add package.json package-lock.json
-          git commit -m "Update version to $(echo $GITHUB_REF | cut -d / -f 3 | sed 's/^v//')"
-          git push
+          COMMIT_SHA=$(echo "${{ github.ref }}" | awk -F'/' '{print $3}')
+          COMMIT_SHA=$(echo "$COMMIT_SHA" | tr -cd '[:alnum:]-_')
+          echo "Commit SHA: $COMMIT_SHA"
 
-      #- run: npm run build
-      #- run: npm test
-      - run: zip -r lrc-annotate.zip transforms/** styles/** README.md
-      - name: Generate Changelog
+      - name: Generate version format
         run: |
-          export VERSION=$(git tag --sort=-committerdate | head -1)
-          export PREVIOUS_VERSION=$(git tag --sort=-committerdate | head -2 | awk '{split($0, tags, "\n")} END {print tags[1]}')
-          export CHANGES=$(git log --pretty="- %s" $VERSION...$PREVIOUS_VERSION)
-          printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
-      - name: Upload Release
-        uses: softprops/action-gh-release@v1
-        with:
-          body_path: ${{ github.workspace }}-CHANGELOG.md
-          files: lrc-annotate.zip
+          VERSION="debug-$(date +'%Y%m%d')-${COMMIT_SHA}"
+          echo "Version: $VERSION"
 
-      - name: Publish to NPM
-        run: npm publish
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update version in package.json
+        run: |
+          VERSION="2.0.12"
+          sed -i "s/\"version\": \".*\",/\"version\": \"${VERSION}\",/" package.json
+
+
+
+      - name: Create Pull Request123
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Create release pull request
+          branch: release/${{ github.sha }}
+          title: "Release: ${{ github.sha }}"
+          body: This pull request is automatically created to trigger the release process.
+          add-paths: -A
+          committer: GitHub <andrey02061987@gmail.com>
+          author: defrances <andrey02061987@gmail.com>
+          signoff: false
+          delete-branch: false
+          draft: false

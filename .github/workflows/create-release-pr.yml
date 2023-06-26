@@ -1,0 +1,34 @@
+name: Create Release PRR
+
+on:
+  push:
+    branches:
+      - LCD-77-debug-branch-v2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Create Release Branch
+        run: |
+          git branch release/$GITHUB_SHA
+          git push origin release/$GITHUB_SHA
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Create release pull request"
+          branch: release/${{ github.run_number }}
+          title: "Release: ${{ github.sha }}"
+          body: |
+            This pull request is automatically created to trigger the release process.

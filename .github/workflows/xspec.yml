@@ -1,46 +1,58 @@
-# This workflow is based on the basic Actions template
+name: Create Release
 
-name: CI
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
 on:
   push:
-    branches: [ main ]
-    paths-ignore: [.github/**, samples/**, README.adoc]
-  pull_request:
-    branches: [ main ]
-    paths-ignore: [.github/**, samples/**, README.adoc]
+    tags:
+      - v*.*.*
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v3
-    - uses: actions/setup-java@v1
-      with:
-        java-version: '11' # The JDK version to make available on the path.
-        java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
-        architecture: x64 # (x64 or x86) - defaults to x64
-    - name: Cache local Maven repository
-      uses: actions/cache@v2
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # to allow getting previous tags
+      
+      - name: Exit if not on LCD-77-debug-branch-main branch
+        if: endsWith(github.ref, 'refs/heads/LCD-77-debug-branch') == false
+        run: exit -1
 
-    - name: Run XSpec tests with Maven
-      run: mvn -B test --file pom.xml
 
-    - name: Archive test results
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-results
-        path: target/xspec-reports
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
+
+      - run: npm install -g npm
+      - run: npm ci
+
+      # Commit the new version to the repo 
+      - name: Commit new version
+        run: |
+          git checkout main 
+          git config --local user.email "arihershowitz@gmail.com"
+          git config --local user.name "Ari Hershowitz"
+          git add package.json package-lock.json
+          git commit -m "Update version to $(echo $GITHUB_REF | cut -d / -f 3 | sed 's/^v//')"
+          git push
+
+      #- run: npm run build
+      #- run: npm test
+      - run: zip -r lrc-annotate.zip transforms/** styles/** README.md
+      - name: Generate Changelog
+        run: |
+          export VERSION=$(git tag --sort=-committerdate | head -1)
+          export PREVIOUS_VERSION=$(git tag --sort=-committerdate | head -2 | awk '{split($0, tags, "\n")} END {print tags[1]}')
+          export CHANGES=$(git log --pretty="- %s" $VERSION...$PREVIOUS_VERSION)
+          printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
+      - name: Upload Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: ${{ github.workspace }}-CHANGELOG.md
+          files: lrc-annotate.zip
+
+      - name: Create GitHub Release PR
+        run: npx release-please github-release --repo-url https://github.com/defrances/LRC-Annotate-XSLT/tree/LCD-77-debug-branch-main --target-branch LCD-77-debug-branch-main --branch LCD-77-debug-branch
