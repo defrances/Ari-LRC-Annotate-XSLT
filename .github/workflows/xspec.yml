@@ -14,8 +14,8 @@ jobs:
         with:
           fetch-depth: 0 # to allow getting previous tags
       
-      - name: Exit if not on LCD-77-debug-branch-main branch
-        if: endsWith(github.ref, 'refs/heads/LCD-77-debug-branch') == false
+      - name: Exit if not on main branch
+        if: endsWith(github.ref, 'refs/heads/main') == false
         run: exit -1
 
 
@@ -54,5 +54,5 @@ jobs:
           body_path: ${{ github.workspace }}-CHANGELOG.md
           files: lrc-annotate.zip
 
-      - name: Create GitHub Release PR
-        run: npx release-please github-release --repo-url https://github.com/defrances/LRC-Annotate-XSLT/tree/LCD-77-debug-branch-main --target-branch LCD-77-debug-branch-main --branch LCD-77-debug-branch
+      #- name: Create GitHub Release PR
+      #  run: npx release-please github-release --repo-url https://github.com/defrances/LRC-Annotate-XSLT/tree/LCD-77-debug-branch-main --target-branch LCD-77-debug-branch-main --branch LCD-77-debug-branch
