@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../transforms/addClassification.xsl"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.gpo.gov/xml/uslm"
+  xmlns:uslm="http://schemas.gpo.gov/xml/uslm" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:functx="http://www.functx.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+  xmlns:xpf="http://www.w3.org/2005/xpath-functions" xmlns:err="http://www.w3.org/2005/xqt-errors"
+  xmlns:olrc="http://uscode.house.gov">
+  
+  <x:param name="inputJSON" select="'../tests/testInput.json'"/>
+  
+  <x:scenario label="move trailing punctuation to inline within quotedContent for styling">
+  <x:scenario label="sample with ; and paragraph">
+    <!-- 116hr439enr -->
+    <x:context>
+      <main>
+        <content> by inserting before paragraph (7), as redesignated by paragraph (2), the
+          following:<quotedContent id="HD867F802BF33484CADE8661EE7D7BC1C">
+            <paragraph identifier="/s3/6/qB/1" id="HABCA75155DE045C984D34340B350ADC9"
+              class="bill-dtd-OLC" pagenum="1"><num value="1">“(1)</num>
+              <content> to be an integral component of instruction in agricultural education,
+                including instruction relating to agriculture, food, and natural resources;</content>
+            </paragraph><?page 2?>
+            <paragraph identifier="/s3/6/qB/6" id="H88CD8FCD19724D75AB3C29001C8F37F0"
+              class="bill-dtd-OLC" pagenum="2">
+              <num value="6">“(6)</num>
+              <content> to seek and promote inclusion and diversity in its membership, leadership, and
+                staff to reflect the belief of the FFA in the value of all human beings;”</content>
+            </paragraph></quotedContent>;</content>
+      </main>
+    </x:context>
+    <x:expect label="move ';'">
+      <main>
+        <content> by inserting before paragraph (7), as redesignated by paragraph (2), the
+          following:<quotedContent id="HD867F802BF33484CADE8661EE7D7BC1C">
+            <paragraph identifier="/s3/6/qB/1" id="HABCA75155DE045C984D34340B350ADC9"
+              class="bill-dtd-OLC"><num value="1">“(1)</num>
+              <content> to be an integral component of instruction in agricultural education,
+                including instruction relating to agriculture, food, and natural resources;</content>
+            </paragraph><x:text>&#xa;</x:text>
+            <page id="page2">S. 579—2</page>
+            <paragraph identifier="/s3/6/qB/6" id="H88CD8FCD19724D75AB3C29001C8F37F0"
+              class="bill-dtd-OLC">
+              <num value="6">“(6)</num>
+              <content> to seek and promote inclusion and diversity in its membership, leadership, and
+                staff to reflect the belief of the FFA in the value of all human beings;”<inline class="inline afterQuotedContent">;</inline></content>
+            </paragraph></quotedContent></content>
+      </main>
+    </x:expect>
+  </x:scenario>
+  <x:scenario label="sample with '; and'">
+    <!-- 116hr439enr -->
+    <x:context>
+      <subparagraph identifier="/s5/1/B" id="HFB1D8BA3003443E18FF4D5B3DB64F1D9" class="bill-dtd-OLC">
+        <num value="B">(B)</num>
+        <content> by striking paragraphs (2) and (3) and inserting the following:<quotedContent
+            id="H353DB18E58DB4A34ABB636AF00F01871"><paragraph identifier="/s5/1/B/qB/2"
+              id="H542EA385ABB8496A8A3C452D236EC745" class="bill-dtd-OLC"><num value="2"
+                >“(2)</num><chapeau> The board—</chapeau>
+              </paragraph>
+            <paragraph identifier="/s5/1/B/qB/3" id="H9B8F09FFAA8A486C81449937CD0718DF"
+              class="bill-dtd-OLC"><num value="3">“(3)</num><content> The number of directors, terms
+                of office of the directors, and the method of selecting the directors, are as
+                provided in the constitution or bylaws of the FFA.”</content>
+            </paragraph></quotedContent>; and</content>
+      </subparagraph>
+    </x:context>
+    <x:expect label="move '; and'">
+      <subparagraph identifier="/s5/1/B" id="HFB1D8BA3003443E18FF4D5B3DB64F1D9" class="bill-dtd-OLC">
+        <num value="B">(B)</num>
+        <content> by striking paragraphs (2) and (3) and inserting the following:<quotedContent
+          id="H353DB18E58DB4A34ABB636AF00F01871"><paragraph identifier="/s5/1/B/qB/2"
+            id="H542EA385ABB8496A8A3C452D236EC745" class="bill-dtd-OLC"><num value="2"
+              >“(2)</num><chapeau> The board—</chapeau>
+          </paragraph>
+          <paragraph identifier="/s5/1/B/qB/3" id="H9B8F09FFAA8A486C81449937CD0718DF"
+            class="bill-dtd-OLC"><num value="3">“(3)</num><content> The number of directors, terms
+                of office of the directors, and the method of selecting the directors, are as
+                provided in the constitution or bylaws of the FFA.”<inline class="inline afterQuotedContent">; and</inline></content>
+          </paragraph></quotedContent></content>
+      </subparagraph>
+    </x:expect>
+  </x:scenario>
+  <x:scenario label="sample with '.'">
+    <!-- 116hr439enr -->
+    <x:context>
+      <content> by inserting after subsection (a) the following:<quotedContent
+          id="H1D5B7AECCACD4ADC8038C48797F990BF">
+          <subsection identifier="/s5/3/qB/b" id="H68CF00B753844448BE331CC39D838505"
+            class="bill-dtd-OLC">
+            <num value="b">“(b)</num>
+            <heading> Officers.—</heading>
+            <chapeau>The officers of the FFA, the terms of officers, and the election of officers,
+              are as provided in the constitution or bylaws of the FFA, except that such officers
+              shall include—</chapeau>
+            <paragraph identifier="/s5/3/qB/b/2" id="H04704124616D4D9C8704CD19540EB0F9"
+              class="bill-dtd-OLC"><num value="2">“(2)</num><content> an executive secretary; and</content>
+            </paragraph></subsection>
+          <subsection identifier="/s5/3/qB/c" id="H568D90261E0941018502EFCBCB23ACB4"
+            class="bill-dtd-OLC">
+            <num value="c">“(c)</num>
+            <heading> Governing committee.—</heading>
+            <paragraph identifier="/s5/3/qB/c/3" id="H7A9D0E9903894AB69AC7D3BF81348EE7"
+              class="bill-dtd-OLC">
+              <num value="3">“(3)</num>
+              <chapeau> The board shall designate to such committee—</chapeau>
+              <subparagraph identifier="/s5/3/qB/c/3/C"
+                id="HBCF90FA7AC5D42199362F8CC8D22F581" class="bill-dtd-OLC"><num value="C"
+                  >“(C)</num>
+                <content> the treasurer of the board.”</content></subparagraph></paragraph>
+          </subsection>
+        </quotedContent>.</content>
+    </x:context>
+    <x:expect label="move '.'">
+      <content> by inserting after subsection (a) the following:<quotedContent
+        id="H1D5B7AECCACD4ADC8038C48797F990BF">
+        <subsection identifier="/s5/3/qB/b" id="H68CF00B753844448BE331CC39D838505"
+          class="bill-dtd-OLC">
+          <num value="b">“(b)</num>
+          <heading> Officers.—</heading>
+          <chapeau>The officers of the FFA, the terms of officers, and the election of officers,
+              are as provided in the constitution or bylaws of the FFA, except that such officers
+              shall include—</chapeau>
+          <paragraph identifier="/s5/3/qB/b/2" id="H04704124616D4D9C8704CD19540EB0F9"
+            class="bill-dtd-OLC"><num value="2">“(2)</num><content> an executive secretary; and</content>
+          </paragraph></subsection>
+        <subsection identifier="/s5/3/qB/c" id="H568D90261E0941018502EFCBCB23ACB4"
+          class="bill-dtd-OLC">
+          <num value="c">“(c)</num>
+          <heading> Governing committee.—</heading>
+          <paragraph identifier="/s5/3/qB/c/3" id="H7A9D0E9903894AB69AC7D3BF81348EE7"
+            class="bill-dtd-OLC">
+            <num value="3">“(3)</num>
+            <chapeau> The board shall designate to such committee—</chapeau>
+            <subparagraph identifier="/s5/3/qB/c/3/C"
+              id="HBCF90FA7AC5D42199362F8CC8D22F581" class="bill-dtd-OLC"><num value="C"
+                >“(C)</num>
+              <content> the treasurer of the board.”<inline class="inline afterQuotedContent">.</inline></content></subparagraph></paragraph>
+        </subsection>
+      </quotedContent></content>
+    </x:expect>
+  </x:scenario>
+  <x:scenario label="sample with '; '">
+    <x:context>
+      <paragraph identifier="/s7/6" id="H9ED4E3E1A76140E2802CD6D42CF70048" class="bill-dtd-OLC"
+        pagenum="4">
+        <num value="6">(6)</num>
+        <content> by amending paragraph (9) to read as
+            follows:<quotedContent id="HB143552D14534D6D85AC2152A3A41559">
+            <paragraph identifier="/s7/6/qB/9" id="H8C27C53178B34397AED1CACB3E36E3E4"
+              class="bill-dtd-OLC" pagenum="4">
+              <num value="9">“(9)</num>
+              <content> produce publications, websites, and other media;”</content>
+            </paragraph></quotedContent>; </content>
+      </paragraph>
+    </x:context>
+    <x:expect label="move both">
+      <paragraph identifier="/s7/6" id="H9ED4E3E1A76140E2802CD6D42CF70048" class="bill-dtd-OLC">
+        <num value="6">(6)</num>
+        <content> by amending paragraph (9) to read as
+            follows:<quotedContent id="HB143552D14534D6D85AC2152A3A41559">
+            <paragraph identifier="/s7/6/qB/9" id="H8C27C53178B34397AED1CACB3E36E3E4"
+              class="bill-dtd-OLC">
+              <num value="9">“(9)</num>
+              <content> produce publications, websites, and other media;”<inline class="inline afterQuotedContent">; </inline></content>
+            </paragraph></quotedContent></content>
+      </paragraph>
+    </x:expect>
+  </x:scenario>
+  </x:scenario>
+</x:description>

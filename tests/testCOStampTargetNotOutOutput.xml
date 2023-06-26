@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bill xmlns="http://schemas.gpo.gov/xml/uslm"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:functx="http://www.functx.com"
+  xmlns:olrc="http://uscode.house.gov"
+  xmlns:uslm="http://schemas.gpo.gov/xml/uslm"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schemas.gpo.gov/xml/uslm uslm-2.0.11.xsd"
+  xml:lang="en">
+  <meta>
+    <dc:title>116 S 1380 ENR: To amend the Federal Rules of Criminal Procedure ...</dc:title>
+  </meta>
+  <preface>
+    <notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 117-3</note>
+<note role="enactDate">Mar. 23, 2021</note>
+<note role="statute"
+        id="statpage246">135 Stat. 246</note></notes><page id="page1">S. 1380—1</page>
+    <dc:type>S. </dc:type>
+    <docNumber>1380</docNumber>
+  </preface>
+  <main id="HB131BEBEFD8611EA358209173F13E4C5">
+    <longTitle>
+        <docTitle>AN ACT</docTitle>
+        <officialTitle>To amend the Federal Rules of Criminal Procedure ...</officialTitle>
+    </longTitle>
+    <enactingFormula>Be it enacted by the Senate and ..,</enactingFormula>
+  <section identifier="/s1" id="S1" class="bill-dtd-OLC">
+    <num value="1"><sidenote topic="olrcClassification"
+        role="target">18A/61 nt new Crim Rule</sidenote><sidenote topic="olrcStamp">PN</sidenote>Section 1.</num>
+    <heading> Short title.</heading>
+    <content class="indent0">This Act may be cited as the “<shortTitle>Due Process Protections Act </shortTitle>”.</content>
+  </section>
+    <section identifier="/s2" class="bill-dtd-OLC">
+      <num value="2"><sidenote topic="olrcClassification"
+        role="target">18A/5 Crim Rule</sidenote><sidenote topic="olrcStamp" class="CO">CO</sidenote>Sec. 2.</num>
+      <heading> Reminder of prosecutorial obligations.</heading>
+      <chapeau class="block">Rule 5 of the Federal Rules of Criminal Procedure is amended—</chapeau>
+    </section>
+  </main>
+</bill>

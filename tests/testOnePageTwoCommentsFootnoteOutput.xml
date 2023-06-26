@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/css/uslm.css"?>
+<?xml-stylesheet type="text/css" href="/css/uslm-classification.css"?>
+<bill xmlns="http://schemas.gpo.gov/xml/uslm" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.gpo.gov/xml/uslm uslm-2.0.11.xsd" xml:lang="en">
+<meta>
+<dc:title>117 H. R. 3182 ENR: To provide that inclined sleepers for infants and crib bumpers shall be considered banned hazardous products under section 8 of the Consumer Product Safety Act, and for other purposes.</dc:title>
+<dc:type>House Bill</dc:type>
+<dc:creator>U.S. House of Representatives</dc:creator>
+<congress>117</congress>
+<session>2</session>
+<docNumber>3182</docNumber>
+<docStage>ENR</docStage><processedBy>Annotation service last modified: 2022-04-07</processedBy><processedDate>2022-05-09</processedDate>
+<citableAs>117hr3182enr</citableAs>
+<citableAs>117 H. R. 3182 ENR</citableAs>
+<dc:format>text/xml</dc:format>
+<dc:language>EN</dc:language>
+<dc:rights>Pursuant to Title 17 Section 105 of the United States Code, this file is not subject to copyright protection and is in the public domain.</dc:rights>
+<processedBy>Xcential BillDTD to USLM Converter v20220209</processedBy>
+<processedDate>2022-05-06</processedDate>
+<publicPrivate>public</publicPrivate>
+</meta>
+<preface>
+  <notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 117-3</note>
+<note role="enactDate">Mar. 23, 2021</note>
+<note role="statute" 
+      id="statpage246">135 Stat. 246</note></notes><page id="page1">H.R. 3182—1</page>
+<dc:type>H. R. </dc:type>
+<docNumber>3182</docNumber>
+<congress value="117">One Hundred Seventeenth Congress of the United States of America</congress>
+<session value="2">AT THE SECOND SESSION</session>
+<enrolledDateline>Begun and held at the City of Washington on Monday, the third day of January, two thousand and twenty-two</enrolledDateline>
+</preface>
+  <main id="HD43DF6E14D0847158DCC53400AC17410">
+    <longTitle><docTitle>AN ACT</docTitle><officialTitle>To provide that inclined sleepers for infants and crib bumpers shall be considered banned hazardous products under section 8 of the Consumer Product Safety Act, and for other purposes.</officialTitle></longTitle>
+    <enactingFormula>Be it enacted by the Senate and House of Representatives of the United States of America in Congress assembled,</enactingFormula>
+    <section identifier="/s1" id="H4B98AB5674E14B3FBE65DC4462C1FDF4" class="bill-dtd-OLC">
+      <num value="1"><sidenote topic="olrcClassification"
+        role="target">15/2051 nt new</sidenote><sidenote topic="olrcStamp">PN</sidenote>SECTION 1.</num>
+      <heading> SHORT TITLE.</heading>
+      <content class="indent0">This Act may be cited as the “<shortTitle>Safe Sleep for Babies Act of 2021</shortTitle>”.</content></section>
+    <section identifier="/s2" id="H2D876086958843A2B6200D91A64C770C" class="bill-dtd-OLC">
+      <num value="2"><sidenote topic="olrcClassification"
+        role="target, publicComment">15/2057d new<sup>1</sup></sidenote>SEC. 2.</num>
+      <heading> BANNING OF INCLINED SLEEPERS FOR INFANTS.</heading>
+      <subsection identifier="/s2/a" id="HCC8C71F9F6D64A5A85A1CA50CA236207" class="bill-dtd-OLC">
+        <num value="a">(a)</num><heading> In General.—</heading>
+        <content>Not later than 180 days ...</content></subsection>
+      <subsection identifier="/s2/b" id="HA807146E4E9748278EBF9914C1C8B739" class="bill-dtd-OLC" role="definitions">
+          <num value="b">(b)</num>
+          <heading> Inclined Sleeper for Infants Defined.—</heading>
+        <content>In this section, the term “<term>inclined sleeper for infants</term>” means a product with an inclined sleep surface greater than ten degrees that is intended, marketed, or designed to provide sleeping accommodations for an infant up to 1 year old.</content></subsection></section>
+    <section identifier="/s3" id="H7FEEB99821CA4882B4C0A051C9D6AB3E" class="bill-dtd-OLC">
+      <num value="3"><sidenote topic="olrcClassification"
+        role="target, publicComment">15/2057e new<sup>2</sup></sidenote>SEC. 3.</num>
+      <heading> BANNING OF CRIB BUMPERS.</heading>
+      <subsection identifier="/s3/a" id="HF50879B0E47846DCB2DEABEA9C79D545" class="bill-dtd-OLC">
+        <num value="a">(a)</num><heading> In General.—</heading>
+        <content>Not later than 180 days ...</content></subsection>
+    </section><footnote topic="olrcClassification"
+      role="publicComment"><sup>1</sup> Codification note </footnote><footnote topic="olrcClassification"
+      role="publicComment"><sup>2</sup> Codification note </footnote></main>
+  <signatures><signature><role>Speaker of the House of Representatives.</role></signature><signature><role>Vice President of the United States and President of the Senate.</role></signature></signatures></bill>

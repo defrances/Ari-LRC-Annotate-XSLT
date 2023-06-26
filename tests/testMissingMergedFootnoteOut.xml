@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bill xmlns="http://schemas.gpo.gov/xml/uslm"
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://schemas.gpo.gov/xml/uslm uslm-2.0.11.xsd"
+            xml:lang="en">
+  <meta><dc:title>116 HR 133 ENR:  Making consolidated appropriations ...</dc:title>
+    <dc:type>House Bill</dc:type><docNumber>133</docNumber><citableAs>116 HR 133 ENR</citableAs>
+    <citableAs>116hr133enr</citableAs>
+    <citableAs>116 H.R. 133 ENR</citableAs>
+    <dc:creator>United States House of Representatives</dc:creator>
+    <dc:publisher>United States Government Publishing Office</dc:publisher>
+    <dc:format>text/xml</dc:format><dc:language>EN</dc:language>
+    <docStage>ENR</docStage>
+    <congress>116</congress>
+    <session>2</session>
+    <publicPrivate>public</publicPrivate>
+  </meta>
+  <preface>
+    <notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 116-260</note>
+<note role="enactDate">Dec. 27, 2020</note>
+<note role="statute" id="statpage1182">134 Stat. 1182</note></notes><page id="page1">—1</page>
+    <dc:type>H. R.</dc:type><docNumber>133</docNumber>
+    <congress value="116">One Hundred Sixteenth Congress of the United States of America</congress>
+    <session value="2">AT THE SECOND SESSION</session>
+    <enrolledDateline>Begun and held at the City of Washington on Friday, the third day of January, two thousand and twenty</enrolledDateline>
+  </preface>
+<main>
+  <section identifier="/dO/tVI/s601" id="H5BFD3CDC3DE24D9285A900234199F4A9" class="bill-dtd-OLC">
+    <num value="601">SEC. 601.</num>
+    <heading> Technical corrections to the United States-Mexico-Canada Agreement Implementation
+      Act.</heading>
+    <subsection identifier="/dO/tVI/s601/a" id="H42606B64049C4AA28EF01D04EDB8D2E0"
+      class="bill-dtd-OLC">
+      <num value="a">(a)</num>
+      <heading> Environment cooperation commissions; North American Development Bank.—</heading>
+      <paragraph identifier="/dO/tVI/s601/a/1" id="H4D6DACBD2EE840DFB75D498C84310C53"
+        class="bill-dtd-OLC">
+        <num value="1"><sidenote topic="olrcClassification"
+          misc="H4D6DACBD2EE840DFB75D498C84310C53,H65B60F432F954ECDBF624E1718014FCE"
+          role="merged, longTarget"><sup>a</sup></sidenote>(1)</num>
+        <heading> In general.—</heading>
+        <content>...</content>
+      </paragraph>
+      <paragraph identifier="/dO/tVI/s601/a/2" id="H65B60F432F954ECDBF624E1718014FCE"
+        class="bill-dtd-OLC">
+        <num value="2">(2)</num>
+        <heading> Provisions specified.—</heading>
+        <chapeau>The provisions specified in this paragraph are the following:</chapeau>
+        <subparagraph identifier="/dO/tVI/s601/a/2/A" id="H99497FDA73014426910B7C40900AB5BE"
+          class="bill-dtd-OLC">
+          <num value="A">(A)</num>
+          <content>...</content>
+        </subparagraph>
+        <subparagraph identifier="/dO/tVI/s601/a/2/B" id="H27FE5D96D1F14FA3A006FDEE11013659"
+          class="bill-dtd-OLC">
+          <num value="B">(B)</num>
+          <content>...</content>
+        </subparagraph>
+      </paragraph>
+      <footnote topic="olrcClassification" role="merged, longTarget"><sup>a</sup> 19/3472, 19/3472
+          nt new, 19/3473, 22/290m, 22/290m-1, 22/290m-2, 22/290m-3, 22/290m-4, 22/290m-5, 22/290m-7</footnote><notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 116-260</note>
+<note role="enactDate">Dec. 27, 2020</note>
+<note role="statute" id="statpage2150">134 Stat. 2150</note></notes><page id="page969">H. R. 133—969</page>
+      <paragraph identifier="/dO/tVI/s601/a/3" id="H2BC71B4238574873BBDA28524AE06E87"
+        class="bill-dtd-OLC">
+        <num value="3">(3)</num>
+        <heading> North american development bank: limitation on callable capital
+          subscriptions.—</heading>
+        <content>...</content>
+      </paragraph>
+    </subsection>
+    <subsection identifier="/dO/tVI/s601/b" id="HF2CBBAB1060945F1A94EF52E69A459C0"
+      class="bill-dtd-OLC">
+      <num value="b"><sidenote topic="olrcClassification" role="target">19/4531</sidenote>(b)</num>
+      <heading> Rules of origin.—</heading>
+      <chapeau>Section 202 of the United States-Mexico-Canada Agreement Implementation Act (<ref
+          href="/us/usc/19/4531">19 U.S.C. 4531</ref>) is amended—</chapeau>
+      <paragraph identifier="/dO/tVI/s601/b/1" id="HFF2C40BCBA424A778AFE1AFAEE15E549"
+        class="bill-dtd-OLC">
+        <num value="1">(1)</num>
+        <content>...</content>
+      </paragraph>
+      <paragraph identifier="/dO/tVI/s601/b/2" id="HFC97F9CB08E54508AD0586418779C7C4"
+        class="bill-dtd-OLC">
+        <num value="2">(2)</num>
+        <content>...</content>
+      </paragraph>
+    </subsection>
+    <subsection identifier="/dO/tVI/s601/c" id="H2CDEA03FD70B41158D0A0FEADF66FAC8"
+      class="bill-dtd-OLC">
+      <num value="c">(c)</num>
+      <heading> Drawbacks.—</heading>
+      <paragraph identifier="/dO/tVI/s601/c/1" id="HB258DA49900349B8B0F2635F1494397B"
+        class="bill-dtd-OLC">
+        <num value="1"><sidenote topic="olrcClassification" role="target">19/4534</sidenote>(1)</num>
+        <heading> In general.—</heading>
+        <content>...</content>
+      </paragraph>
+      <paragraph identifier="/dO/tVI/s601/c/2" id="HA7677EF49D684CAE9CBB5C29AACC894E"
+        class="bill-dtd-OLC">
+        <num value="2">(2)</num>
+        <heading> Conforming amendments.—</heading>
+        <subparagraph identifier="/dO/tVI/s601/c/2/A" id="HE33CA84EB7A541948D1F9AEDF64B0967"
+          class="bill-dtd-OLC">
+          <num value="A">(A)</num>
+          <heading> Tariff Act of 1930.—</heading>
+          <chapeau>The Tariff Act of 1930 is amended—</chapeau>
+          <clause identifier="/dO/tVI/s601/c/2/A/i" id="H965C77B79CD04BEFAA9FCB12C032774C"
+            class="bill-dtd-OLC">
+            <num value="i"><sidenote topic="olrcClassification" role="target">19/1311</sidenote>(i)</num>
+            <content>...</content>
+          </clause>
+          <clause identifier="/dO/tVI/s601/c/2/A/ii" id="H9962AB4FE3A1410894E396DAA6E608F7"
+            class="bill-dtd-OLC">
+            <num value="ii"><sidenote topic="olrcClassification" role="target">19/1312</sidenote>(ii)</num>
+            <content>...</content>
+          </clause>
+          <clause identifier="/dO/tVI/s601/c/2/A/iii" id="HDCE73A32CC0544CD8B73753B4E91B902"
+            class="bill-dtd-OLC">
+            <num value="iii"><sidenote topic="olrcClassification" role="target">19/1313</sidenote>(iii)</num>
+            <content>...</content>
+          </clause>
+          <clause identifier="/dO/tVI/s601/c/2/A/iv" id="H48AA9015CD5E482B8F59AE2BE6A9E027"
+            class="bill-dtd-OLC">
+            <num value="iv"><sidenote topic="olrcClassification" role="target">19/1562</sidenote>(iv)</num>
+            <content>...</content>
+          </clause>
+        </subparagraph>
+        <subparagraph identifier="/dO/tVI/s601/c/2/B" id="HF1826ED095A94F76896346BBA7B4560C"
+          class="bill-dtd-OLC">
+          <num value="B"><sidenote topic="olrcClassification" role="target">19/81c</sidenote>(B)</num>
+          <heading> Foreign Trade Zones Act.—</heading>
+          <content>Section 3(a) of the Act of June 18, 1934 (commonly known as the
+              “<quotedText>Foreign Trade Zones Act</quotedText>”) (<ref href="/us/usc/19/81c">19
+              U.S.C. 81c(a)</ref>) is amended in the <br/>
+<notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 116-260</note>
+<note role="enactDate">Dec. 27, 2020</note>
+<note role="statute" id="statpage2151">134 Stat. 2151</note></notes><page id="page970"
+              >H. R. 133—970</page>seventh
+            ...</content>
+        </subparagraph>
+      </paragraph>
+    </subsection>
+    <subsection identifier="/dO/tVI/s601/d" id="H4FB0E982153543AAAF6292A9EBD4D197"
+      class="bill-dtd-OLC">
+      <num value="d">(d)</num>
+      <heading> Retention of records.—</heading>
+      <paragraph identifier="/dO/tVI/s601/d/1" id="H5EBB4DC83F854A929B0679B6DB16F0C3"
+        class="bill-dtd-OLC">
+        <num value="1"><sidenote topic="olrcClassification" role="target">19/1508</sidenote>(1)</num>
+        <heading> In general.—</heading>
+        <content>...</content>
+      </paragraph>
+      <paragraph identifier="/dO/tVI/s601/d/2" id="HF870A4691F28424E8DAF133D99617996"
+        class="bill-dtd-OLC">
+        <num value="2"><sidenote topic="olrcClassification" role="target">19/1313</sidenote>(2)</num>
+        <heading> Conforming amendment.—</heading>
+        <content>...</content>
+      </paragraph>
+    </subsection>
+    <subsection identifier="/dO/tVI/s601/e" id="H52DCAE255E874CD095F53EA42B5C66EA"
+      class="bill-dtd-OLC">
+      <num value="e"><sidenote topic="olrcClassification" role="target">19/1520</sidenote>(e)</num>
+      <heading> Reliquidation of entries.—</heading>
+      <content>...</content>
+    </subsection>
+    <subsection identifier="/dO/tVI/s601/f" id="H9D0BB0AA1E35492EA363A130C3BFFAAA"
+      class="bill-dtd-OLC">
+      <num value="f"><sidenote topic="olrcClassification" role="target">19/1677f</sidenote>(f)</num>
+      <heading> Protective orders.—</heading>
+      <chapeau>Section 777(f) of the Tariff Act of 1930 (<ref href="/us/usc/19/1677f">19 U.S.C.
+          1677f(f)</ref>) is amended—</chapeau>
+      <paragraph identifier="/dO/tVI/s601/f/1" id="HF7DE551125DC4105846866F010607195"
+        class="bill-dtd-OLC">
+        <num value="1">(1)</num>
+        <content>...</content>
+      </paragraph>
+    </subsection>
+    <subsection identifier="/dO/tVI/s601/g" id="HB33F264250F6493FB6E43E13D7E63A41"
+      class="bill-dtd-OLC">
+      <num value="g"><sidenote topic="olrcClassification" class="out">✓</sidenote>(g)</num>
+      <heading> Dispute settlement.—</heading>
+      <content>The table of contents for the United States-Mexico-Canada Agreement Implementation
+        Act (<ref href="/us/pl/116/113">Public Law <br/>
+<notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 116-260</note>
+<note role="enactDate">Dec. 27, 2020</note>
+<note role="statute" id="statpage2152">134 Stat. 2152</note></notes><page id="page971"
+            >H. R. 133—971</page>116–113</ref>; 134 Stat. 11) 
+        is amended by striking the item relating to section 414 and inserting the following:<quotedContent
+          id="HD12338DA75BF4720805A717363307D46"><toc><referenceItem><designator>“Sec. 414.</designator>
+            <label>Requests for review of determinations by competent investigating authorities.”<inline class="inline afterQuotedContent"
+                >.</inline></label>
+          </referenceItem>
+          </toc></quotedContent></content>
+    </subsection>
+  </section>
+  <section identifier="/dFF/tIII/stC/s322" id="HFF802FEAC6C140298B47AF46AA6B5302"
+    class="bill-dtd-OLC">
+    <num value="322"><sidenote topic="olrcClassification"
+      misc="HFF802FEAC6C140298B47AF46AA6B5302,H18A7401503DE4F0AA5DB2DF52D1D73B5"
+      role="merged, target, publicComment">22/5811 nt<sup>1</sup></sidenote>SEC. 322.</num>
+    <heading> Findings.</heading>
+    <content><p class="indent0">Section 2 of the Belarus Democracy Act of 2004 (<ref
+          href="/us/pl/109/480">Public Law 109–480</ref>; <ref href="/us/usc/22/5811">22 U.S.C.
+          5811</ref> note) is amended to read as follows:</p><quotedContent
+        id="H632EA58E72A24CE69EA16E26B56953D5">
+        <section identifier="/dFF/tIII/stC/s322/qB/s2" id="HEB91A250CEAC4EC88C71FAD3B5D7312F"
+          class="bill-dtd-OLC">
+          <num value="2">“SEC. 2.</num>
+          <heading> Findings.</heading>
+          <chapeau class="block">Congress finds the following:</chapeau>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/1" id="H05E5AE95F32C4314BC8DD5FD5B7F3BFE"
+            class="bill-dtd-OLC">
+            <num value="1">“(1)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/7" id="H200FBC73C42046E983790370EADC8C2D"
+            class="bill-dtd-OLC">
+            <num value="7">“(7)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/8" id="HBC4DAAF755774F45AB92E1EA8CC1BE0C"
+            class="bill-dtd-OLC">
+            <num value="8">“(8)</num>
+            <content> The Government of Belarus, led illegally by Alyaksandr Lukashenka, continues
+              to engage in a pattern of clear and <footnote topic="olrcClassification"
+                role="merged, publicComment"><sup>1</sup> Probable intent</footnote><br/>
+<notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 116-260</note>
+<note role="enactDate">Dec. 27, 2020</note>
+<note role="statute" id="statpage3102">134 Stat. 3102</note></notes><page
+                id="page1921">H. R. 133—1921</page>uncorrected violations of basic principles of
+              democratic ... </content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/9" id="H71022B42D8204A92B08E08343C5E6508"
+            class="bill-dtd-OLC">
+            <num value="9">“(9)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/10" id="HC400FA5A94FC4E0B976DC0451BD3BF80"
+            class="bill-dtd-OLC">
+            <num value="10">“(10)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/11" id="H5547D65DE76D4D60A11C66DBE072C53D"
+            class="bill-dtd-OLC">
+            <num value="11">“(11)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/12" id="H2E63E629F5E7455FBE507E484BBF6E53"
+            class="bill-dtd-OLC">
+            <num value="12">“(12)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/13" id="H0E215C5B2DCF4A7E847F330178D9BCE6"
+            class="bill-dtd-OLC">
+            <num value="13">“(13)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/14" id="H25087537784141A391A24AE38D3EFA77"
+            class="bill-dtd-OLC">
+            <num value="14">“(14)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/15" id="H93BB3E611D3B402D9FCD8A1B2B75BF56"
+            class="bill-dtd-OLC">
+            <num value="15">“(15)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/16" id="H65689A93179C4BDDBEEDB9194317ADB8"
+            class="bill-dtd-OLC">
+            <num value="16">“(16)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/17" id="H9336886124E947EDBF6CD7D48A0AAD05"
+            class="bill-dtd-OLC">
+            <num value="17">“(17)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/18" id="H84DA513FFDC04E09BC166E5F88243E07"
+            class="bill-dtd-OLC">
+            <num value="18">“(18)</num>
+            <chapeau> On August 9, 2020, the Government of Belarus conducted a presidential election
+              that—</chapeau>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/18/A"
+              id="HEC58A704430D42FE83796BC151BEA4CF" class="bill-dtd-OLC">
+              <num value="A">“(A)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/18/B"
+              id="H6275F427732B4BCFBB6650B2FCBFCFE7" class="bill-dtd-OLC">
+              <num value="B">“(B)</num>
+              <chapeau> involved government malfeasance and serious irregularities with ballot
+                counting and the reporting of election results, including—</chapeau> <notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 116-260</note>
+<note role="enactDate">Dec. 27, 2020</note>
+<note role="statute" id="statpage3103">134 Stat. 3103</note></notes><page
+                id="page1922">H. R. 133—1922</page>
+              <clause identifier="/dFF/tIII/stC/s322/qB/s2/18/B/i"
+                id="H40A334CCCF0F422A855C9F090186A349" class="bill-dtd-OLC">
+                <num value="i">“(i)</num>
+                <content>...</content>
+              </clause>
+              <clause identifier="/dFF/tIII/stC/s322/qB/s2/18/B/ii"
+                id="H3B7EF23D2C6A4BFB940B9BD1D75860A7" class="bill-dtd-OLC">
+                <num value="ii">“(ii)</num>
+                <content>...</content>
+              </clause>
+              <clause identifier="/dFF/tIII/stC/s322/qB/s2/18/B/iii"
+                id="H99D9CEB099934D6182B2C3F4CC9B6435" class="bill-dtd-OLC">
+                <num value="iii">“(iii)</num>
+                <content>...</content>
+              </clause>
+              <clause identifier="/dFF/tIII/stC/s322/qB/s2/18/B/iv"
+                id="H0052DEF2CB334BEEB15FE75EB3C6CE68" class="bill-dtd-OLC">
+                <num value="iv">“(iv)</num>
+                <content>...</content>
+              </clause>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/18/C"
+              id="H701635BC0FA746E0BA1A2E904854DAE9" class="bill-dtd-OLC">
+              <num value="C">“(C)</num>
+              <content>...</content>
+            </subparagraph>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/19" id="HCBE1CA5E8A1A4154AB7B4D40139E6B42"
+            class="bill-dtd-OLC">
+            <num value="19">“(19)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/20" id="H08005FB29FBC400E9EC52C13CB499993"
+            class="bill-dtd-OLC">
+            <num value="20">“(20)</num>
+            <chapeau> The leading opposition candidate, Sviatlana Tsikhanouskaya—</chapeau>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/20/A"
+              id="H116C083760504F089419F691205B5255" class="bill-dtd-OLC">
+              <num value="A">“(A)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/20/B"
+              id="H598AB44FE2D148078CDCE709226AE8F3" class="bill-dtd-OLC">
+              <num value="B">“(B)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/20/C"
+              id="H631EDB90290A4F6EBBFB51367C4086EA" class="bill-dtd-OLC">
+              <num value="C">“(C)</num>
+              <content>...</content>
+            </subparagraph>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/21" id="H8F2AA7A3F61E4301A445550209C90C3D"
+            class="bill-dtd-OLC">
+            <num value="21">“(21)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/22" id="H1530F6BAEFF347ED8FFCA157388DDD3D"
+            class="bill-dtd-OLC">
+            <num value="22">“(22)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/23" id="HAEA9607B945843D59A24BB79294F4C52"
+            class="bill-dtd-OLC">
+            <num value="23">“(23)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/24" id="H3AA1B02A79914841A864A869440A91FD"
+            class="bill-dtd-OLC">
+            <num value="24">“(24)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/25" id="HBED240B4CE864E5EA238C7628145BA55"
+            class="bill-dtd-OLC">
+            <num value="25">“(25)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/26" id="H40559ECE65774570AFC87B1B89376534"
+            class="bill-dtd-OLC">
+            <num value="26">“(26)</num>
+            <content>...</content>
+          </paragraph>
+          <notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 116-260</note>
+<note role="enactDate">Dec. 27, 2020</note>
+<note role="statute" id="statpage3104">134 Stat. 3104</note></notes><page id="page1923"
+            >H. R. 133—1923</page>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/27" id="H08918EF777D249A28833108A7881C579"
+            class="bill-dtd-OLC">
+            <num value="27">“(27)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/28" id="HB7F2F8AA205F42D7984069AB528C0603"
+            class="bill-dtd-OLC">
+            <num value="28">“(28)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/29" id="H742AB48F623E4DA0920EA7AE13985426"
+            class="bill-dtd-OLC">
+            <num value="29">“(29)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/30" id="H10FF46A27CB14F72B29C57692840BEDC"
+            class="bill-dtd-OLC">
+            <num value="30">“(30)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/31" id="H1C6B0548840A44C29D1C0D386AE5D9D5"
+            class="bill-dtd-OLC">
+            <num value="31">“(31)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/32" id="H355AFD92F6F742B5B4A23655C2C9654C"
+            class="bill-dtd-OLC">
+            <num value="32">“(32)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/33" id="HFA5DA87675204A60A94BB8DF98D44D6F"
+            class="bill-dtd-OLC">
+            <num value="33">“(33)</num>
+            <chapeau> According to the Viasna Human Rights Centre, at least 450 detainees have
+              reported being tortured or otherwise ill-treated while held in incommunicado detention
+              for up to 10 days, including through—</chapeau>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/33/A"
+              id="H6273BBA7D2D94944A02F0784F5E07867" class="bill-dtd-OLC">
+              <num value="A">“(A)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/33/B"
+              id="HA85033022E6D4F2DBFF689BAE226388D" class="bill-dtd-OLC">
+              <num value="B">“(B)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/33/C"
+              id="H1C869F5C0578495AAF02376C559EE60B" class="bill-dtd-OLC">
+              <num value="C">“(C)</num>
+              <content>...</content>
+            </subparagraph>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/34" id="H7ACF55004F17400FB0E936657AB153E4"
+            class="bill-dtd-OLC">
+            <num value="34">“(34)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/35" id="H83F98652B031454FB5AB942E9974FCD5"
+            class="bill-dtd-OLC">
+            <num value="35">“(35)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/36" id="H168298D73A0F4499A8F79A4F0CF8E963"
+            class="bill-dtd-OLC">
+            <num value="36">“(36)</num>
+            <chapeau> The Government of Belarus, led illegally by Alyaksandr Lukashenka, has
+              consistently restricted the free flow of information to silence the opposition and to
+              conceal the regime’s violent crackdown on peaceful protestors, including by—</chapeau>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/36/A"
+              id="HBBB57D9CBDC247CB8DDC33ED5006A038" class="bill-dtd-OLC">
+              <num value="A">“(A)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/36/B"
+              id="H3DB8506585204FB9A98FDB55FC682A1A" class="bill-dtd-OLC">
+              <num value="B">“(B)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/36/C"
+              id="HDDA55EB0A21B49FE91FE21963C8F7453" class="bill-dtd-OLC">
+              <num value="C">“(C)</num>
+              <content>...</content>
+            </subparagraph>
+            <notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 116-260</note>
+<note role="enactDate">Dec. 27, 2020</note>
+<note role="statute" id="statpage3105">134 Stat. 3105</note></notes><page
+              id="page1924">H. R. 133—1924</page>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/36/D"
+              id="H107874412FF4460190247910667AB836" class="bill-dtd-OLC">
+              <num value="D">“(D)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/36/E"
+              id="H79B05109BF084E1BADE47C1E50E78B16" class="bill-dtd-OLC">
+              <num value="E">“(E)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/36/F"
+              id="H2C00E17E199A4356896E093A20BE3AA0" class="bill-dtd-OLC">
+              <num value="F">“(F)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/36/G"
+              id="H3BE170B4EE9947A591408D7386D90E58" class="bill-dtd-OLC">
+              <num value="G">“(G)</num>
+              <content>...</content>
+            </subparagraph>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/37" id="H3C197E8B12C049AF97C49C19D5919514"
+            class="bill-dtd-OLC">
+            <num value="37">“(37)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/38" id="H163DFA78C391449898D9DF84416918DA"
+            class="bill-dtd-OLC">
+            <num value="38">“(38)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/39" id="H9B318DF01990456490059E5483915917"
+            class="bill-dtd-OLC">
+            <num value="39">“(39)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/40" id="HF6E30B5EA3CD4CE58AF5D58C17C55449"
+            class="bill-dtd-OLC">
+            <num value="40">“(40)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/41" id="H76D67DCC2AD340E3960861FAE9889EE0"
+            class="bill-dtd-OLC">
+            <num value="41">“(41)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/42" id="H79761DCA82C24096827994BFFBC87294"
+            class="bill-dtd-OLC">
+            <num value="42">“(42)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/43" id="H6E6D7DFCAF3E4E6CBC8B19B80BD40B78"
+            class="bill-dtd-OLC">
+            <num value="43">“(43)</num>
+            <chapeau> Against the will of the majority of the Belarusian people—</chapeau>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/43/A"
+              id="H2E56776AE0324B29B2908505B11C37B6" class="bill-dtd-OLC">
+              <num value="A">“(A)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/43/B"
+              id="H6940492EC08C462BA8946AA843ECFA87" class="bill-dtd-OLC">
+              <num value="B">“(B)</num>
+              <chapeau> President Putin has agreed to prop up the Alyaksandr Lukashenka regime
+                by—</chapeau>
+              <clause identifier="/dFF/tIII/stC/s322/qB/s2/43/B/i"
+                id="HF702783659E6445683E4D84436E62243" class="bill-dtd-OLC">
+                <num value="i">“(i)</num>
+                <content>...</content>
+              </clause>
+              <clause identifier="/dFF/tIII/stC/s322/qB/s2/43/B/ii"
+                id="H12572CCAB9C744D3B6995E4EE87DBA8A" class="bill-dtd-OLC">
+                <num value="ii">“(ii)</num>
+                <content>...</content>
+              </clause>
+              <clause identifier="/dFF/tIII/stC/s322/qB/s2/43/B/iii"
+                id="H6650D6AC070B486F9EF7825D5C97E1D2" class="bill-dtd-OLC">
+                <num value="iii">“(iii)</num>
+                <content>...</content>
+              </clause>
+            </subparagraph>
+          </paragraph>
+          <paragraph identifier="/dFF/tIII/stC/s322/qB/s2/44" id="H257CB802C03145B0935BBF5FA5188D53"
+            class="bill-dtd-OLC">
+            <num value="44">“(44)</num>
+            <chapeau> The Governments of the United States, the European Union, the United Kingdom,
+              and Canada have—</chapeau>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/44/A"
+              id="H9D7D7DBD83D84EE8837FF07FED3C08CB" class="bill-dtd-OLC">
+              <num value="A">“(A)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/44/B"
+              id="HD9F28DA869F44A2FAB2CE3ED76647487" class="bill-dtd-OLC">
+              <num value="B">“(B)</num>
+              <content>...</content>
+            </subparagraph>
+            <subparagraph identifier="/dFF/tIII/stC/s322/qB/s2/44/C"
+              id="H19CB71ECB76F460BA443B2FBB11A512B" class="bill-dtd-OLC">
+              <num value="C">“(C)</num>
+              <content>...</content>
+            </subparagraph>
+          </paragraph>
+        </section></quotedContent>.</content>
+  </section>
+  <section identifier="/dFF/tIII/stC/s328" id="H00A02A00726843E38A0B83190AA3856B"
+    class="bill-dtd-OLC">
+    <num value="328">SEC. 328.</num>
+    <heading> Reports.</heading>
+    <content><p class="indent0">Section 8 of the Belarus Democracy Act of 2004 (<ref
+          href="/us/pl/109/480">Public Law 109–480</ref>; <ref href="/us/usc/22/5811">22 U.S.C.
+          5811</ref> note) is amended to read as follows:</p><quotedContent
+        id="H3107831FB59E4C50BBF116EB9068DE59"><section identifier="/dFF/tIII/stC/s328/qB/s8"
+          id="HB8D7A90DED38488AAA93B816A5758812" class="bill-dtd-OLC">
+          <num value="8">“SEC. 8.</num>
+          <heading> Reports.</heading>
+          <subsection identifier="/dFF/tIII/stC/s328/qB/s8/a" id="H828B3C75CB0546F2A25D35796FDDA51B"
+            class="bill-dtd-OLC">
+            <num value="a">“(a)</num>
+            <heading> Report on threat to sovereignty and independence of Belarus.—</heading>
+            <paragraph identifier="/dFF/tIII/stC/s328/qB/s8/a/1"
+              id="HCF5D7088D23740729E0A80A72AF794EF" class="bill-dtd-OLC">
+              <num value="1">“(1)</num>
+              <heading> In general.—</heading>
+              <content>...</content>
+            </paragraph>
+            <paragraph identifier="/dFF/tIII/stC/s328/qB/s8/a/2"
+              id="H92BB445C9314442492EE3ADE15FBFF6D" class="bill-dtd-OLC">
+              <num value="2">“(2)</num>
+              <heading> Matters to be included.—</heading>
+              <chapeau>The report required under paragraph (1) shall include—</chapeau>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/a/2/A"
+                id="H0735FDA13E4D4E66BFA349EB27D93DF8" class="bill-dtd-OLC">
+                <num value="A">“(A)</num>
+                <content>...</content>
+              </subparagraph>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/a/2/B"
+                id="H137F1C170E184C17BBD117A4265EBD44" class="bill-dtd-OLC">
+                <num value="B">“(B)</num>
+                <content>...</content>
+              </subparagraph>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/a/2/C"
+                id="H87B1B64F023F484796874C50C1D322C7" class="bill-dtd-OLC">
+                <num value="C">“(C)</num>
+                <content>...</content>
+              </subparagraph>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/a/2/D"
+                id="H469CE4A86EEE407F89A11F293C6431F3" class="bill-dtd-OLC">
+                <num value="D">“(D)</num>
+                <content>...</content>
+              </subparagraph>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/a/2/E"
+                id="H04D7391716EC49F7B8D1D428905976AE" class="bill-dtd-OLC">
+                <num value="E">“(E)</num>
+                <content>...</content>
+              </subparagraph>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/a/2/F"
+                id="HE2E461A7AE6445B9995016BD44368E70" class="bill-dtd-OLC">
+                <num value="F">“(F)</num>
+                <content>...</content>
+              </subparagraph>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/a/2/G"
+                id="H5FA2FC66F65743DEA2743148C80CC548" class="bill-dtd-OLC">
+                <num value="G">“(G)</num>
+                <content>...</content>
+              </subparagraph>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/a/2/H"
+                id="HA034DEF117AF4F0F88D6ADB0B2771828" class="bill-dtd-OLC">
+                <num value="H">“(H)</num>
+                <content>...</content>
+              </subparagraph>
+            </paragraph>
+            <paragraph identifier="/dFF/tIII/stC/s328/qB/s8/a/3"
+              id="H4C007D8FBD4B4BDEB34A60E7107B56E0" class="bill-dtd-OLC">
+              <num value="3">“(3)</num>
+              <heading> Form.—</heading>
+              <content>...</content>
+            </paragraph>
+          </subsection>
+          <subsection identifier="/dFF/tIII/stC/s328/qB/s8/b" id="H988CFCAFBC344A7E9721C0456C264B1B"
+            class="bill-dtd-OLC">
+            <num value="b">“(b)</num>
+            <heading> Report on personal assets of Alyaksandr Lukashenka.—</heading><notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 116-260</note>
+<note role="enactDate">Dec. 27, 2020</note>
+<note role="statute" id="statpage3113">134 Stat. 3113</note></notes><page
+              id="page1932">H. R. 133—1932</page>
+            <paragraph identifier="/dFF/tIII/stC/s328/qB/s8/b/1"
+              id="H653592F7FE434C12B16AB0B1B0A49BAB" class="bill-dtd-OLC">
+              <num value="1">“(1)</num>
+              <heading> In general.—</heading>
+              <chapeau>Not later than 90 days after the date of the enactment of the
+                  <shortTitle>Belarus Democracy, Human Rights, and Sovereignty Act of
+                  2020</shortTitle>, the Director of National Intelligence, in consultation with the
+                Secretary of the Treasury and the Secretary of State, shall submit to the
+                appropriate congressional committees a report describing—</chapeau>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/b/1/A"
+                id="H65471B2A4739457A982ACB93859FB06F" class="bill-dtd-OLC">
+                <num value="A">“(A)</num>
+                <content>...</content>
+              </subparagraph>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/b/1/B"
+                id="H5970A56A560F446D94B190776CADD0B0" class="bill-dtd-OLC">
+                <num value="B">“(B)</num>
+                <content>...</content>
+              </subparagraph>
+            </paragraph>
+            <paragraph identifier="/dFF/tIII/stC/s328/qB/s8/b/2"
+              id="H0997A123CE694878B52EBC8CC242C911" class="bill-dtd-OLC">
+              <num value="2">“(2)</num>
+              <heading> Waiver.—</heading>
+              <chapeau>The Director of National Intelligence may waive, in whole or in part, the
+                reporting requirement under paragraph (1)(A) if the Director submits to the
+                appropriate congressional committees—</chapeau>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/b/2/A"
+                id="H89E1F50D254643B6A60328A1BA57A78A" class="bill-dtd-OLC">
+                <num value="A">“(A)</num>
+                <content>...</content>
+              </subparagraph>
+              <subparagraph identifier="/dFF/tIII/stC/s328/qB/s8/b/2/B"
+                id="HD62620BAAB5E4F9E97A66463D73A461D" class="bill-dtd-OLC">
+                <num value="B">“(B)</num>
+                <content>...</content>
+              </subparagraph>
+            </paragraph>
+            <paragraph identifier="/dFF/tIII/stC/s328/qB/s8/b/3"
+              id="H5542C8FAD66047CBB74B6F94505954B4" class="bill-dtd-OLC">
+              <num value="3">“(3)</num>
+              <heading> Form.—</heading>
+              <content>...</content>
+            </paragraph>
+          </subsection>
+        </section></quotedContent>.</content>
+  </section>
+  <section identifier="/dFF/tIII/stC/s329" id="H18A7401503DE4F0AA5DB2DF52D1D73B5"
+    class="bill-dtd-OLC">
+    <num value="329">SEC. 329.</num>
+    <heading> Definitions.</heading>
+    <chapeau class="block">Section 9 of the Belarus Democracy Act of 2004 (<ref
+        href="/us/pl/109/480">Public Law 109–480</ref>; <ref href="/us/usc/22/5811">22 U.S.C.
+        5811</ref> note) is amended—</chapeau>
+    <paragraph identifier="/dFF/tIII/stC/s329/1" id="H23B86AE3C9444C6E853189C8E2BEAB76"
+      class="bill-dtd-OLC">
+      <num value="1">(1)</num>
+      <content>...</content>
+    </paragraph>
+    <paragraph identifier="/dFF/tIII/stC/s329/2" id="H589BDABFEF2E486BAFBF1F77CC422B4A"
+      class="bill-dtd-OLC">
+      <num value="2">(2)</num>
+      <chapeau> in paragraph (3)(B)—</chapeau>
+      <subparagraph identifier="/dFF/tIII/stC/s329/2/A" id="H23747D7F87D14500A0BC57E99CD8429D"
+        class="bill-dtd-OLC">
+        <num value="A">(A)</num>
+        <content>...</content>
+      </subparagraph>
+      <subparagraph identifier="/dFF/tIII/stC/s329/2/B" id="H8BE6FF120DA34CF5B191DA39DB06C0B1"
+        class="bill-dtd-OLC">
+        <num value="B">(B)</num>
+        <content>...</content>
+      </subparagraph>
+    </paragraph>
+  </section>
+</main>
+</bill>      

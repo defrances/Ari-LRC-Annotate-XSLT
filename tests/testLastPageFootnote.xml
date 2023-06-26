@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bill xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.gpo.gov/xml/uslm" xsi:schemaLocation="http://schemas.gpo.gov/xml/uslm uslm-2.0.11.xsd" xml:lang="en">
+  <meta>
+    <dc:title>115 HR 353 ENR: To improve the National Oceanic...</dc:title>
+    <dc:type>House Bill</dc:type>
+    <docNumber>353</docNumber>
+    <citableAs>115 HR 353 ENR</citableAs>
+    <citableAs>115hr353enr</citableAs>
+    <citableAs>115 H.R. 353 ENR</citableAs>
+    <docStage>ENR</docStage>
+    <processedDate>2020-12-28</processedDate>
+    <congress>115</congress>
+    <session>1</session>
+    <publicPrivate>public</publicPrivate>
+  </meta>
+  <preface>
+    <page id="page1">H. R. 353—1</page>
+    <dc:type>H. R.</dc:type><docNumber>353</docNumber>
+    <congress value="115">One Hundred Fifteenth Congress of the United States of America</congress>
+    <session value="1">AT THE FIRST SESSION</session>
+    <enrolledDateline>Begun and held at the City of Washington on Tuesday, the third day of January, two thousand and seventeen</enrolledDateline>
+  </preface>
+  <main id="H193025A9199440BAA115F01841678DFF">
+    <longTitle>
+      <docTitle>AN ACT</docTitle>
+      <officialTitle>To improve the National Oceanic...</officialTitle>
+    </longTitle>
+    <enactingFormula>Be it enacted by the Senate and House of Representatives of the United States of America in Congress assembled,</enactingFormula>
+    <title identifier="/tV" id="HFD5CEB92EBE94F7282F46B3C61CD0BEB" class="bill-dtd-OLC">
+      <num value="V">Title V—</num>
+      <heading>Tsunami Warning, Education, and Research Act of 2017</heading>
+      <section identifier="/tV/s511" id="HA6200A3654C64FD9AA985C4F127D54B8" class="bill-dtd-OLC">
+        <num value="511"><sidenote topic="olrcClassification" role="target">33/3208 new</sidenote><sidenote topic="olrcClassification" role="publicComment">Cod note</sidenote>Sec. 511.</num>
+        <heading> Outreach responsibilities</heading>
+        <chapeau class="block">The Administrator ...</chapeau>
+        <paragraph identifier="/tV/s511/1" id="HD04B26E1EADE47348B239B461A68F19A" class="bill-dtd-OLC">
+          <num value="1">(1)</num>
+          <content> the development ...</content>
+        </paragraph>
+      </section>
+      <page id="page38">H. R. 353—38</page>
+      <section identifier="/tV/s512" id="H5FD2096660514D6A940289D725FBE3C3" class="bill-dtd-OLC">
+        <num value="512">Sec. 512.</num>
+        <heading> Repeal of duplicate provisions of law</heading>
+        <subsection identifier="/tV/s512/a" id="HD2068CF77861449B8376AE0ACC618F67" class="bill-dtd-OLC">
+          <num value="a"><sidenote topic="olrcClassification" role="longTarget">33/3201, 33/3201 nt repealed, 33/3202, 33/3203, 33/3204, 33/3205, 33/3206, 33/3207</sidenote><sidenote topic="olrcStamp">PN, TU</sidenote>(a)</num>
+          <heading> Repeal.—</heading>
+          <content>The Tsunami Warning and Education Act...</content>
+        </subsection>
+        <subsection identifier="/tV/s512/b" id="H844F962F271A45D49ACF245285944370" class="bill-dtd-OLC">
+          <num value="b"><sidenote topic="olrcClassification" role="target">33/3201 nt new</sidenote>(b)</num>
+          <heading> Construction.—</heading>
+          <content>Nothing in this section...</content>
+        </subsection>
+      </section>
+    </title>
+  </main>
+</bill>

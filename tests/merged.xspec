@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+  xmlns="http://schemas.gpo.gov/xml/uslm" xmlns:olrc="http://uscode.house.gov"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xpf="http://www.w3.org/2005/xpath-functions"  xmlns:functx="http://www.functx.com" 
+  stylesheet="../transforms/addClassification.xsl">
+  
+  <x:param name="inputJSON" select="'../tests/testInput.json'"/>
+    
+  <x:param name="id-target" select="map{
+    'H74694BCC4D204AD78BAB69D509203F27':'t6/s124h',
+    'S1':'t4/s1 note',
+    'H24DCBCAE46FD4C6399D9E13B78360EB5':'out',
+    'H5963241AF71543AC96824535E17E3A8D':'t6/s124l tr to t6/s664, t6/s664 tr fr t6/s124l',
+    'HAE7F91EDEC29400881442AC95DB0C24C':'t6/s101 nt, t6/s131 tr to t6/s671, t6/s671 tr fr t6/s131, t6/s132 tr to t6/s672, t6/s672 tr fr t6/s132, t6/s133 tr to t6/s673, t6/s673 tr fr t6/s133, t6/s134 tr to t6/s674, t6/s674 tr fr t6/s134',
+    'H190E3D49159B466CAA40B44E9EB298E1':'t22/s3948 nt new',
+    'H7066D508519046A0A29C7DFF1BCD16A0':'t5A/s11 nt IG Act',
+    'H4DFB8347DFF7435F87D899C3C58030AB':'t42/s300x prec',
+    'H4DFB8347DFF7435F87D899C3C58030AC':'t42/s300x prec and then more really long with \n so we get a long target to test with CO stamps',
+    'H138E6E6949BE42E29F642F0CF1EB7AA2':'out',
+    'HF422D9E0659A11ED173909173F13E4C5':'t31/s501 nt new'
+    }">
+  </x:param>
+  <x:param name="id-target-caps" select="map{
+    'H74694BCC4D204AD78BAB69D509203F27':'t6/s124h',
+    'S1':'t4/s1 note',
+    'H24DCBCAE46FD4C6399D9E13B78360EB5':'OUT',
+    'H5963241AF71543AC96824535E17E3A8D':'t6/s124l tr to t6/s664, t6/s664 tr fr t6/s124l',
+    'HAE7F91EDEC29400881442AC95DB0C24C':'t6/s101 nt, t6/s131 tr to t6/s671, t6/s671 tr fr t6/s131, t6/s132 tr to t6/s672, t6/s672 tr fr t6/s132, t6/s133 tr to t6/s673, t6/s673 tr fr t6/s133, t6/s134 tr to t6/s674, t6/s674 tr fr t6/s134'
+    }">
+  </x:param>
+  <x:param name="id-targetInFootnote" select="map{
+    'S1':true(),
+    'H7066D508519046A0A29C7DFF1BCD16A0':false()
+    }">
+  </x:param>
+  <x:variable name="pageInfo">
+    <xpf:map key="bill_meta">
+      <xpf:number key="statpage">64</xpf:number>
+      <xpf:string key="statvolume">132</xpf:string>
+      <xpf:string key="publaw">115-123</xpf:string>
+      <xpf:string key="enacted_date">2018-02-09</xpf:string>
+    </xpf:map>
+  </x:variable>
+  <x:variable name="pageInfoJune">
+    <xpf:map key="bill_meta">
+      <xpf:number key="statpage">64</xpf:number>
+      <xpf:string key="statvolume">132</xpf:string>
+      <xpf:string key="publaw">115-123</xpf:string>
+      <xpf:string key="enacted_date">2018-06-09</xpf:string>
+    </xpf:map>
+  </x:variable>
+  <x:variable name="pageInfoJuly">
+    <xpf:map key="bill_meta">
+      <xpf:number key="statpage">64</xpf:number>
+      <xpf:string key="statvolume">132</xpf:string>
+      <xpf:string key="publaw">115-123</xpf:string>
+      <xpf:string key="enacted_date">2018-07-09</xpf:string>
+    </xpf:map>
+  </x:variable>
+  <x:variable name="pageInfoSep">
+    <xpf:map key="bill_meta">
+      <xpf:number key="statpage">64</xpf:number>
+      <xpf:string key="statvolume">132</xpf:string>
+      <xpf:string key="publaw">115-123</xpf:string>
+      <xpf:string key="enacted_date">2018-09-09</xpf:string>
+    </xpf:map>
+  </x:variable>
+  
+  <x:param name="mappedJson">
+    <xpf:map key="H190E3D49159B466CAA40B44E9EB298E1-m-HD9686292312143E897C13C4D3783D6A0">
+      <xpf:string key="id">H190E3D49159B466CAA40B44E9EB298E1-m-HD9686292312143E897C13C4D3783D6A0</xpf:string>
+      <xpf:string key="identifier">/dF/tVII/s7057/a/-m-/dF/tVII/s7057/e</xpf:string>
+      <xpf:string key="text">tSec. 7057.(a) Authority.—Up to $93,000,000 of the funds made available in title III of this Act pursuant to or to carry out the provisions of part I of the Foreign Assistance Act of 1961, including funds appropriated under the heading “Assistance for Europe, Eurasia and Central Asia”, may be used by the United States Agency for International Development to hire and employ individuals in the United States and overseas on a limited appointment basis pursuant to the authority of sections 308 and 309 of the Foreign Service Act of 1980 (22 U.S.C. 3948 and 3949).(b) Restrictions.—(1) The number of individuals hired in any fiscal year pursuant to the authority contained in subsection (a) may not exceed 175.(2) The authority to hire individuals contained in subsection (a) shall expire on September 30, 2020.(c) Conditions.—The authority of subsection (a) should only be used to the extent that an equivalent number of positions that are filled by personal services contractors or other non-direct hire employees of USAID, who are compensated with funds appropriated to carry out part I of the Foreign Assistance Act of 1961, including funds appropriated under the heading “Assistance for Europe, Eurasia and Central Asia”, are eliminated.(d) Program Account Charged.—The account charged for the cost of an individual hired and employed under the authority of this section shall be the account to which the responsibilities of such individual primarily relate: Provided, That funds made available to carry out this section may be transferred to, and merged with, funds appropriated by this Act in title II under the heading “Operating Expenses”.(e) Foreign Service Limited Extensions.—Individuals hired and employed by USAID, with funds made available in this Act or prior Acts making appropriations for the Department of State, foreign operations, and related programs, pursuant to the authority of section 309 of the Foreign Service Act of 1980 (22 U.S.C. 3949), may be extended for a period of up to 4 years notwithstanding the limitation set forth in su</xpf:string>
+      <xpf:string key="label">dF tVII 7057(a)-(e)</xpf:string>
+      <xpf:string key="billpage">359</xpf:string>
+      <xpf:string key="text_offset">1065083:1067143</xpf:string>
+      <xpf:number key="treeLevel">4</xpf:number>
+      <xpf:string key="targetSection">t22/s3948 nt new</xpf:string>
+      <xpf:string key="target">t22/s3948 nt new</xpf:string>
+      <xpf:array key="mergedFrom">
+        <xpf:string>H190E3D49159B466CAA40B44E9EB298E1</xpf:string>
+        <xpf:string>HD9686292312143E897C13C4D3783D6A0</xpf:string>
+      </xpf:array>
+      <xpf:map key="range">
+        <xpf:string key="range">1065083:1067143</xpf:string>
+        <xpf:string key="content">tSec. 7057.(a) Authority.—Up to $93,000,000 of the funds made available in title III of this Act pursuant to or to carry out the provisions of part I of the Foreign Assistance Act of 1961, including funds appropriated under the heading “Assistance for Europe, Eurasia and Central Asia”, may be used by the United States Agency for International Development to hire and employ individuals in the United States and overseas on a limited appointment basis pursuant to the authority of sections 308 and 309 of the Foreign Service Act of 1980 (22 U.S.C. 3948 and 3949).(b) Restrictions.—(1) The number of individuals hired in any fiscal year pursuant to the authority contained in subsection (a) may not exceed 175.(2) The authority to hire individuals contained in subsection (a) shall expire on September 30, 2020.(c) Conditions.—The authority of subsection (a) should only be used to the extent that an equivalent number of positions that are filled by personal services contractors or other non-direct hire employees of USAID, who are compensated with funds appropriated to carry out part I of the Foreign Assistance Act of 1961, including funds appropriated under the heading “Assistance for Europe, Eurasia and Central Asia”, are eliminated.(d) Program Account Charged.—The account charged for the cost of an individual hired and employed under the authority of this section shall be the account to which the responsibilities of such individual primarily relate: Provided, That funds made available to carry out this section may be transferred to, and merged with, funds appropriated by this Act in title II under the heading “Operating Expenses”.(e) Foreign Service Limited Extensions.—Individuals hired and employed by USAID, with funds made available in this Act or prior Acts making appropriations for the Department of State, foreign operations, and related programs, pursuant to the authority of section 309 of the Foreign Service Act of 1980 (22 U.S.C. 3949), may be extended for a period of up to 4 years notwithstanding the limitation set forth in su</xpf:string>
+        <xpf:string key="id">H190E3D49159B466CAA40B44E9EB298E1-m-HD9686292312143E897C13C4D3783D6A0</xpf:string>
+      </xpf:map>
+      <xpf:string key="author">lskouras</xpf:string>
+      <xpf:map key="comments">
+        <xpf:string key="execComment">Repeat; drop Pub. L. 115-141 to similar provisions; DT (sec. 3, 7034(r)(5))</xpf:string>
+      </xpf:map>
+      <xpf:map key="docMeta"/>
+      <xpf:string key="publicComment">Repeat; drop Pub. L. 115-141 to similar provisions. DT (sec. 3, 7034(r)(5))</xpf:string>
+    </xpf:map>
+    <xpf:map key="H1435A4E11BFD4F7FA67FF2E7C207AE43-m-HD585989658FD44C19BA05E8B12CF4AEB">
+      <xpf:string key="id">H1435A4E11BFD4F7FA67FF2E7C207AE43-m-HD585989658FD44C19BA05E8B12CF4AEB</xpf:string>
+      <xpf:string key="identifier">/dG/tIV/s421/-m-/dG/tIV/s422</xpf:string>
+      <xpf:string key="text">n satisfied.Sec. 421. Section 127(l) of title 23, United States Code, is amended by adding at the end the following:“(3) Additional highway segments.—“(A) In general.—If any segment of highway described in clause (i) or (ii) of this subparagraph is designated as a route of the Interstate System, a vehicle that could operate legally on that segment before the date of such designation may continue to operate on that segment, without regard to any requirement under subsection (a), except that such vehicle shall not exceed a gross vehicle weight of 120,000 pounds. The highway segments referred to in this paragraph are as follows:“(i) The William H. Natcher Parkway (to be designated as a spur of Interstate Route 65) from Interstate Route 65 in Bowling Green, Kentucky, to United States Route 60 in Owensboro, Kentucky.“(ii) The Julian M. Carroll (Purchase) Parkway (to be designated as Interstate Route 69) in Kentucky from the Tennessee state line to the interchange with Interstate Route 24, near Calvert City.“(B) Nondivisible load or vehicle.—Nothing in this paragraph shall prohibit the State from issuing a permit for a nondivisible load or vehicle with a gross vehicle weight that exceeds 120,000 pounds.”.Sec. 422. Section 127(s) of title 23, United States Code, is amended—(1) by striking the subsection heading and inserting the following: “(s) Natural Gas and Electric Battery Vehicles”;(2) by inserting “or powered primarily by means of electric battery power” after the first time “natural gas” appears;(3) by striking “any vehicle weight limit” and inserting “the weight limit on the power unit by up to 2,000 pounds”; and(4) by striking all that follows after “under this section” and inserting a period afte</xpf:string>
+      <xpf:map key="source">
+        <xpf:string key="xml">&lt;division identifier="/dG" id="HBF250F2E9EF440BAB3DD90D913F6EB46" class="bill-dtd-appropriations" pagenum="383"&gt;
+          &lt;num value="G"&gt;Division G—&lt;/num&gt;
+          &lt;heading&gt;Transportation, Housing and Urban Development, and Related Agencies Appropriations Act, 2019&lt;/heading&gt;
+          &lt;title identifier="/dG/tIV" id="HD32ACEC8E9B64DAD8F9D466F3EDE8189" class="bill-dtd-appropriations" pagenum="457"&gt;
+          &lt;num value="IV"&gt;Title IV&lt;/num&gt;
+          &lt;heading&gt;
+          &lt;p&gt;General provisions—this act&lt;/p&gt;
+          &lt;/heading&gt;
+          &lt;section identifier="/dG/tIV/s421" id="H1435A4E11BFD4F7FA67FF2E7C207AE43" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="421"&gt;Sec. 421.&lt;/num&gt;
+          &lt;content&gt; Section 127(l) of title 23, United States Code, is amended by adding at the end the following:&lt;/content&gt;
+          &lt;quotedContent id="H9D8608552EC94E02887E9A6BC3F25000"&gt;
+          &lt;paragraph identifier="/dG/tIV/s421/qB/3" id="H1A5F7E7FAAB04869A67EDB4BC52A3944" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="3"&gt;“(3)&lt;/num&gt;
+          &lt;heading&gt; Additional highway segments.—&lt;/heading&gt;
+          &lt;subparagraph identifier="/dG/tIV/s421/qB/3/A" id="H636EB3AAB7724FEE81786AF5685B3DDC" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="A"&gt;“(A)&lt;/num&gt;
+          &lt;heading&gt; In general.—&lt;/heading&gt;
+          &lt;chapeau&gt;If any segment of highway described in clause (i) or (ii) of this subparagraph is designated as a route of the Interstate System, a vehicle that could operate legally on that segment before the date of such designation may continue to operate on that segment, without regard to any requirement under subsection (a), except that such vehicle shall not exceed a gross vehicle weight of 120,000 pounds. The highway segments referred to in this paragraph are as follows:&lt;/chapeau&gt;
+          &lt;clause identifier="/dG/tIV/s421/qB/3/A/i" id="H16E30E7CC72B47649173976E1E1DD194" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="i"&gt;“(i)&lt;/num&gt;
+          &lt;content&gt; The William H. Natcher Parkway (to be designated as a spur of Interstate Route 65) from Interstate Route 65 in Bowling Green, Kentucky, to United States Route 60 in Owensboro, Kentucky.&lt;/content&gt;
+          &lt;/clause&gt;
+          &lt;clause identifier="/dG/tIV/s421/qB/3/A/ii" id="H066F6A02A68742D1B5859C99827A2194" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="ii"&gt;“(ii)&lt;/num&gt;
+          &lt;content&gt; The Julian M. Carroll (Purchase) Parkway (to be designated as Interstate Route 69) in Kentucky from the Tennessee state line to the interchange with Interstate Route 24, near Calvert City.&lt;/content&gt;
+          &lt;/clause&gt;
+          &lt;/subparagraph&gt;
+          &lt;subparagraph identifier="/dG/tIV/s421/qB/3/B" id="HDE8FF724273F4E97AB1A80B43E66DDEC" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="B"&gt;“(B)&lt;/num&gt;
+          &lt;heading&gt; Nondivisible load or vehicle.—&lt;/heading&gt;
+          &lt;content&gt;Nothing in this paragraph shall prohibit the State from issuing a permit for a nondivisible load or vehicle with a gross vehicle weight that exceeds 120,000 pounds.”.&lt;/content&gt;
+          &lt;/subparagraph&gt;
+          &lt;/paragraph&gt;
+          &lt;/quotedContent&gt;
+          &lt;/section&gt;
+          &lt;/title&gt;
+          &lt;/division&gt;
+        </xpf:string>
+        <xpf:string key="text"> Section 127(l) of title 23, United States Code, is amended by adding at the end the following:</xpf:string>
+      </xpf:map>
+      <xpf:map key="execution">
+        <xpf:string key="ampl">insert end &lt;__xml__ id="H9D8608552EC94E02887E9A6BC3F25000"&gt;
+          &lt;paragraph identifier="/dG/tIV/s421/qB/3" id="H1A5F7E7FAAB04869A67EDB4BC52A3944" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="3"&gt;“(3)&lt;/num&gt;
+          &lt;heading&gt; Additional highway segments.—&lt;/heading&gt;
+          &lt;subparagraph identifier="/dG/tIV/s421/qB/3/A" id="H636EB3AAB7724FEE81786AF5685B3DDC" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="A"&gt;“(A)&lt;/num&gt;
+          &lt;heading&gt; In general.—&lt;/heading&gt;
+          &lt;chapeau&gt;If any segment of highway described in clause (i) or (ii) of this subparagraph is designated as a route of the Interstate System, a vehicle that could operate legally on that segment before the date of such designation may continue to operate on that segment, without regard to any requirement under subsection (a), except that such vehicle shall not exceed a gross vehicle weight of 120,000 pounds. The highway segments referred to in this paragraph are as follows:&lt;/chapeau&gt;
+          &lt;clause identifier="/dG/tIV/s421/qB/3/A/i" id="H16E30E7CC72B47649173976E1E1DD194" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="i"&gt;“(i)&lt;/num&gt;
+          &lt;content&gt; The William H. Natcher Parkway (to be designated as a spur of Interstate Route 65) from Interstate Route 65 in Bowling Green, Kentucky, to United States Route 60 in Owensboro, Kentucky.&lt;/content&gt;
+          &lt;/clause&gt;
+          &lt;clause identifier="/dG/tIV/s421/qB/3/A/ii" id="H066F6A02A68742D1B5859C99827A2194" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="ii"&gt;“(ii)&lt;/num&gt;
+          &lt;content&gt; The Julian M. Carroll (Purchase) Parkway (to be designated as Interstate Route 69) in Kentucky from the Tennessee state line to the interchange with Interstate Route 24, near Calvert City.&lt;/content&gt;
+          &lt;/clause&gt;
+          &lt;/subparagraph&gt;
+          &lt;subparagraph identifier="/dG/tIV/s421/qB/3/B" id="HDE8FF724273F4E97AB1A80B43E66DDEC" class="bill-dtd-appropriations" pagenum="462"&gt;
+          &lt;num value="B"&gt;“(B)&lt;/num&gt;
+          &lt;heading&gt; Nondivisible load or vehicle.—&lt;/heading&gt;
+          &lt;content&gt;Nothing in this paragraph shall prohibit the State from issuing a permit for a nondivisible load or vehicle with a gross vehicle weight that exceeds 120,000 pounds.”.&lt;/content&gt;
+          &lt;/subparagraph&gt;
+          &lt;/paragraph&gt;
+          &lt;/__xml__&gt;;</xpf:string>
+      </xpf:map>
+      <xpf:map key="cite">
+        <xpf:string key="cite_text"> Section 127(l) of title 23, United States Code,</xpf:string>
+        <xpf:string key="cimpl">select law("united states code"):title("23"):section( "127(l)");</xpf:string>
+        <xpf:map key="main">
+          <xpf:array key="identifiers">
+            <xpf:string>/us/usc/t23/s127/l</xpf:string>
+          </xpf:array>
+        </xpf:map>
+      </xpf:map>
+      <xpf:string key="label">dG tIV 421, 422</xpf:string>
+      <xpf:string key="billpage">462</xpf:string>
+      <xpf:string key="text_offset">1382824:1384552</xpf:string>
+      <xpf:number key="treeLevel">3</xpf:number>
+      <xpf:string key="target">t23/s127</xpf:string>
+      <xpf:string key="targetSection">t23/s127</xpf:string>
+      <xpf:string key="author">lskouras</xpf:string>
+      <xpf:array key="mergedFrom">
+        <xpf:string>H1435A4E11BFD4F7FA67FF2E7C207AE43</xpf:string>
+        <xpf:string>HD585989658FD44C19BA05E8B12CF4AEB</xpf:string>
+      </xpf:array>
+      <xpf:map key="range">
+        <xpf:string key="range">1382824:1384552</xpf:string>
+        <xpf:string key="content">n satisfied.Sec. 421. Section 127(l) of title 23, United States Code, is amended by adding at the end the following:“(3) Additional highway segments.—“(A) In general.—If any segment of highway described in clause (i) or (ii) of this subparagraph is designated as a route of the Interstate System, a vehicle that could operate legally on that segment before the date of such designation may continue to operate on that segment, without regard to any requirement under subsection (a), except that such vehicle shall not exceed a gross vehicle weight of 120,000 pounds. The highway segments referred to in this paragraph are as follows:“(i) The William H. Natcher Parkway (to be designated as a spur of Interstate Route 65) from Interstate Route 65 in Bowling Green, Kentucky, to United States Route 60 in Owensboro, Kentucky.“(ii) The Julian M. Carroll (Purchase) Parkway (to be designated as Interstate Route 69) in Kentucky from the Tennessee state line to the interchange with Interstate Route 24, near Calvert City.“(B) Nondivisible load or vehicle.—Nothing in this paragraph shall prohibit the State from issuing a permit for a nondivisible load or vehicle with a gross vehicle weight that exceeds 120,000 pounds.”.Sec. 422. Section 127(s) of title 23, United States Code, is amended—(1) by striking the subsection heading and inserting the following: “(s) Natural Gas and Electric Battery Vehicles”;(2) by inserting “or powered primarily by means of electric battery power” after the first time “natural gas” appears;(3) by striking “any vehicle weight limit” and inserting “the weight limit on the power unit by up to 2,000 pounds”; and(4) by striking all that follows after “under this section” and inserting a period afte</xpf:string>
+        <xpf:string key="id">H1435A4E11BFD4F7FA67FF2E7C207AE43-m-HD585989658FD44C19BA05E8B12CF4AEB</xpf:string>
+      </xpf:map>
+      <xpf:map key="docMeta"/>
+    </xpf:map>
+  <xpf:map key="H636AD3D67ED9418DBB4935C21D45EB4E-m-H174C8C8BABF94DEABD6C754ABACEFB47">
+      <xpf:string key="id">H636AD3D67ED9418DBB4935C21D45EB4E-m-H174C8C8BABF94DEABD6C754ABACEFB47</xpf:string>
+      <xpf:string key="identifier">/dZ/s101/-m-/dZ/s107</xpf:string>
+      <xpf:string key="label">dZ 101-107</xpf:string>
+      <xpf:string key="billpage">1011-1015</xpf:string>
+      <xpf:string key="text_offset">2955923:2968880</xpf:string>
+      <xpf:number key="treeLevel">2</xpf:number>
+      <xpf:string key="targetSection">t22/s8601 nt new</xpf:string>
+      <xpf:string key="target">t22/s8601 nt new</xpf:string>
+      <xpf:array key="mergedFrom">
+        <xpf:string>H636AD3D67ED9418DBB4935C21D45EB4E</xpf:string>
+        <xpf:string>H174C8C8BABF94DEABD6C754ABACEFB47</xpf:string>
+      </xpf:array>
+      <xpf:array key="mergedFromAll">
+        <xpf:string>H636AD3D67ED9418DBB4935C21D45EB4E</xpf:string>
+        <xpf:string>H4517C7AAE51E45E7A83920CAFAB716F1</xpf:string>
+        <xpf:string>H59D31191699341828AFFEEF2348B1271</xpf:string>
+        <xpf:string>H3964F75DD1B9467F99CB4CC0CD57199F</xpf:string>
+        <xpf:string>H35FBD6B072CA4D45B2146119B083048B</xpf:string>
+        <xpf:string>H2A4A910D766C41BABBBA7959B51F50F6</xpf:string>
+        <xpf:string>HBA9F5C76633B4784850B4835CC014E48</xpf:string>
+        <xpf:string>H1B834C210D7642E39603CBB6D72FBB6A</xpf:string>
+        <xpf:string>HE2940B9AE87145A8BDF06A924870D3D1</xpf:string>
+        <xpf:string>HFD310D3E134C4C84AE228A934CA52504</xpf:string>
+        <xpf:string>H8DE9A0030D2F4D6F916BC48D66682B70</xpf:string>
+        <xpf:string>H5731BCFC22254E1D98B3583B4048CEC9</xpf:string>
+        <xpf:string>H602E3801C9C2430C8BE0813B1A74D915</xpf:string>
+        <xpf:string>HB7E28B04B0444B218E39F38ED82322B3</xpf:string>
+        <xpf:string>H179A6C73B13C45268FBC14ABE5F2010A</xpf:string>
+        <xpf:string>H3DE945A93F2443A698A9C7BBBB1C7357</xpf:string>
+        <xpf:string>HB4BEC78CB3EA49DA97EA93B5A5C090DB</xpf:string>
+        <xpf:string>H23EDC8ECB1AD42A882B406BF9E703E61</xpf:string>
+        <xpf:string>H5B2E3826F4F247DE8D8F8E5B627871F3</xpf:string>
+        <xpf:string>H51005717A2FC482BA354A40916DD44AB</xpf:string>
+        <xpf:string>HC066326DF896498CB8B4C152DC664EC4</xpf:string>
+        <xpf:string>H4ABB5FF322614E10B3347CAB457E849D</xpf:string>
+        <xpf:string>H56E42B9748BC485B87C647FB89C34D46</xpf:string>
+        <xpf:string>H287534778D3543F78DEB472A878EE799</xpf:string>
+        <xpf:string>H886CD614773443E9BF5B9D0BA26FF128</xpf:string>
+        <xpf:string>HF866796B1357403596CA22FDD769FF69</xpf:string>
+        <xpf:string>H1CFB0D37E9A44795A5505A04033D9123</xpf:string>
+        <xpf:string>H088D652BCCDE4AD88E2D05679C5F43F3</xpf:string>
+        <xpf:string>H3FA13861C0F74667ADF6896E937D57D2</xpf:string>
+        <xpf:string>H2381637D5C6C41EFABEF09C74858E183</xpf:string>
+        <xpf:string>H919A5C71D17C48CDA77D8FCC619878E5</xpf:string>
+        <xpf:string>H8F85062567AD4B6782A81808AE6B93B9</xpf:string>
+        <xpf:string>H2FEE9338FC554C2F9FC9B24FFC0E1442</xpf:string>
+        <xpf:string>H4BEA26A2F8004D7087C332ED0F22E0BA</xpf:string>
+        <xpf:string>H581EEB4E8CEB4A878E4797029FD2F795</xpf:string>
+        <xpf:string>H5C53D82818034608B23A0037EAC263C0</xpf:string>
+        <xpf:string>H929A80937F074A8DA4CB208B53C62B1E</xpf:string>
+        <xpf:string>H53A3915D8B464189A293EF4B5B3C751E</xpf:string>
+        <xpf:string>HBE848F42B3BE437BB68AB1F765DD77A1</xpf:string>
+        <xpf:string>H50C33FF88EB442BCB806FE8ECE0FA15B</xpf:string>
+        <xpf:string>HFA8B126EB607454CB087821A7B48DCB8</xpf:string>
+        <xpf:string>H58F7E89E15804E1EA3B86855AFABFC37</xpf:string>
+        <xpf:string>HBD79D1D1867C453199B31A3E77541C4D</xpf:string>
+        <xpf:string>H6A5BD90BEAFF42DC8921CDE8229296E0</xpf:string>
+        <xpf:string>H5B7E853EB9E14A8BA69446303D8B51A9</xpf:string>
+        <xpf:string>H097D8ECBE2224BB2A2D0D2BDDAF5D9F9</xpf:string>
+        <xpf:string>H2B787B7FC44F4F5C9AFC5F5F2EA2652D</xpf:string>
+        <xpf:string>HFA2719F744E4432F8F419004358862B2</xpf:string>
+        <xpf:string>H60909A60BA414E3582D2C2F028DBFF15</xpf:string>
+        <xpf:string>HCC95DC9CB4564AF2A868E6A9C0E8757C</xpf:string>
+        <xpf:string>H409BA4A2EC974FB687CC5899C674EFD2</xpf:string>
+        <xpf:string>H90E3FFFAC00B48E09156F44E03C6BF69</xpf:string>
+        <xpf:string>HF91223A7E62E413CAE5931545503E239</xpf:string>
+        <xpf:string>H174C8C8BABF94DEABD6C754ABACEFB47</xpf:string>
+      </xpf:array>
+      <xpf:string key="author">jwagner</xpf:string>
+      <xpf:map key="docMeta">
+        <xpf:string key="otherDesignationCombined">PN</xpf:string>
+        <xpf:string key="otherDesignation">PN, PN</xpf:string>
+      </xpf:map>
+      <xpf:string key="publicComment">PNs in secs. 101, 106(a)</xpf:string>
+    </xpf:map>
+    <xpf:map key="H4D6DACBD2EE840DFB75D498C84310C53-m-H65B60F432F954ECDBF624E1718014FCE">
+      <xpf:string key="id">H4D6DACBD2EE840DFB75D498C84310C53-m-H65B60F432F954ECDBF624E1718014FCE</xpf:string>
+      <xpf:string key="identifier">/dO/tVI/s601/a/1/-m-/dO/tVI/s601/a/2</xpf:string>
+      <xpf:string key="label">dO tVI 601(a)(1), (2)</xpf:string>
+      <xpf:string key="billpage">968</xpf:string>
+      <xpf:string key="text_offset">2843453:2844045</xpf:string>
+      <xpf:number key="treeLevel">5</xpf:number>
+      <xpf:string key="targetSection">t19/s3472, t19/s3472 nt new, t19/s3473, t22/s290m, t22/s290m-1, t22/s290m-2, t22/s290m-3, t22/s290m-4, t22/s290m-5, t22/s290m-7</xpf:string>
+      <xpf:string key="target">t19/s3472, t19/s3472 nt new, t19/s3473, t22/s290m, t22/s290m-1, t22/s290m-2, t22/s290m-3, t22/s290m-4, t22/s290m-5, t22/s290m-7</xpf:string>
+      <xpf:array key="mergedFrom">
+        <xpf:string>H4D6DACBD2EE840DFB75D498C84310C53</xpf:string>
+        <xpf:string>H65B60F432F954ECDBF624E1718014FCE</xpf:string>
+      </xpf:array>
+      <xpf:string key="author">jwagner</xpf:string>
+      <xpf:map key="docMeta">
+        <xpf:string key="otherDesignationCombined"></xpf:string>
+        <xpf:string key="otherDesignation"></xpf:string>
+      </xpf:map>
+      <xpf:string key="publicComment"></xpf:string>
+    </xpf:map>
+  </x:param>
+  
+  <x:scenario label="Scenario for testing">
+    <x:scenario label="116hjres31-1">
+      <x:call template="mergedProvisions">
+        <x:param name="id-merged" select="olrc:createMergedMap($mappedJson)"></x:param>
+        <x:param name="mergeId" select="'H1435A4E11BFD4F7FA67FF2E7C207AE43'"></x:param>
+      </x:call>
+      <x:expect label="create sidenotes">
+        <sidenote topic="olrcClassification"
+          role="merged, target"
+          misc="H1435A4E11BFD4F7FA67FF2E7C207AE43,HD585989658FD44C19BA05E8B12CF4AEB">23/127</sidenote>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="116hjres31-2">
+      <x:call template="mergedProvisions">
+        <x:param name="id-merged" select="olrc:createMergedMap($mappedJson)"></x:param>
+        <x:param name="mergeId" select="'H190E3D49159B466CAA40B44E9EB298E1'"></x:param>
+      </x:call>
+      <x:expect label="create sidenotes">
+        <sidenote topic="olrcClassification"
+          role="merged, target"
+          misc="H190E3D49159B466CAA40B44E9EB298E1,HD9686292312143E897C13C4D3783D6A0">22/3948 nt new</sidenote><sidenote
+            topic="olrcClassification"
+            role="merged, publicComment">Repeat; drop Pub. L. 115-141 to similar provisions. DT (sec. 3, 7034(r)(5))</sidenote>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
+  <x:scenario label="long target in merged">
+    <x:call template="mergedProvisions">
+      <x:param name="id-merged" select="olrc:createMergedMap($mappedJson)"></x:param>
+      <x:param name="mergeId" select="'H4D6DACBD2EE840DFB75D498C84310C53'"></x:param>
+    </x:call>
+    <x:expect label="create sidenotes">
+      <sidenote topic="olrcClassification"
+        role="merged, longTarget"
+        misc="H4D6DACBD2EE840DFB75D498C84310C53,H65B60F432F954ECDBF624E1718014FCE">19/3472, 19/3472 nt new, 19/3473, 22/290m, 22/290m-1, 22/290m-2, 22/290m-3, 22/290m-4, 22/290m-5, 22/290m-7</sidenote>
+    </x:expect>
+  </x:scenario>
+<x:scenario label="PN stamp in merged">
+    <x:call template="mergedProvisions">
+      <x:param name="id-merged" select="olrc:createMergedMap($mappedJson)"></x:param>
+      <x:param name="mergeId" select="'H636AD3D67ED9418DBB4935C21D45EB4E'"></x:param>
+    </x:call>
+    <x:expect label="create sidenotes">
+      <sidenote topic="olrcClassification"
+        role="merged, target"
+        misc="H636AD3D67ED9418DBB4935C21D45EB4E,H174C8C8BABF94DEABD6C754ABACEFB47" note="PN, PN">22/8601 nt new</sidenote>
+      <sidenote topic="olrcClassification"
+        role="merged, publicComment">PNs in secs. 101, 106(a)</sidenote>
+    </x:expect>
+  </x:scenario>
+</x:description>

@@ -1,0 +1,383 @@
+/* Version 2022-12-08 */
+/* USLM 2 version */
+@namespace dc "http://purl.org/dc/elements/1.1/";
+@namespace xhtml "http://www.w3.org/1999/xhtml";
+/* As of April 2019, setting the page size in this way only works in Google Chrome. 
+ * This is legal size print. */
+@page {  size:8.5in 14in;  margin: 2cm }
+
+sidenote {
+  width: auto;
+  line-height: 1em;
+}
+
+/* OLRC Classification Notes */
+
+notes[topic = "olrcClassification"] {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-transform: none;
+  font-family: serif;
+}
+
+/* The toc styling decreases the font size, so need to increase it again for the page information. */
+bill toc notes[topic = "olrcClassification"],
+resolution toc notes[topic = "olrcClassification"] {
+  font-size: 1.875em;
+}
+
+notes[topic = "olrcClassification"] note {
+  text-align: center;
+  font-weight: bold;
+  font-style: normal;
+}
+
+bill > page,
+resolution > page {
+  max-width: 32.4em;
+  margin-left: 20em;
+  margin-right: 10em;
+  display: block;
+}
+
+bill > notes[topic = "olrcClassification"],
+resolution > notes[topic = "olrcClassification"] {
+  max-width: 20em;
+  margin-left: 15em;
+  margin-right: 10em;
+  display: block;
+}
+
+sidenote[topic = "olrcClassification"],
+sidenote[topic = "olrcClassification"]:first-of-type {
+  width: 15em;
+  float: left;
+  text-align: right;
+  font-size: x-large;
+  font-weight: bold;
+  margin-top: -0.1em;
+  margin-left: -17em;
+  font-family: monospace;
+}
+
+sidenote[topic = "markerStart"],
+sidenote[topic = "markerStart"]:first-of-type {
+  width: 15em;
+  float: left;
+  text-align: right;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: -0.1em;
+  margin-left: -17em;
+  font-family: monospace;
+}
+
+sidenote[topic = "olrcClassification"][class ~= "out"] {
+  float: left;
+  text-align: left;
+  font-weight: bold;
+  font-size: 2.0em;
+  color: green;
+  margin-left: -2em;
+}
+
+sidenote[topic = "olrcClassification"][role *= "publicComment"] {
+  font-weight: bold;
+}
+
+sidenote[topic = "olrcClassification"][renderingPosition = "rightMargin"] {
+  float: right;
+  text-align: left;
+  margin-top: .2em;
+  margin-left: -15em;
+  margin-right: -12em;
+  font-size: 1.2em;
+}
+
+sidenote[topic = "markerStart"][renderingPosition = "rightMargin"] {
+  float: right;
+  text-align: left;
+  margin-top: .2em;
+  margin-left: -15em;
+  margin-right: -12em;
+  font-size: 1.2em;
+}
+
+sidenote[topic = "olrcStamp"] {
+  display: block;
+  float: right;
+  width: 2em;
+  text-align: center;
+  text-indent: 0em;
+  margin-top: -0.3em;
+  margin-right: -6em;
+  font-family: cursive;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: blue;
+  border: 2pt solid blue;
+  border-radius: 10pt;
+}
+
+sidenote[topic = "olrcStamp"][class = "CO"] {
+  margin-top: 20px;
+  margin-right: -4em;
+  font-style: normal;
+}
+
+marker ~ sidenote[topic = "olrcClassification"][class = "target"] {
+  margin-top: 20px;
+}
+
+note[type = "footnote"],
+footnote {
+  margin-top: 1em;
+  margin-left: -10em;
+  font-family: monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: normal;
+  text-transform: none;
+}
+/* used for debugging */
+/* footnote::after {
+  content: ' ['attr(role)']';
+}  */
+
+/* Color for CO comment and classification indicators */
+inline[class = "CO"] {
+  color: red;
+  font-style: normal;
+}
+
+/*  Marker for ranges */
+marker[role = "markerStart"]::before {
+  content: '[';
+  font-size: x-large;
+  color: red;
+  font-weight: bold;
+  font-style: normal;
+}
+marker[role = "markerEnd"]::after {
+  content: ']';
+  font-size: x-large;
+  color: red;
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+page {
+  display: block;
+  margin-top: 12pt;
+  margin-bottom: 12pt;
+  text-align: center;
+  text-indent: 0pt;
+  font-weight: normal;
+  font-style: normal;
+  font-family: serif, sans-serif;
+  font-size: 1.0em;
+  color: blue;
+}
+
+page:before {
+  content: "";
+}
+
+page:after {
+  content: "";
+}
+
+/* Metadata block - Override base CSS */
+bill > meta,
+resolution > meta {
+  display: none;
+}
+
+/* ToC handling */
+/* Chrome has a bug with long toc that makes the page breaks not work properly.
+ * See https://github.com/Xcential-Corporation/LRC-Classification/issues/1042 and
+ * https://github.com/Xcential-Corporation/LRC-Classification/issues/1047
+ * This looks like a bug in the grid + printing engine */
+
+/*bill toc {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-gap: 0.2rem;
+}*/
+
+toc:first-of-type {
+  margin-bottom: 0;
+}
+
+toc:last-of-type {
+  margin-top: 0;
+}
+
+toc:only-of-type {
+  margin-top: 0.5rem;
+}
+
+/* Adjust bill TOC column width to allow for long entries. */
+/* This should probably be in the base CSS. Remove if added to base CSS later. */
+bill toc column[class = "twoColumnLeft"] {
+  width: auto;
+  padding-right: 1.5em;
+  white-space: nowrap;
+}
+
+/* Designator in the ToC should not break */
+designator {
+  white-space: nowrap;
+}
+
+designator,
+bill toc groupItem > designator,
+label,
+bill toc groupItem > label,
+target {
+  display: inline;
+}
+
+designator:after, label:after {
+  content: " ";
+}
+
+bill toc groupItem[role = "division"]>designator,
+bill toc groupItem[role = "division"]>label,
+bill toc groupItem[role = "title"]>designator,
+bill toc groupItem[role = "title"]>label {
+  text-transform: uppercase;
+}
+
+bill toc groupItem[role = "part"]>designator,
+bill toc groupItem[role = "part"]>label {
+  font-variant: small-caps;
+}
+
+bill toc groupItem[role = "subtitle"]>designator,
+bill toc groupItem[role = "subtitle"]>label {
+  text-transform: none;
+  font-variant: none;
+}
+
+referenceItem:first-of-type {
+  margin-top:0.5em;
+}
+/* Some groupItem elements should be centered, in the same way as referenceItems. Centering the 
+ * groupItem elements with substructure is tricky as the child elements should be aligned left. 
+ * The grids allow flexible placement on separate lines, but lead to a bug in Chrome
+ * See https://github.com/Xcential-Corporation/LRC-Classification/issues/992 */
+
+bill toc groupItem[role = "division"],
+bill toc groupItem[role = "title"],
+bill toc groupItem[role = "subtitle"],
+bill toc groupItem[role = "part"]
+{
+  display: block;
+  background-color: inherit;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+bill toc groupItem[role = "division"] referenceItem,
+bill toc groupItem[role = "title"] referenceItem,
+bill toc groupItem[role = "subtitle"] referenceItem,
+bill toc groupItem[role = "part"] referenceItem {
+  display: block;
+/*  grid-column: 1;*/
+  text-align: left;
+  text-transform: none;
+  line-height: 1.2;
+}
+
+/* For classification of bills and resolutions, make the left and right margins proportionate to font size */
+bill > preface,
+bill > main,
+bill > signatures,
+bill > appendix,
+resolution > preface,
+resolution > main,
+resolution > signatures,
+resolution > appendix {
+  max-width: 32.4em;
+  margin-left: 20em;
+  margin-right: 10em;
+}
+
+bill > preface > dc|type,
+resolution > preface > dc|type {
+  display: unset;
+}
+
+/* Override uslm.css */
+ref note[type="footnote"], ref footnote {
+    font-size: 1.5rem;
+    position: unset;
+    max-width: unset;
+}
+
+/*  For a print stylesheet */
+@media print {
+  notes[topic = "olrcClassification"] {
+    page-break-before: always;
+    break-before: page;
+  }
+  
+/* Standard is display:inline, but then the page breaks do not occur in the content blocks */
+
+chapeau, content, continuation, proviso, quotedText {
+    display: contents;
+}
+
+bill>main section > num + content,
+bill>main section > num + chapeau, 
+resolution>main section > num + content, 
+resolution>main section > num + chapeau, 
+pLaw>main section > num + content, 
+pLaw>main section > num + chapeau {
+    display: contents;
+}
+
+
+  /* For print, set the width to fixed and make left margin wider */
+  bill > preface,
+  bill > main,
+  bill > signatures,
+  bill > appendix,
+  resolution > preface,
+  resolution > main,
+  resolution > signatures,
+  resolution > appendix
+  {
+    width: 32.4em;
+    margin-left: 25em;
+  }
+
+  /* For print, push the footnote further away from the body text */
+  note[type = "footnote"]:first-of-type,
+  footnote:first-of-type {
+    margin-top: 3em;
+  }
+}
+
+/* Increase superscript font size slightly for the annotated bills */
+
+sup {
+    font-size: 0.8em;
+}
+
+/*  For screen */
+@media screen {
+  bill,
+  resolution,
+  pLaw,
+  statutesAtLarge {
+    max-width: 100%;
+    font-size: inherit;
+  }
+
+}

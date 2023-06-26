@@ -1,0 +1,34 @@
+{
+  "name": "@xcential-corporation/annotate-xslt",
+  "version": "2.0.13",
+  "description": "Stylesheets to create annotated bills (LRC) and CSS to style the resulting XML",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "main": "bin/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "/styles",
+    "/transforms"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xcential-Corporation/LRC-Annotate-XSLT.git"
+  },
+  "keywords": [
+    "LRC",
+    "legislation",
+    "USLM"
+  ],
+  "author": "Lauren Wood",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Xcential-Corporation/LRC-Annotate-XSLT/issues"
+  },
+  "homepage": "https://github.com/Xcential-Corporation/LRC-Annotate-XSLT#readme"
+}

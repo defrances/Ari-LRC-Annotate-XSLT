@@ -1,0 +1,1794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+  xmlns="http://schemas.gpo.gov/xml/uslm" xmlns:functx="http://www.functx.com"
+  xmlns:uslm="http://schemas.gpo.gov/xml/uslm" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:olrc="http://uscode.house.gov" xmlns:xpf="http://www.w3.org/2005/xpath-functions"
+  stylesheet="../transforms/addClassification.xsl" version="3.0">
+
+<!--  <x:import href="moveTrailing.xspec"/>
+  <x:import href="merged.xspec"/>
+  <x:import href="notes.xspec"/>
+  <x:import href="utils.xspec"/>-->
+  
+  <!-- note sharing this content across all tests means some files
+  have contradictory content such as classifications -->
+  
+  <x:param name="inputJSON" select="'../tests/testInput.json'"/>
+  <x:param name="id-target" select="map{
+    'H74694BCC4D204AD78BAB69D509203F27':'t6/s124h',
+    'S1':'t4/s1 note',
+    'H24DCBCAE46FD4C6399D9E13B78360EB5':'out',
+    'H5963241AF71543AC96824535E17E3A8D':'t6/s124l tr to t6/s664, t6/s664 tr fr t6/s124l',
+    'HAE7F91EDEC29400881442AC95DB0C24C':'t6/s101 nt, t6/s131 tr to t6/s671, t6/s671 tr fr t6/s131, t6/s132 tr to t6/s672, t6/s672 tr fr t6/s132, t6/s133 tr to t6/s673, t6/s673 tr fr t6/s133, t6/s134 tr to t6/s674, t6/s674 tr fr t6/s134',
+    'H190E3D49159B466CAA40B44E9EB298E1':'t22/s3948 nt new',
+    'H7066D508519046A0A29C7DFF1BCD16A0':'t5A/s11 nt IG Act',
+    'H4DFB8347DFF7435F87D899C3C58030AB':'t42/s300x prec',
+    'H4DFB8347DFF7435F87D899C3C58030AC':'t42/s300x prec and then more really long with \n so we get a long target to test with CO stamps',
+    'H138E6E6949BE42E29F642F0CF1EB7AA2':'out',
+    'HF422D9E0659A11ED173909173F13E4C5':'t31/s501 nt new'
+    }">
+  </x:param>
+  <x:param name="id-docMeta" select="map{
+    'H7066D508519046A0A29C7DFF1BCD16A0':'CO',
+    'H4DFB8347DFF7435F87D899C3C58030AC':'CO',
+    'H4DFB8347DFF7435F87D899C3C58030AB':'CO',
+    'H138E6E6949BE42E29F642F0CF1EB7AA2':'CO',
+    'HF422D9E0659A11ED173909173F13E4C5':'PN',
+    'HAE7F91EDEC29400881442AC95DB0C24C':'TU',
+    'H5963241AF71543AC96824535E17E3A8D':'TU',
+    'HA91E3FD4AE814508870B3C0064FEBCB3':'CO'
+    }">
+  </x:param>
+  <x:param name="id-merged" select="map{
+    'H4D6DACBD2EE840DFB75D498C84310C53':'H65B60F432F954ECDBF624E1718014FCE:t19/s3472, t19/s3473, t22/s290m, t22/s290m nt new, t22/s290m-1, t22/s290m-2, t22/s290m-3, t22/s290m-4, t22/s290m-5, t22/s290m-7::'
+    }"></x:param>
+
+  <x:scenario label="merged sidenotes" pending="test does not work but code does; something in the id-merged param?">
+    <!-- maybe change to array for info -->
+    <x:variable name="meta" as="element()"><xpf:map key="bill_meta">
+      <xpf:number key="statpage">1182</xpf:number>
+      <xpf:string key="statvolume">134</xpf:string>
+      <xpf:string key="publaw">116-260</xpf:string>
+      <xpf:string key="enacted_date">2020-12-27</xpf:string>
+    </xpf:map></x:variable>
+    <x:context>
+      <paragraph identifier="/dO/tVI/s601/a/1" id="H4D6DACBD2EE840DFB75D498C84310C53"
+        class="bill-dtd-OLC">
+        <num value="1">(1)</num>
+        <heading> In general.—</heading>
+        <content>...</content>
+      </paragraph>
+    </x:context>
+    <x:expect label="add sidenote">
+      <paragraph identifier="/dO/tVI/s601/a/1" id="H4D6DACBD2EE840DFB75D498C84310C53"
+        class="bill-dtd-OLC">
+        <num value="1"><sidenote topic="olrcClassification" role="merged, longTarget"
+          misc="H4D6DACBD2EE840DFB75D498C84310C53,H65B60F432F954ECDBF624E1718014FCE">19/3472, 19/3472 
+          nt new, 19/3473, 22/290m, 22/290m-1, 22/290m-2, 22/290m-3, 22/290m-4, 22/290m-5, 22/290m-7</sidenote>(1)</num>
+        <heading> In general.—</heading>
+        <content>...</content>
+      </paragraph>
+    </x:expect>
+  </x:scenario>
+  <x:scenario label="test sidenote stamps">
+    <x:scenario label="CO and long target (blueline)">
+      <x:context>
+        <paragraph identifier="/tII/stD/s241/a/1" id="H4DFB8347DFF7435F87D899C3C58030AC"
+          class="bill-dtd-OLC">
+          <num value="1">(1)</num>
+          <content> in the part heading,...; </content>
+        </paragraph>
+      </x:context>
+      <x:expect label="add CO stamp">
+        <paragraph identifier="/tII/stD/s241/a/1" id="H4DFB8347DFF7435F87D899C3C58030AC"
+          class="bill-dtd-OLC">
+          <num value="1"><sidenote topic="olrcClassification"
+            role="longTarget"
+            note="CO">42/300x prec and then more really long with \n so we get a long target to test with CO stamps</sidenote>(1)</num>
+          <content> in the part heading,...; </content>
+        </paragraph>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="CO and OUT">
+      <x:context>
+        <paragraph identifier="/tIII/s308/b/11" id="H138E6E6949BE42E29F642F0CF1EB7AA2"
+          class="bill-dtd-OLC" pagenum="30">
+          <num value="11">(11)</num>
+          <content> In the title heading
+            of title III, by striking <quotedText>“Office of Compliance”</quotedText> and
+            inserting <quotedText>“Office of Congressional Workplace Rights”</quotedText>.</content>
+        </paragraph>
+      </x:context>
+      <x:expect label="CO and OUT">
+        <paragraph identifier="/tIII/s308/b/11" id="H138E6E6949BE42E29F642F0CF1EB7AA2"
+          class="bill-dtd-OLC">
+          <num value="11"><sidenote topic="olrcClassification"
+            class="out" note="CO">✓</sidenote>
+            <sidenote topic="olrcClassification"
+              role="publicComment">Codification note (2/1381 prec) </sidenote>(11)</num>
+          <content> In the title heading
+            of title III, by striking <quotedText>“Office of Compliance”</quotedText> and
+            inserting <quotedText>“Office of Congressional Workplace Rights”</quotedText>.</content>
+        </paragraph>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="CO and short target (blueline)">
+      <x:context>
+        <paragraph identifier="/tII/stD/s241/a/1" id="H4DFB8347DFF7435F87D899C3C58030AB"
+          class="bill-dtd-OLC">
+          <num value="1">(1)</num>
+          <content> in the part heading,...; </content>
+        </paragraph>
+      </x:context>
+      <x:expect label="add CO stamp">
+        <paragraph identifier="/tII/stD/s241/a/1" id="H4DFB8347DFF7435F87D899C3C58030AB"
+          class="bill-dtd-OLC">
+          <num value="1"><sidenote topic="olrcClassification" role="target" note="CO">42/300x prec</sidenote>(1)</num>
+          <content> in the part heading,...; </content>
+        </paragraph>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
+  <x:scenario label="Scenario for testing pages in mode 'addFootnotes'">
+    <x:scenario label="1. only one page in the bill">
+      <x:context href="testOnePageFootnote.xml" mode="addFootnotes"/>
+      
+      <x:expect label="add footnotes before end of main element"
+        href="testOnePageFootnoteOutput.xml"/>
+    </x:scenario>
+    <x:scenario label="2. stamp + long target">
+      <!-- unrealistic data due to JSON used by several tests -->
+      <x:context mode="addFootnotes">
+        <main>
+        <page id="page125">H.R. 7666—125</page>
+        <section identifier="/tII/stC/s237" id="H80F3B01F9BF540B0A780C9639B39143B" class="bill-dtd-OLC">
+          <num value="237"><sidenote topic="olrcClassification" role="longTarget" note="TU">42/290ee-10 tr to 42/290ee-5a, 42/290ee-5a tr fr 42/290ee-10</sidenote>SEC. 237.</num>
+          <heading class="uppercase"> Technical correction.</heading>
+          <chapeau>Title V of the Public Health Service Act ... is amended—</chapeau>
+        </section>
+        ...
+        <page id="page126">H.R. 7666—126</page><paragraph identifier="/tII/stD/s241/a/1" id="H4DFB8347DFF7435F87D899C3C58030AC" class="bill-dtd-OLC">...</paragraph>
+        </main>
+      </x:context>
+      <x:expect label="create footnote">
+        <main>
+        <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+<note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+<note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+<note role="statute"
+            id="statpage370">135 Stat. 370</note>
+</notes>
+        <page id="page125">H.R. 7666—125</page>
+        <section identifier="/tII/stC/s237" id="H80F3B01F9BF540B0A780C9639B39143B" class="bill-dtd-OLC">
+          <num value="237"><sidenote topic="olrcClassification" role="longTarget"><sup>a</sup></sidenote><sidenote topic="olrcStamp">TU</sidenote>SEC. 237.</num>
+          <heading class="uppercase"> Technical correction.</heading>
+          <chapeau>Title V of the Public Health Service Act ... is amended—</chapeau></section>
+        ...
+        <footnote topic="olrcClassification" role="longTarget"><sup>a</sup> 42/290ee-10 tr to 42/290ee-5a, 42/290ee-5a tr fr 42/290ee-10</footnote>
+          <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+<note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+<note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+<note role="statute"
+            id="statpage371">135 Stat. 371</note>
+</notes><page id="page126">H.R. 7666—126</page><paragraph identifier="/tII/stD/s241/a/1" id="H4DFB8347DFF7435F87D899C3C58030AC" class="bill-dtd-OLC">...</paragraph>
+        </main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="3. CO+long target in context">
+      <!-- 115s3749enr, edited to add long target -->
+      <x:context mode="addFootnotes">
+        <main id="HC3012391D27F11E9125209173F13E4C5">
+          <page id="page30">S. 579—30</page>
+          <paragraph identifier="/tIII/s308/b/10" id="H485D38FE9DA543F6B84F880E5EC695F6"
+            class="bill-dtd-OLC">
+            <num value="10">(10)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/tIII/s308/b/11" id="H138E6E6949BE42E29F642F0CF1EB7AA2"
+            class="bill-dtd-OLC">
+            <num value="11"><sidenote topic="olrcClassification"
+              role="longTarget"
+              note="CO">42/300x prec and then more really long with \n so we get a long target to test with CO stamps</sidenote>
+              <sidenote topic="olrcClassification"
+                role="publicComment">Codification note (2/1381 prec)</sidenote>(11)</num>
+            <content> In the title heading of title III, by ...</content>
+          </paragraph>
+          <paragraph identifier="/tIII/s308/b/12" id="H6D689F7F728149A0B7357E13FAD9C720"
+            class="bill-dtd-OLC">
+            <num value="12">(12)</num>
+            <content>...</content>
+          </paragraph>
+          <page id="page31">S. 579—31</page>
+          <paragraph identifier="/tIII/s308/b/13" id="HEBDFE1C0525443CBA6FDBA60082DC040"
+            class="bill-dtd-OLC" pagenum="30">
+            <num value="13">(13)</num>
+            <content>...</content>
+          </paragraph>
+        </main>
+      </x:context>
+      <x:expect label="add page notes and footnote for target">
+        <main id="HC3012391D27F11E9125209173F13E4C5">
+          <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+            <note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+            <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+            <note role="statute"
+              id="statpage275">135 Stat. 275</note>
+          </notes>
+          <page id="page30">S. 579—30</page>
+          <paragraph identifier="/tIII/s308/b/10" id="H485D38FE9DA543F6B84F880E5EC695F6"
+            class="bill-dtd-OLC">
+            <num value="10">(10)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/tIII/s308/b/11" id="H138E6E6949BE42E29F642F0CF1EB7AA2"
+            class="bill-dtd-OLC">
+            <num value="11"><sidenote topic="olrcClassification"
+              role="longTarget, publicComment"><sup>a</sup><sup>,</sup><sup>1</sup></sidenote><sidenote topic="olrcStamp"
+                class="CO">CO</sidenote>(11)</num>
+            <content> In the title heading of title III, by ...</content>
+          </paragraph>
+          <paragraph identifier="/tIII/s308/b/12" id="H6D689F7F728149A0B7357E13FAD9C720"
+            class="bill-dtd-OLC">
+            <num value="12">(12)</num>
+            <content>...</content>
+          </paragraph><footnote topic="olrcClassification"
+            role="longTarget">
+            <sup>a</sup> 42/300x prec and then more really long with \n so we get a long target to test with CO stamps</footnote>
+          <footnote topic="olrcClassification"
+            role="publicComment">
+            <sup>1</sup> Codification note (2/1381 prec)</footnote>
+          <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+            <note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+            <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+            <note role="statute"
+              id="statpage276">135 Stat. 276</note>
+          </notes>
+          <page id="page31">S. 579—31</page>
+          <paragraph identifier="/tIII/s308/b/13" id="HEBDFE1C0525443CBA6FDBA60082DC040"
+            class="bill-dtd-OLC" pagenum="30">
+            <num value="13">(13)</num>
+            <content>...</content>
+          </paragraph>
+        </main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="4. CO+Out in context">
+      <!-- 115s3749enr -->
+      <x:context mode="addFootnotes">
+        <main id="HC3012391D27F11E9125209173F13E4C5">
+          <page id="page30">S. 579—30</page>
+          <paragraph identifier="/tIII/s308/b/10" id="H485D38FE9DA543F6B84F880E5EC695F6"
+            class="bill-dtd-OLC">
+            <num value="10">(10)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/tIII/s308/b/11" id="H138E6E6949BE42E29F642F0CF1EB7AA2"
+            class="bill-dtd-OLC">
+            <num value="11"><sidenote topic="olrcClassification"
+              class="out" note="CO">✓</sidenote>
+              <sidenote topic="olrcClassification"
+                role="publicComment">Codification note (2/1381 prec) </sidenote>(11)</num>
+            <content> In the title heading of title III, by ...</content>
+          </paragraph>
+          <paragraph identifier="/tIII/s308/b/12" id="H6D689F7F728149A0B7357E13FAD9C720"
+            class="bill-dtd-OLC">
+            <num value="12">(12)</num>
+            <content>...</content>
+          </paragraph>
+          <page id="page31">S. 579—31</page>
+          <paragraph identifier="/tIII/s308/b/13" id="HEBDFE1C0525443CBA6FDBA60082DC040"
+            class="bill-dtd-OLC" pagenum="30">
+            <num value="13">(13)</num>
+            <content>...</content>
+          </paragraph>
+        </main>
+      </x:context>
+      <x:expect label="add page notes">
+        <main id="HC3012391D27F11E9125209173F13E4C5">
+          <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+            <note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+            <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+            <note role="statute"
+              id="statpage275">135 Stat. 275</note>
+          </notes>
+          <page id="page30">S. 579—30</page>
+          <paragraph identifier="/tIII/s308/b/10" id="H485D38FE9DA543F6B84F880E5EC695F6"
+            class="bill-dtd-OLC">
+            <num value="10">(10)</num>
+            <content>...</content>
+          </paragraph>
+          <paragraph identifier="/tIII/s308/b/11" id="H138E6E6949BE42E29F642F0CF1EB7AA2"
+            class="bill-dtd-OLC">
+            <num value="11"><sidenote topic="olrcClassification"
+              class="out" role="publicComment">✓<sup>1</sup></sidenote>
+              <sidenote topic="olrcStamp"
+                class="CO">CO</sidenote>(11)</num>
+            <content> In the title heading of title III, by ...</content>
+          </paragraph>
+          <paragraph identifier="/tIII/s308/b/12" id="H6D689F7F728149A0B7357E13FAD9C720"
+            class="bill-dtd-OLC">
+            <num value="12">(12)</num>
+            <content>...</content>
+          </paragraph><footnote topic="olrcClassification"
+            role="publicComment">
+            <sup>1</sup> Codification note (2/1381 prec) </footnote>
+          <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+            <note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+            <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+            <note role="statute"
+              id="statpage276">135 Stat. 276</note>
+          </notes>
+          <page id="page31">S. 579—31</page>
+          <paragraph identifier="/tIII/s308/b/13" id="HEBDFE1C0525443CBA6FDBA60082DC040"
+            class="bill-dtd-OLC" pagenum="30">
+            <num value="13">(13)</num>
+            <content>...</content>
+          </paragraph>
+        </main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="5. one page, two public comments">
+      <x:context href="testOnePageTwoCommentsFootnote.xml" mode="addFootnotes"/>
+      <x:expect label="number footnotes correctly" href="testOnePageTwoCommentsFootnoteOutput.xml"/>
+    </x:scenario>
+    <x:scenario label="6. footnotes on last page of bill">
+      <x:context href="testLastPageFootnote.xml" mode="addFootnotes"/>
+      <x:expect label="add footnotes before end of main element"
+        href="testLastPageFootnoteOutput.xml"/>
+    </x:scenario>
+    <x:scenario label="7. missing footnotes with merged provisions">
+      <x:variable name="meta" as="element()"><xpf:map key="bill_meta">
+        <xpf:number key="statpage">1182</xpf:number>
+        <xpf:string key="statvolume">134</xpf:string>
+        <xpf:string key="publaw">116-260</xpf:string>
+        <xpf:string key="enacted_date">2020-12-27</xpf:string>
+      </xpf:map></x:variable>
+      <x:context href="testMissingMergedFootnote.xml" mode="addFootnotes">
+        <x:param name="meta" select="$meta" as="element()"/>
+      </x:context>
+      <x:expect label="add footnote" href="testMissingMergedFootnoteOut.xml"/>
+    </x:scenario>
+    <x:scenario label="8. missing info with sidenotes">
+      <x:variable name="meta" as="element()"><xpf:map key="bill_meta">
+          <xpf:number key="statpage">760</xpf:number>
+          <xpf:string key="statvolume">134</xpf:string>
+          <xpf:string key="publaw">116-165</xpf:string>
+          <xpf:string key="enacted_date">2020-10-10</xpf:string>
+        </xpf:map></x:variable>
+      <x:context href="testMissingInfo.xml" mode="addFootnotes">
+        <x:param name="meta" select="$meta" as="element()"/>
+      </x:context>
+      <x:expect label="include missing info" href="testMissingInfoOut.xml"/>
+    </x:scenario>
+    <x:scenario label="9. footnote on wrong target">
+      <x:context mode="addFootnotes">
+        <main>
+          <page id="page53">S. 1605—53</page>
+        <paragraph identifier="/dA/tII/stB/s215/d/1" id="H9F0F5664706C40219EC7C2870DA32C31" class="bill-dtd-OLC">
+          <sidenote topic="olrcClassification" role="target">10/2358 nt</sidenote>
+          <num value="1"><marker id="H9F0F5664706C40219EC7C2870DA32C31-u-_1__1__1__1_len_3-start" role="markerStart"/><sidenote topic="olrcClassification" class="target" role="target">10/2358 nt ed chg</sidenote><sidenote topic="olrcClassification" role="publicComment">ECCT: Pub. L. 110–181, div. A, title XI, §1107, Jan. 28, 2008, 122 Stat. 357 (10/2358 nt) tr to 10/4121 nt </sidenote>(1)<marker id="H9F0F5664706C40219EC7C2870DA32C31-u-_1__1__1__1_len_3-end" role="markerEnd" class="undefined"/></num>
+          <content> Section 1601(f) ... </content></paragraph>
+          <page id="page54">S. 1605—54</page></main>
+      </x:context>
+      <x:expect label="place footnote marker on second comment">
+        <main>
+          <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+            <note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+            <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+<note role="statute" 
+            id="statpage298">135 Stat. 298</note></notes><page id="page53">S. 1605—53</page>
+        <paragraph identifier="/dA/tII/stB/s215/d/1" id="H9F0F5664706C40219EC7C2870DA32C31" class="bill-dtd-OLC">
+          <sidenote topic="olrcClassification" role="target">10/2358 nt</sidenote>
+          <num value="1"><marker id="H9F0F5664706C40219EC7C2870DA32C31-u-_1__1__1__1_len_3-start" 
+            role="markerStart"/><sidenote topic="olrcClassification" class="target" 
+              role="target, publicComment">10/2358 nt ed chg<sup>1</sup></sidenote>(1)<marker id="H9F0F5664706C40219EC7C2870DA32C31-u-_1__1__1__1_len_3-end" role="markerEnd" class="undefined"/></num>
+          <content> Section 1601(f) ... </content></paragraph>
+          <footnote topic="olrcClassification"
+            role="publicComment">
+            <sup>1</sup> ECCT: Pub. L. 110–181, div. A, title XI, §1107, Jan. 28, 2008, 122 Stat. 357 (10/2358 nt) tr to 10/4121 nt </footnote>
+          <notes topic="olrcClassification"><x:text>&#xa;</x:text><note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text><note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text><note role="statute"
+              id="statpage299">135 Stat. 299</note></notes><page id="page54">S. 1605—54</page></main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="10. moving sidenotes for unenumerated provisions">
+      <x:context mode="addFootnotes">
+        <main>
+          <page id="page145">S. 47—145</page>
+          <paragraph identifier="/tII/stB/s2101/c/5" id="HA06EE77CD0CA4062AE898AE357759C0D"
+            class="bill-dtd-OLC">
+            <num value="5">(5)</num>
+            <heading> Cooperative agreements.—</heading>
+          </paragraph>
+          <section identifier="/tII/stB/s2102" id="H585834D014EB4B899FD3176698BB100D"
+            class="bill-dtd-OLC">
+            <num value="2102"><sidenote topic="olrcClassification" role="target">16/410yyy-3 new</sidenote><sidenote 
+              topic="olrcClassification" role="publicComment">DT (sec. 2)</sidenote>Sec. <marker
+                id="H585834D014EB4B899FD3176698BB100D-u-2102_1_2102_1_len_4-start"
+                role="markerStart"/><sidenote topic="olrcClassification" class="target"
+                role="longTarget">16/447a ed chg, 16/447b ed chg, 16/447c ed chg</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">ECCT: Transfer 16/447a,
+                  16/447b, and 16/447c to 16/410yyy, 16/410yyy-1, and 16/410yyy-2 in new subch.
+                  LIX-WW, Ocmulgee Mounds National Historic Park</sidenote>2102<marker
+                id="H585834D014EB4B899FD3176698BB100D-u-2102_1_2102_1_len_4-end" role="markerEnd"
+                class="undefined"/>.</num>
+            <heading> Ocmulgee Mounds National Historical Park boundary</heading>
+            <subsection identifier="/tII/stB/s2102/a" id="HEAC409F8D28544C699927B0A0751F786"
+              class="bill-dtd-OLC">
+              <num value="a">(a)</num><heading> Definitions.—</heading><chapeau>In this section:</chapeau>
+            </subsection>
+            <subsection identifier="/tII/stB/s2102/b" id="H08374A93258E4F7587FF21D26D58BDB6"
+              class="bill-dtd-OLC"><num value="b">(b)</num><heading> Ocmulgee Mounds National Historical Park.—</heading><paragraph identifier="/tII/stB/s2102/b/1"
+                id="H92BB8A7A321C4225B99F5BDF9E52938C" class="bill-dtd-OLC"><num value="1"
+                  >(1)</num><heading> Redesignation.—</heading>
+                <page id="page146">S. 47—146</page></paragraph></subsection></section>
+        </main>
+      </x:context>
+      <x:expect label="join together">
+        <main>
+          <notes topic="olrcClassification"><x:text>&#xa;</x:text><note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+            <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text><note role="statute"
+            id="statpage390">135 Stat. 390</note>
+          </notes>
+          <page id="page145">S. 47—145</page><paragraph identifier="/tII/stB/s2101/c/5"
+            id="HA06EE77CD0CA4062AE898AE357759C0D" class="bill-dtd-OLC">
+            <num value="5">(5)</num>
+            <heading> Cooperative agreements.—</heading>
+          </paragraph><section identifier="/tII/stB/s2102" id="H585834D014EB4B899FD3176698BB100D"
+            class="bill-dtd-OLC">
+            <num value="2102"><sidenote topic="olrcClassification" role="target, publicComment">16/410yyy-3 new<sup>1</sup> </sidenote>Sec. <marker
+                id="H585834D014EB4B899FD3176698BB100D-u-2102_1_2102_1_len_4-start"
+                role="markerStart"/><sidenote topic="olrcClassification"
+                  class="target" role="longTarget, publicComment"><sup>a</sup><sup>,</sup><sup>2</sup></sidenote>2102<marker
+                id="H585834D014EB4B899FD3176698BB100D-u-2102_1_2102_1_len_4-end" role="markerEnd"
+                class="undefined"/>.</num>
+            <heading> Ocmulgee Mounds National Historical Park boundary</heading>
+            <subsection identifier="/tII/stB/s2102/a" id="HEAC409F8D28544C699927B0A0751F786"
+              class="bill-dtd-OLC">
+              <num value="a">(a)</num>
+              <heading> Definitions.—</heading>
+              <chapeau>In this section:</chapeau>
+            </subsection>
+            <subsection identifier="/tII/stB/s2102/b" id="H08374A93258E4F7587FF21D26D58BDB6"
+              class="bill-dtd-OLC">
+              <num value="b">(b)</num>
+              <heading> Ocmulgee Mounds National Historical Park.—</heading>
+              <paragraph identifier="/tII/stB/s2102/b/1" id="H92BB8A7A321C4225B99F5BDF9E52938C"
+                class="bill-dtd-OLC">
+                <num value="1">(1)</num>
+                <heading> Redesignation.—</heading>
+                <footnote topic="olrcClassification" role="publicComment"><sup>1</sup> DT (sec. 2)</footnote>
+                <footnote topic="olrcClassification" role="longTarget"><sup>a</sup> 16/447a ed chg, 16/447b ed chg, 16/447c ed chg</footnote>
+                <footnote topic="olrcClassification" role="publicComment"><sup>2</sup> ECCT: Transfer 16/447a,
+                  16/447b, and 16/447c to 16/410yyy, 16/410yyy-1, and 16/410yyy-2 in new subch.
+                  LIX-WW, Ocmulgee Mounds National Historic Park</footnote>
+                <notes topic="olrcClassification"><x:text>&#xa;</x:text><note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+                  <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text><note role="statute"
+                    id="statpage391">135 Stat. 391</note>
+                </notes>
+                <page id="page146">S. 47—146</page>
+              </paragraph>
+            </subsection>
+          </section>
+        </main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="11. unenumerated with CO stamp">
+      <!-- 116hr5430enr -->
+      <!-- marker starts in enactingFormula and ends in heading of subsection.  -->
+      <x:context mode="addFootnotes">
+        <bill>
+          <page id="page1">H.R. 5430—1</page>
+          <meta>
+            <dc:type>House Bill</dc:type>
+            <docNumber>5430</docNumber>
+            <citableAs>117hr5430enr</citableAs>
+            <citableAs>117 H. R. 5430 ENR</citableAs>
+            <docStage>ENR</docStage>
+            <congress>116</congress>
+            <session>2</session>
+            <publicPrivate>public</publicPrivate>
+          </meta>
+          <preface>
+            <dc:type>H. R. </dc:type>
+            <docNumber>5430</docNumber>
+          </preface>
+          <main id="H33F7703E75734BB6ACEE6FE3124FEAF0">
+            <sidenote topic="olrcClassification"
+              role="target"
+              note="PN">31/501 nt new</sidenote>
+            <enactingFormula>Be it enacted by the Senate and House of Representatives of the United States of America in Congress assemble<marker id="HEC641F962AA846DF9442D1287458454A-u-United_1_Act_2_len_56-start"
+              role="markerStart" />
+              <sidenote topic="olrcClassification"
+                class="out"
+                role="target" note="CO">✓</sidenote>d,</enactingFormula>
+            <section identifier="/s1"
+              id="H6D8B73D34C2B4AA18AA236DDBE5D62F2"
+              class="bill-dtd-OLC">
+              <num value="1">SECTION 1.</num>
+              <heading> SHORT TITLE; TABLE OF CONTENTS.</heading>
+              <subsection identifier="/s1/a" id="HEC641F962AA846DF9442D1287458454A" class="bill-dtd-OLC"><sidenote topic="olrcClassification" role="target" note="PN">19/4501 nt new</sidenote>
+                <num value="a">(a)</num>
+                <heading> Short Ti<marker id="HEC641F962AA846DF9442D1287458454A-u-United_1_Act_2_len_56-end" role="markerEnd" class="undefined"/>tle.—</heading>
+                <content>This Act may be cited as the “<shortTitle>United States-Mexico-Canada Agreement Implementation Act</shortTitle>”.</content>
+              </subsection>
+            </section>
+            <page id="page2">H.R. 5430—2</page>
+          </main>
+        </bill>
+      </x:context>
+      <x:expect label="need to change syntax">
+        <bill>
+          <notes topic="olrcClassification"><x:text>&#xa;</x:text><note 
+            role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text><note 
+            role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text><note role="statute"
+            id="statpage246">135 Stat. 246</note>
+</notes>
+          <page id="page1">H.R. 5430—1</page>
+          <meta>
+            <dc:type>House Bill</dc:type>
+            <docNumber>5430</docNumber>
+            <citableAs>117hr5430enr</citableAs>
+            <citableAs>117 H. R. 5430 ENR</citableAs>
+            <docStage>ENR</docStage>
+            <congress>116</congress>
+            <session>2</session>
+            <publicPrivate>public</publicPrivate>
+          </meta>
+          <preface>
+            <dc:type>H. R. </dc:type>
+            <docNumber>5430</docNumber>
+          </preface>
+          <main id="H33F7703E75734BB6ACEE6FE3124FEAF0">
+            <sidenote topic="olrcClassification"
+              role="target">31/501 nt new</sidenote>
+            <sidenote topic="olrcStamp">PN</sidenote>
+            <enactingFormula>Be it enacted by the Senate and House of Representatives of the United States of America in Congress assemble<marker id="HEC641F962AA846DF9442D1287458454A-u-United_1_Act_2_len_56-start" role="markerStart"/><sidenote topic="olrcClassification" class="out" role="target">✓</sidenote><sidenote topic="olrcStamp" class="CO">CO</sidenote>d,</enactingFormula>
+            <section identifier="/s1" id="H6D8B73D34C2B4AA18AA236DDBE5D62F2" class="bill-dtd-OLC">
+              <num value="1">SECTION 1.</num>
+              <heading> SHORT TITLE; TABLE OF CONTENTS.</heading>
+              <subsection identifier="/s1/a" id="HEC641F962AA846DF9442D1287458454A" class="bill-dtd-OLC"><sidenote topic="olrcClassification" role="target">19/4501 nt new</sidenote><sidenote topic="olrcStamp">PN</sidenote>
+                <num value="a">(a)</num>
+                <heading> Short Ti<marker id="HEC641F962AA846DF9442D1287458454A-u-United_1_Act_2_len_56-end" role="markerEnd" class="undefined"/>tle.—</heading>
+                <content>This Act may be cited as the “<shortTitle>United States-Mexico-Canada Agreement Implementation Act</shortTitle>”.</content></subsection>
+            </section>
+            <notes topic="olrcClassification"><x:text>&#xa;</x:text><note 
+              role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text><note 
+                role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text><note role="statute"
+                  id="statpage247">135 Stat. 247</note>
+            </notes><page id="page2">H.R. 5430—2</page></main></bill>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="12. simple, no comments or long targets">
+      <x:context mode="addFootnotes">
+        <main>
+          <paragraph>
+            <subparagraph identifier="/s2/g/5/B" id="HAACD6D91A15B4F1895F02AB9280B727B"
+              class="bill-dtd-OLC">
+              <num value="B">(B)</num>
+              <sidenote topic="olrcClassification" role="target">t6/s488a</sidenote>
+              <content> in section 899B(a) (<ref href="/us/usc/6/488a">6 U.S.C. 488a(a)</ref>), by
+                adding ...</content></subparagraph>
+            <paragraph identifier="/s2/g/6" id="H2B33BD2B4EAB492A8FFD893C2974AF35"
+              class="bill-dtd-OLC">
+              <num value="6">(6)</num>
+              <chapeau> in title XVIII (<ref href="/us/usc/6/571">6 U.S.C. 571</ref> et
+                seq.)—</chapeau>
+              <subparagraph identifier="/s2/g/6/A" id="HDF511D27F6654208B96DB288511E5795"
+                class="bill-dtd-OLC">
+                <num value="A">(A)</num>
+                <sidenote topic="olrcClassification" role="target">t6/s571</sidenote>
+                <chapeau> in section 1801...</chapeau></subparagraph>
+              <subparagraph identifier="/s2/g/6/C" id="H3F29147AC1944854B1ECB81E8EA4C393"
+                class="bill-dtd-OLC">
+                <num value="C">(C)</num>
+                <sidenote topic="olrcClassification" role="target">t6/s579</sidenote>
+                <chapeau> in section 1809 ...</chapeau>
+                <clause identifier="/s2/g/6/C/iv" id="HEB80E07B8F4F462ABD7D00224906403B"
+                  class="bill-dtd-OLC">
+                  <num value="iv">(iv)</num>
+                  <chapeau> in subsection (m)(1)—</chapeau>
+                  <page id="page13">H. R. 3359—13</page>
+                </clause></subparagraph></paragraph>
+          </paragraph></main>
+      </x:context>
+      <x:expect label="no footnotes">
+        <main>
+          <paragraph>
+            <subparagraph identifier="/s2/g/5/B" id="HAACD6D91A15B4F1895F02AB9280B727B"
+              class="bill-dtd-OLC">
+              <num value="B">(B)</num>
+              <sidenote topic="olrcClassification" role="target">t6/s488a</sidenote>
+              <content> in section 899B(a) (<ref href="/us/usc/6/488a">6 U.S.C. 488a(a)</ref>), by
+                adding ...</content></subparagraph>
+            <paragraph identifier="/s2/g/6" id="H2B33BD2B4EAB492A8FFD893C2974AF35"
+              class="bill-dtd-OLC">
+              <num value="6">(6)</num>
+              <chapeau> in title XVIII (<ref href="/us/usc/6/571">6 U.S.C. 571</ref> et
+                seq.)—</chapeau>
+              <subparagraph identifier="/s2/g/6/A" id="HDF511D27F6654208B96DB288511E5795"
+                class="bill-dtd-OLC">
+                <num value="A">(A)</num>
+                <sidenote topic="olrcClassification" role="target">t6/s571</sidenote>
+                <chapeau> in section 1801...</chapeau></subparagraph>
+              <subparagraph identifier="/s2/g/6/C" id="H3F29147AC1944854B1ECB81E8EA4C393"
+                class="bill-dtd-OLC">
+                <num value="C">(C)</num>
+                <sidenote topic="olrcClassification" role="target">t6/s579</sidenote>
+                <chapeau> in section 1809 ...</chapeau>
+                <clause identifier="/s2/g/6/C/iv" id="HEB80E07B8F4F462ABD7D00224906403B"
+                  class="bill-dtd-OLC">
+                  <num value="iv">(iv)</num>
+                  <chapeau> in subsection (m)(1)—</chapeau>
+                  <notes topic="olrcClassification"><x:text>&#xa;</x:text><note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+                    <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text><note role="statute"
+                    id="statpage258">135 Stat. 258</note>
+                  </notes>
+                  <page id="page13">H. R. 3359—13</page>
+                </clause></subparagraph></paragraph>
+          </paragraph></main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="13. comments and no long targets">
+      <!-- 115hr3359enr -->
+      <x:context mode="addFootnotes">
+        <main>
+          <paragraph identifier="/s2/g/2" id="H99A68B7E47B84BB6972D27B1F3CAE9B2"
+            class="bill-dtd-OLC">
+            <num value="2">(2)</num>
+            <chapeau> in title II (<ref href="/us/usc/6/121">6 U.S.C. 121</ref> et seq.)—</chapeau>
+            <subparagraph identifier="/s2/g/2/A" id="H24DCBCAE46FD4C6399D9E13B78360EB5"
+              class="bill-dtd-OLC">
+              <num value="A">(A)</num>
+              <sidenote topic="olrcClassification" class="out">✓</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">Editorial updates to
+                headings for Subchapter II and Part A (6/121 prec); codification notes citing sec.
+                2(g)(2)(A) and 2(g)(2)(B), respectively</sidenote>
+              <content> in the title heading, by striking ...</content>
+            </subparagraph>
+            <page id="page10">H. R. 3359—10</page>
+            <subparagraph identifier="/s2/g/2/J" id="H46A6E08E43B64DE89DE72AAD04F162B8"
+              class="bill-dtd-OLC">
+              <num value="J">(J)</num>
+              <sidenote topic="olrcClassification" role="target" note="TU">t6/s124m</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">Prior Provisions note</sidenote>
+              <content> by redesignating section 210F as section 210E; and</content></subparagraph>
+            <page id="page11">H. R. 3359—11</page></paragraph></main>
+      </x:context>
+      <x:expect label="create footnotes and delete sidenote content">
+        <main>
+          <paragraph identifier="/s2/g/2" id="H99A68B7E47B84BB6972D27B1F3CAE9B2"
+            class="bill-dtd-OLC">
+            <num value="2">(2)</num>
+            <chapeau> in title II (<ref href="/us/usc/6/121">6 U.S.C. 121</ref> et seq.)—</chapeau>
+            <subparagraph identifier="/s2/g/2/A" id="H24DCBCAE46FD4C6399D9E13B78360EB5"
+              class="bill-dtd-OLC">
+              <num value="A">(A)</num>
+              <sidenote topic="olrcClassification" class="out" role="publicComment">✓<sup>1</sup></sidenote>
+              <content> in the title heading, by striking ...</content>
+            </subparagraph>
+            <footnote topic="olrcClassification" role="publicComment"><sup>1</sup> Editorial updates to
+                headings for Subchapter II and Part A (6/121 prec); codification notes citing sec.
+                2(g)(2)(A) and 2(g)(2)(B), respectively</footnote>
+            <notes topic="olrcClassification"><x:text>&#xa;</x:text><note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+              <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text><note role="statute"
+              id="statpage255">135 Stat. 255</note>
+            </notes>
+            <page id="page10">H. R. 3359—10</page>
+            <subparagraph identifier="/s2/g/2/J" id="H46A6E08E43B64DE89DE72AAD04F162B8"
+              class="bill-dtd-OLC">
+              <num value="J">(J)</num>
+              <sidenote topic="olrcClassification" role="target, publicComment">t6/s124m<sup>1</sup></sidenote>
+              <sidenote topic="olrcStamp">TU</sidenote>
+              <content> by redesignating section 210F as section 210E; and</content>
+            </subparagraph>
+            <footnote topic="olrcClassification" role="publicComment"><sup>1</sup> Prior Provisions note</footnote>
+            <notes topic="olrcClassification"><x:text>&#xa;</x:text><note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+              <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text><note role="statute"
+                id="statpage256">135 Stat. 256</note>
+            </notes>
+            <page id="page11">H. R. 3359—11</page>
+          </paragraph></main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="14. long targets and no comments">
+      <!-- need to make this one up -->
+      <x:context mode="addFootnotes">
+        <main>
+          <paragraph identifier="/s2/g/2" id="H99A68B7E47B84BB6972D27B1F3CAE9B2"
+            class="bill-dtd-OLC">
+            <num value="2">(2)</num>
+            <chapeau> in title II...</chapeau>
+            <page id="page10">H. R. 3359—10</page>
+            <subparagraph identifier="/s2/g/2/H" id="HAE7F91EDEC29400881442AC95DB0C24C"
+              class="bill-dtd-OLC">
+              <num value="H">(H)</num>
+              <sidenote topic="olrcClassification" role="longTarget" note="TU">t6/s101 nt, t6/s131 tr to
+                t6/s671, t6/s671 tr fr t6/s131, t6/s132 tr to t6/s672, t6/s672 tr fr t6/s132,
+                t6/s133 tr to t6/s673, t6/s673 tr fr t6/s133, t6/s134 tr to t6/s674, t6/s674 tr fr
+                t6/s134</sidenote>
+              <content> in subtitle B, by redesignating sections 211 ...</content>
+            </subparagraph>
+            <subparagraph identifier="/s2/g/2/I" id="HEFBE90F863E043FE9FE69CA4954A7C3A"
+              class="bill-dtd-OLC">
+              <num value="I">(I)</num>
+              <sidenote topic="olrcClassification" role="longTarget" note="TU">t6/s143 tr to t6/s655, t6/s655
+                tr fr t6/s143, t6/s144 tr to t6/s656, t6/s656 tr fr t6/s144, t6/s145 tr to t6/s657,
+                t6/s657 tr fr t6/s145, t6/s147 tr to t6/s658, t6/s658 tr fr t6/s147, t6/s148 tr to
+                t6/s659, t6/s659 tr fr t6/s148, t6/s149 tr to t6/s660, t6/s660 tr fr t6/s149,
+                t6/s149a tr to t6/s661, t6/s661 tr fr t6/s149a, t6/s150 tr to t6/s662, t6/s662 tr fr
+                t6/s150, t6/s151 tr to t6/s663, t6/s663 tr fr t6/s151, t18/s1030, t18/s2511,
+                t18/s2512, t18/s2520, t18/s2701, t18/s2702, t18/s2703, t18/s3125, t28/s994 nt [tbl]</sidenote>
+              <content> by redesignating sections 223 ...</content></subparagraph>
+            <page id="page10">H. R. 3359—10</page>
+          </paragraph></main>
+      </x:context>
+      <x:expect label="move long targets to footnote">
+        <main>
+          <paragraph identifier="/s2/g/2" id="H99A68B7E47B84BB6972D27B1F3CAE9B2"
+            class="bill-dtd-OLC">
+            <num value="2">(2)</num>
+            <chapeau> in title II...</chapeau>
+            <notes topic="olrcClassification"><x:text>&#xa;</x:text><note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+              <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+              <note role="statute"
+              id="statpage255">135 Stat. 255</note>
+            </notes>
+            <page id="page10">H. R. 3359—10</page>
+            <subparagraph identifier="/s2/g/2/H" id="HAE7F91EDEC29400881442AC95DB0C24C"
+              class="bill-dtd-OLC">
+              <num value="H">(H)</num>
+              <sidenote topic="olrcClassification" role="longTarget"><sup>a</sup></sidenote>
+              <sidenote topic="olrcStamp">TU</sidenote>
+              <content> in subtitle B, by redesignating sections 211 ...</content>
+            </subparagraph>
+            <subparagraph identifier="/s2/g/2/I" id="HEFBE90F863E043FE9FE69CA4954A7C3A"
+              class="bill-dtd-OLC">
+              <num value="I">(I)</num>
+              <sidenote topic="olrcClassification" role="longTarget"><sup>b</sup></sidenote>
+              <sidenote topic="olrcStamp">TU</sidenote>
+              <content> by redesignating sections 223 ...</content></subparagraph>
+            <footnote topic="olrcClassification" role="longTarget"><sup>a</sup> t6/s101 nt, t6/s131 tr to
+                t6/s671, t6/s671 tr fr t6/s131, t6/s132 tr to t6/s672, t6/s672 tr fr t6/s132,
+                t6/s133 tr to t6/s673, t6/s673 tr fr t6/s133, t6/s134 tr to t6/s674, t6/s674 tr fr
+                t6/s134</footnote>
+            <footnote topic="olrcClassification" role="longTarget"><sup>b</sup> t6/s143 tr to t6/s655, t6/s655
+                tr fr t6/s143, t6/s144 tr to t6/s656, t6/s656 tr fr t6/s144, t6/s145 tr to t6/s657,
+                t6/s657 tr fr t6/s145, t6/s147 tr to t6/s658, t6/s658 tr fr t6/s147, t6/s148 tr to
+                t6/s659, t6/s659 tr fr t6/s148, t6/s149 tr to t6/s660, t6/s660 tr fr t6/s149,
+                t6/s149a tr to t6/s661, t6/s661 tr fr t6/s149a, t6/s150 tr to t6/s662, t6/s662 tr fr
+                t6/s150, t6/s151 tr to t6/s663, t6/s663 tr fr t6/s151, t18/s1030, t18/s2511,
+                t18/s2512, t18/s2520, t18/s2701, t18/s2702, t18/s2703, t18/s3125, t28/s994 nt [tbl]</footnote>
+            <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+              <note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+              <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+              <note role="statute"
+              id="statpage255">135 Stat. 255</note>
+            </notes>
+            <page id="page10">H. R. 3359—10</page>
+          </paragraph></main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="15. both comments and long targets">
+      <x:context mode="addFootnotes">
+        <main>
+          <paragraph identifier="/s2/g/2" id="H99A68B7E47B84BB6972D27B1F3CAE9B2"
+            class="bill-dtd-OLC">
+            <num value="2">(2)</num>
+            <chapeau> in title II...</chapeau>
+            <page id="page10">H. R. 3359—10</page>
+            <subparagraph identifier="/s2/g/2/G" id="H5963241AF71543AC96824535E17E3A8D"
+              class="bill-dtd-OLC">
+              <num value="G">(G)</num>
+              <sidenote topic="olrcClassification" role="target" note="TU">t6/s124l tr to t6/s664, t6/s664 tr
+                fr t6/s124l</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">6/124l nt (Pub. L. 110-53,
+                title X, §1001(b), Aug. 3, 2007, 121 Stat. 374) eliminated</sidenote>
+              <content> by redesignating section 210E ...</content>
+            </subparagraph>
+            <subparagraph identifier="/s2/g/2/H" id="HAE7F91EDEC29400881442AC95DB0C24C"
+              class="bill-dtd-OLC">
+              <num value="H">(H)</num>
+              <sidenote topic="olrcClassification" role="longTarget">t6/s101 nt, t6/s131 tr to
+                t6/s671, t6/s671 tr fr t6/s131, t6/s132 tr to t6/s672, t6/s672 tr fr t6/s132,
+                t6/s133 tr to t6/s673, t6/s673 tr fr t6/s133, t6/s134 tr to t6/s674, t6/s674 tr fr
+                t6/s134</sidenote>
+              <sidenote topic="olrcStamp">TU</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">Part B, Critical
+                Infrastructure Information, transferred to subchapter XVIII (6/671 et seq.)
+                Editorial redesignation of Part C (6/141 prec) of subchapter II as B and Part D
+                (6/161 prec) of subchapter II as C; Codification notes citing sec. 2(g)(2)(K) ECCT:
+                6/131 nt (Pub. L. 114–113, div. N, title II, §202, Dec. 18, 2015, 129 Stat. 2956) tr
+                to 6/671 nt 6/131 nt (Pub. L. 114–113, div. N, title II, §210, Dec. 18, 2015, 129
+                Stat. 2962) tr to 6/671 nt</sidenote>
+              <content> in subtitle B, by redesignating sections 211 ...</content>
+            </subparagraph>
+            <subparagraph identifier="/s2/g/2/I" id="HEFBE90F863E043FE9FE69CA4954A7C3A"
+              class="bill-dtd-OLC">
+              <num value="I">(I)</num>
+              <sidenote topic="olrcClassification" role="longTarget">t6/s143 tr to t6/s655, t6/s655
+                tr fr t6/s143, t6/s144 tr to t6/s656, t6/s656 tr fr t6/s144, t6/s145 tr to t6/s657,
+                t6/s657 tr fr t6/s145, t6/s147 tr to t6/s658, t6/s658 tr fr t6/s147, t6/s148 tr to
+                t6/s659, t6/s659 tr fr t6/s148, t6/s149 tr to t6/s660, t6/s660 tr fr t6/s149,
+                t6/s149a tr to t6/s661, t6/s661 tr fr t6/s149a, t6/s150 tr to t6/s662, t6/s662 tr fr
+                t6/s150, t6/s151 tr to t6/s663, t6/s663 tr fr t6/s151, t18/s1030, t18/s2511,
+                t18/s2512, t18/s2520, t18/s2701, t18/s2702, t18/s2703, t18/s3125, t28/s994 nt [tbl]</sidenote>
+              <sidenote topic="olrcStamp">TU</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">ECCT: 6/148 nt (Pub. L.
+                113–282, §2, Dec. 18, 2014, 128 Stat. 3066) tr to 6/659 nt 6/148 nt (Pub. L.
+                113–282, §8, Dec. 18, 2014, 128 Stat. 3072) tr to 6/659 nt 6/149 nt (Pub. L.
+                113–282, §7(c), Dec. 18, 2014, 128 Stat. 3072) tr to 6/660 nt 6/151 nt (Pub. L.
+                114–113, div. N, title II, §223(b), Dec. 18, 2015, 129 Stat. 2966) tr to 6/663 nt</sidenote>
+              <content> by redesignating sections 223 through 230 (<ref href="/us/usc/6/143">6
+                  U.S.C. 143</ref> through 151) as sections 2205 through 2213, respectively, and
+                transferring such sections to appear after section 2204, as added by this
+                Act;</content></subparagraph>
+            <subparagraph identifier="/s2/g/2/J" id="H46A6E08E43B64DE89DE72AAD04F162B8"
+              class="bill-dtd-OLC">
+              <num value="J">(J)</num>
+              <sidenote topic="olrcClassification" role="target">t6/s124m</sidenote>
+              <sidenote topic="olrcStamp">TU</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">Prior Provisions note</sidenote>
+              <content> by redesignating section 210F as section 210E; and</content></subparagraph>
+            <page id="page10">H. R. 3359—10</page>
+          </paragraph></main>
+      </x:context>
+      <x:expect label="move long targets and comments to footnote">
+        <main>
+          <paragraph identifier="/s2/g/2" id="H99A68B7E47B84BB6972D27B1F3CAE9B2"
+            class="bill-dtd-OLC">
+            <num value="2">(2)</num>
+            <chapeau> in title II...</chapeau>
+            <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+              <note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text><note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+              <note role="statute"
+                id="statpage255">135 Stat. 255</note>
+            </notes>
+            <page id="page10">H. R. 3359—10</page>
+            <subparagraph identifier="/s2/g/2/G" id="H5963241AF71543AC96824535E17E3A8D"
+              class="bill-dtd-OLC">
+              <num value="G">(G)</num>
+              <sidenote topic="olrcClassification" role="target, publicComment">t6/s124l tr to t6/s664, t6/s664 tr
+                fr t6/s124l<sup>1</sup></sidenote>
+              <sidenote topic="olrcStamp">TU</sidenote>
+              <content> by redesignating section 210E ...</content>
+            </subparagraph>
+            <subparagraph identifier="/s2/g/2/H" id="HAE7F91EDEC29400881442AC95DB0C24C"
+              class="bill-dtd-OLC">
+              <num value="H">(H)</num>
+              <sidenote topic="olrcClassification" role="longTarget, publicComment"><sup>a</sup><sup>,</sup><sup>2</sup></sidenote>
+              <sidenote topic="olrcStamp">TU</sidenote>
+              <content> in subtitle B, by redesignating sections 211 ...</content>
+            </subparagraph>
+            <subparagraph identifier="/s2/g/2/I" id="HEFBE90F863E043FE9FE69CA4954A7C3A"
+              class="bill-dtd-OLC">
+              <num value="I">(I)</num>
+              <sidenote topic="olrcClassification" role="longTarget, publicComment"><sup>b</sup><sup>,</sup><sup>3</sup></sidenote>
+              <sidenote topic="olrcStamp">TU</sidenote>
+              <content> by redesignating sections 223 through 230 (<ref href="/us/usc/6/143">6
+                  U.S.C. 143</ref> through 151) as sections 2205 through 2213, respectively, and
+                transferring such sections to appear after section 2204, as added by this
+                Act;</content></subparagraph>
+            <subparagraph identifier="/s2/g/2/J" id="H46A6E08E43B64DE89DE72AAD04F162B8"
+              class="bill-dtd-OLC">
+              <num value="J">(J)</num>
+              <sidenote topic="olrcClassification" role="target, publicComment"
+                >t6/s124m<sup>4</sup></sidenote>
+              <sidenote topic="olrcStamp">TU</sidenote>
+              <content> by redesignating section 210F as section 210E; and</content></subparagraph>
+            <footnote topic="olrcClassification" role="publicComment"><sup>1</sup> 6/124l nt (Pub. L. 110-53,
+                title X, §1001(b), Aug. 3, 2007, 121 Stat. 374) eliminated</footnote>
+            <footnote topic="olrcClassification" role="longTarget"><sup>a</sup> t6/s101 nt, t6/s131 tr to
+                t6/s671, t6/s671 tr fr t6/s131, t6/s132 tr to t6/s672, t6/s672 tr fr t6/s132,
+                t6/s133 tr to t6/s673, t6/s673 tr fr t6/s133, t6/s134 tr to t6/s674, t6/s674 tr fr
+                t6/s134</footnote>
+            <footnote topic="olrcClassification" role="publicComment"><sup>2</sup> Part B, Critical
+                Infrastructure Information, transferred to subchapter XVIII (6/671 et seq.)
+                Editorial redesignation of Part C (6/141 prec) of subchapter II as B and Part D
+                (6/161 prec) of subchapter II as C; Codification notes citing sec. 2(g)(2)(K) ECCT:
+                6/131 nt (Pub. L. 114–113, div. N, title II, §202, Dec. 18, 2015, 129 Stat. 2956) tr
+                to 6/671 nt 6/131 nt (Pub. L. 114–113, div. N, title II, §210, Dec. 18, 2015, 129
+                Stat. 2962) tr to 6/671 nt</footnote>
+            <footnote topic="olrcClassification" role="longTarget"><sup>b</sup> t6/s143 tr to t6/s655, t6/s655
+                tr fr t6/s143, t6/s144 tr to t6/s656, t6/s656 tr fr t6/s144, t6/s145 tr to t6/s657,
+                t6/s657 tr fr t6/s145, t6/s147 tr to t6/s658, t6/s658 tr fr t6/s147, t6/s148 tr to
+                t6/s659, t6/s659 tr fr t6/s148, t6/s149 tr to t6/s660, t6/s660 tr fr t6/s149,
+                t6/s149a tr to t6/s661, t6/s661 tr fr t6/s149a, t6/s150 tr to t6/s662, t6/s662 tr fr
+                t6/s150, t6/s151 tr to t6/s663, t6/s663 tr fr t6/s151, t18/s1030, t18/s2511,
+                t18/s2512, t18/s2520, t18/s2701, t18/s2702, t18/s2703, t18/s3125, t28/s994 nt [tbl]</footnote>
+            <footnote topic="olrcClassification" role="publicComment"><sup>3</sup> ECCT: 6/148 nt (Pub. L.
+                113–282, §2, Dec. 18, 2014, 128 Stat. 3066) tr to 6/659 nt 6/148 nt (Pub. L.
+                113–282, §8, Dec. 18, 2014, 128 Stat. 3072) tr to 6/659 nt 6/149 nt (Pub. L.
+                113–282, §7(c), Dec. 18, 2014, 128 Stat. 3072) tr to 6/660 nt 6/151 nt (Pub. L.
+                114–113, div. N, title II, §223(b), Dec. 18, 2015, 129 Stat. 2966) tr to 6/663 nt</footnote>
+            <footnote topic="olrcClassification" role="publicComment"><sup>4</sup> Prior Provisions note</footnote>
+            <notes topic="olrcClassification"><x:text>&#xa;</x:text><note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+              <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text><note role="statute"
+              id="statpage255">135 Stat. 255</note>
+            </notes>
+            <page id="page10">H. R. 3359—10</page>
+          </paragraph></main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="16. unenumerated provision in heading with comments and long target">
+      <!-- the sidenotes within the num element come from the unenumerated provision handling -->
+      <x:context mode="addFootnotes">
+        <main>
+          <page id="page145">S. 47—145</page>
+          <section identifier="/tII/stB/s2102" id="H585834D014EB4B899FD3176698BB100D"
+            class="bill-dtd-OLC" pagenum="145">
+            <sidenote topic="olrcClassification" role="target">16/410yyy-3 new</sidenote>
+            <sidenote topic="olrcClassification" role="publicComment">DT (sec. 2)</sidenote>
+            <num value="2102">Sec. <marker
+                id="H585834D014EB4B899FD3176698BB100D-u-2102_1_2102_1_len_4-start"
+                role="markerStart"/>
+              <sidenote topic="olrcClassification" class="target" role="longTarget">16/447a ed chg,
+                16/447b ed chg, 16/447c ed chg</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">ECCT: Transfer 16/447a,
+                 16/447b, and 16/447c to 16/410yyy, 16/410yyy-1, and 16/410yyy-2 in new subch.
+                 LIX-WW, Ocmulgee Mounds National Historic Park</sidenote>2102<marker
+                id="H585834D014EB4B899FD3176698BB100D-u-2102_1_2102_1_len_4-end" role="markerEnd"
+                class="undefined"/>.</num>
+            <heading> Ocmulgee Mounds National Historical Park boundary</heading>
+            <subsection identifier="/tII/stB/s2102/a" id="HEAC409F8D28544C699927B0A0751F786"
+              class="bill-dtd-OLC" pagenum="145">
+              <num value="a">(a)</num>
+              <heading> Definitions.—</heading>
+              <chapeau>In this section:</chapeau>
+            </subsection>
+          </section>
+          <page id="page146">S. 47—146</page></main>
+      </x:context>
+      <x:expect label="add sup-1 not on top of the other">
+        <main>
+          <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+            <note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text><note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+            <note role="statute"
+              id="statpage390">135 Stat. 390</note>
+          </notes><page id="page145">S. 47—145</page>
+          <section identifier="/tII/stB/s2102" id="H585834D014EB4B899FD3176698BB100D"
+            class="bill-dtd-OLC" pagenum="145">
+            <sidenote topic="olrcClassification" role="target, publicComment">16/410yyy-3 new<sup>1</sup> </sidenote><num value="2102">Sec. <marker
+                id="H585834D014EB4B899FD3176698BB100D-u-2102_1_2102_1_len_4-start"
+                role="markerStart"/><sidenote topic="olrcClassification"
+                    class="target" role="longTarget, publicComment"><sup>a</sup> <sup>2</sup></sidenote>2102<marker
+                id="H585834D014EB4B899FD3176698BB100D-u-2102_1_2102_1_len_4-end" role="markerEnd"
+                class="undefined"/>.</num>
+            <heading> Ocmulgee Mounds National Historical Park boundary</heading>
+            <subsection identifier="/tII/stB/s2102/a" id="HEAC409F8D28544C699927B0A0751F786"
+              class="bill-dtd-OLC" pagenum="145">
+              <num value="a">(a)</num>
+              <heading> Definitions.—</heading>
+              <chapeau>In this section:</chapeau>
+            </subsection>
+          </section>
+          <footnote topic="olrcClassification" role="publicComment"><sup>1</sup> DT (sec. 2)</footnote>
+          <footnote topic="olrcClassification" role="longTarget"><sup>a</sup> 16/447a ed chg,
+                16/447b ed chg, 16/447c ed chg</footnote>
+          <footnote topic="olrcClassification" role="publicComment"><sup>2</sup> ECCT: Transfer 16/447a,
+                 16/447b, and 16/447c to 16/410yyy, 16/410yyy-1, and 16/410yyy-2 in new subch.
+                 LIX-WW, Ocmulgee Mounds National Historic Park</footnote>
+                 <notes topic="olrcClassification"><x:text>&#xa;</x:text>
+                   <note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text><note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+                   <note role="statute"
+                   id="statpage391">135 Stat. 391</note>
+                 </notes><page id="page146">S. 47—146</page>
+        </main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="17. unenumerated provisions with public comments in mode addFootnotes">
+      <x:context mode="addFootnotes">
+        <main>
+          <level id="H82D0D4CF92624FEEA213839AADBB4CC9" role="appropriations">
+            <heading class="appropriationsSmall"> Science, Technology, Engineering, and Mathematics
+              Engagement</heading>
+            <text>more text, <page id="page111">H. J. RES. 31—111</page> and more text.</text>
+          </level>
+          <level id="HE737AF8493D54A22BECE3385876024EB" role="appropriations">
+            <heading class="appropriationsSmall"> Construction and environmental compliance and
+              restoration</heading>
+            <text>For necessary expenses ...: <proviso>
+                <i>Provided</i>
+              </proviso>, <marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-That_11_Acts__1_len_168-start"
+                role="markerStart"/>
+              <sidenote topic="olrcClassification" class="target" role="target">51/20145 nt [tbl]</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">Repeat</sidenote> That ...:<marker id="H6E92915D14DB4F6C8A36CE736A153302-u-That_11_Acts__1_len_168-end"
+                role="markerEnd" class="undefined"/>
+              <proviso><i>Provided further</i>
+              </proviso>, That ... $17,000,000: <proviso><i>Provided further</i></proviso>, <marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-That_13_Code__10_len_197-start"
+                role="markerStart"/>
+              <sidenote topic="olrcClassification" class="target" role="target">51/30103 nt new</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">Repeat; drop Pub. L. 115-141
+                to similar provisions</sidenote> That ...<marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-That_13_Code__10_len_197-end"
+                role="markerEnd" class="undefined"/></text>
+          </level>
+          <level id="HF3696C074FB4487BB5C8C36A995D6CC4" role="appropriations">
+            <heading class="appropriationsSmall"> (including transfers of funds)</heading>
+            <text><marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-Funds_1_withdrawn__1_len_158-start"
+                role="markerStart"/>
+              <sidenote topic="olrcClassification" class="target" role="target">51/20144 nt new</sidenote>
+              <sidenote topic="olrcClassification" role="publicComment">Repeat; drop Pub. L. 115-141
+                to prior provisions</sidenote> Funds for any .... <marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-Funds_1_withdrawn__1_len_158-end"
+                role="markerEnd" class="undefined"/></text>
+            <text>Not to exceed 5 percent of any appropriation...<page id="page112">H. J. RES. 31—112</page></text>
+          </level></main>
+      </x:context>
+      <x:expect label="should add sup-1 as appropriate">
+        <main>
+          <level id="H82D0D4CF92624FEEA213839AADBB4CC9" role="appropriations">
+            <heading class="appropriationsSmall"> Science, Technology, Engineering, and Mathematics
+              Engagement</heading>
+            <text>more text, <br/><x:text>&#xa;</x:text><notes topic="olrcClassification"><x:text>&#xa;</x:text>
+              <note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text><note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text>
+              <note role="statute"
+                id="statpage356">135 Stat. 356</note>
+            </notes><page id="page111">H. J. RES. 31—111</page> and more text.</text>
+          </level>
+          <level id="HE737AF8493D54A22BECE3385876024EB" role="appropriations">
+            <heading class="appropriationsSmall"> Construction and environmental compliance and
+              restoration</heading>
+            <text>For necessary expenses ...: <proviso><i>Provided</i></proviso>, <marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-That_11_Acts__1_len_168-start"
+                role="markerStart"/>
+              <sidenote topic="olrcClassification" class="target" role="target, publicComment"
+                >51/20145 nt [tbl]<sup>1</sup></sidenote> That ...:<marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-That_11_Acts__1_len_168-end"
+                role="markerEnd" class="undefined"/>
+              <proviso><i>Provided further</i>
+              </proviso>, That ... $17,000,000: <proviso><i>Provided further</i>
+              </proviso>, <marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-That_13_Code__10_len_197-start"
+                role="markerStart"/>
+              <sidenote topic="olrcClassification" class="target" role="target, publicComment"
+                >51/30103 nt new<sup>2</sup></sidenote> That ...<marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-That_13_Code__10_len_197-end"
+                role="markerEnd" class="undefined"/></text>
+          </level>
+          <level id="HF3696C074FB4487BB5C8C36A995D6CC4" role="appropriations">
+            <heading class="appropriationsSmall"> (including transfers of funds)</heading>
+            <text><marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-Funds_1_withdrawn__1_len_158-start"
+                role="markerStart"/>
+              <sidenote topic="olrcClassification" class="target" role="target, publicComment"
+                >51/20144 nt new<sup>3</sup></sidenote> Funds for any .... <marker
+                id="H6E92915D14DB4F6C8A36CE736A153302-u-Funds_1_withdrawn__1_len_158-end"
+                role="markerEnd" class="undefined"/></text>
+            <text>Not to exceed 5 percent of any appropriation...<footnote
+                topic="olrcClassification" role="publicComment"><sup>1</sup> Repeat</footnote>
+              <footnote topic="olrcClassification" role="publicComment"><sup>2</sup> Repeat; drop Pub. L. 115-141
+                to similar provisions</footnote>
+              <footnote topic="olrcClassification" role="publicComment"><sup>3</sup> Repeat; drop Pub. L. 115-141
+                to prior provisions</footnote>
+              <br/><x:text>&#xa;</x:text>
+              <notes topic="olrcClassification"><x:text>&#xa;</x:text><note role="pLaw">Pub. L. 117-3</note><x:text>&#xa;</x:text>
+                <note role="enactDate">Mar. 23, 2021</note><x:text>&#xa;</x:text><note role="statute"
+                id="statpage357">135 Stat. 357</note>
+              </notes>
+              <page id="page112">H. J. RES. 31—112</page></text>
+          </level></main>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="Sidenotes in mode 'addFootnotes'">
+    <x:scenario label="empty note attributes">
+      <x:context mode="addFootnotes">
+        <appropriations id="HB1B46F8CDA9A4FB4951422D05F278B37" level="intermediate">
+          <heading class="titlecase"> <marker id="H660F59E7EBA5467391CAAC33023630E5-u-International_4_Organizations_1_len_27-start" role="markerStart"/>
+            <sidenote topic="olrcClassification" class="target" role="target" note="">22/269a nt [tbl]</sidenote>
+            <sidenote topic="olrcClassification" role="publicComment">Repeat </sidenote>International Organizations<marker id="H660F59E7EBA5467391CAAC33023630E5-u-International_4_Organizations_1_len_27-end" role="markerEnd" class="undefined"/></heading>
+        </appropriations>
+      </x:context>
+      <x:expect label="do not create empty sidenote">
+        <appropriations id="HB1B46F8CDA9A4FB4951422D05F278B37" level="intermediate">
+          <heading class="titlecase">
+            <marker id="H660F59E7EBA5467391CAAC33023630E5-u-International_4_Organizations_1_len_27-start"
+              role="markerStart" />
+            <sidenote topic="olrcClassification" class="target"
+              role="target, publicComment">22/269a nt [tbl]<sup>1</sup>
+            </sidenote>International Organizations<marker id="H660F59E7EBA5467391CAAC33023630E5-u-International_4_Organizations_1_len_27-end"
+              role="markerEnd" class="undefined" />
+          </heading>
+        </appropriations>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="out and CO in unenumerated with empty publicComment">
+      <x:context mode="addFootnotes">
+        <title identifier="/dA/tV/s5001/a/qB/tVI" id="HA91E3FD4AE814508870B3C0064FEBCB3"
+          class="bill-dtd-OLC">
+          <num value="VI">“<marker
+              id="HA91E3FD4AE814508870B3C0064FEBCB3-u-Title_1_Fund_1_len_33-start"
+              role="markerStart"/>
+            <sidenote topic="olrcClassification" class="out" role="target" note="CO">✓</sidenote>
+            <sidenote topic="olrcClassification" role="publicComment"/>Title VI—</num>
+          <heading>Coronavirus Relief Fund<marker
+              id="HA91E3FD4AE814508870B3C0064FEBCB3-u-Title_1_Fund_1_len_33-end" role="markerEnd"
+              class="undefined"/></heading>
+          <section identifier="/dA/tV/s5001/a/qB/tVI/s601" id="H84BA718D070E4287BC03F361F5EABC80"
+            class="bill-dtd-OLC">
+            <num value="601">“Sec. 601.</num>
+            <heading> Coronavirus Relief Fund.</heading></section></title>
+      </x:context>
+      <x:expect label="add target but not publicComment">
+        <title identifier="/dA/tV/s5001/a/qB/tVI" id="HA91E3FD4AE814508870B3C0064FEBCB3"
+          class="bill-dtd-OLC">
+          <num value="VI">“<marker
+            id="HA91E3FD4AE814508870B3C0064FEBCB3-u-Title_1_Fund_1_len_33-start" role="markerStart"
+          /><sidenote topic="olrcClassification" class="out" role="target">✓</sidenote><sidenote
+            topic="olrcStamp" class="CO">CO</sidenote>Title VI—</num>
+          <heading>Coronavirus Relief Fund<marker
+            id="HA91E3FD4AE814508870B3C0064FEBCB3-u-Title_1_Fund_1_len_33-end" role="markerEnd"
+            class="undefined"/></heading>
+          <section identifier="/dA/tV/s5001/a/qB/tVI/s601" id="H84BA718D070E4287BC03F361F5EABC80"
+            class="bill-dtd-OLC">
+            <num value="601">“Sec. 601.</num>
+            <heading> Coronavirus Relief Fund.</heading>
+          </section>
+        </title>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="two CO stamps in one page in mode 'addFootnotes'">
+      <x:context mode="addFootnotes" href="testTwoCOStampsOnePage.xml"/>
+      <x:expect label="move both to footnotes" href="testTwoCOStampsOnePageOutput.xml"/>
+    </x:scenario>
+    <x:scenario label="three CO stamps in separated page in mode 'addFootnotes'">
+      <x:context mode="addFootnotes" href="testThreeCOStampsThreePages.xml"/>
+      <x:expect label="move all to footnotes and number correctly" href="testThreeCOStampsThreePagesOutput.xml"/>
+    </x:scenario>
+    <x:scenario label="small target">
+      <x:context mode="addFootnotes">
+        <subparagraph identifier="/s2/g/2/F" id="H74694BCC4D204AD78BAB69D509203F27"
+          class="bill-dtd-OLC">
+          <num value="F">(F)</num>
+          <sidenote topic="olrcClassification" role="target">t6/s124h</sidenote>
+          <content> in section 210A(c)(2)(B) ...</content>
+        </subparagraph>
+      </x:context>
+      <x:expect label="leave sidenote content alone">
+        <subparagraph identifier="/s2/g/2/F" id="H74694BCC4D204AD78BAB69D509203F27"
+          class="bill-dtd-OLC">
+          <num value="F">(F)</num>
+          <sidenote topic="olrcClassification" role="target">t6/s124h</sidenote>
+          <content> in section 210A(c)(2)(B) ...</content>
+        </subparagraph>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="CO stamp with target not out">
+      <x:context mode="addFootnotes" href="../tests/testCOStampTargetNotOut.xml"/>
+      <x:expect label="target and footnote" href="../tests/testCOStampTargetNotOutOutput.xml"/>
+    </x:scenario>
+    <x:scenario label="out target and no comment">
+      <x:context mode="addFootnotes">
+        <subparagraph identifier="/s2/g/2/A" id="H24DCBCAE46FD4C6399D9E13B78360EB5"
+          class="bill-dtd-OLC">
+          <num value="A">(A)</num>
+          <sidenote topic="olrcClassification" class="out">✓</sidenote>
+          <content> in the title heading, ...</content>
+        </subparagraph>
+      </x:context>
+      <x:expect label="add sup-1 to target">
+        <subparagraph identifier="/s2/g/2/A" id="H24DCBCAE46FD4C6399D9E13B78360EB5"
+          class="bill-dtd-OLC">
+          <num value="A">(A)</num>
+          <sidenote topic="olrcClassification" class="out">✓</sidenote>
+          <content> in the title heading, ...</content>
+        </subparagraph>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="out target and comment">
+      <x:context mode="addFootnotes">
+        <subparagraph identifier="/s2/g/2/A" id="H24DCBCAE46FD4C6399D9E13B78360EB5"
+          class="bill-dtd-OLC">
+          <num value="A">(A)</num>
+          <sidenote topic="olrcClassification" class="out">✓</sidenote>
+          <sidenote topic="olrcClassification" role="publicComment">Editorial updates to headings
+            for Subchapter II and Part A (6/121 prec); codification notes citing sec. 2(g)(2)(A) and
+            2(g)(2)(B), respectively</sidenote>
+          <content> in the title heading, ...</content>
+        </subparagraph>
+      </x:context>
+      <x:expect label="add sup-1 to target">
+        <subparagraph identifier="/s2/g/2/A" id="H24DCBCAE46FD4C6399D9E13B78360EB5"
+          class="bill-dtd-OLC">
+          <num value="A">(A)</num>
+          <sidenote topic="olrcClassification" class="out" role="publicComment">✓<sup>1</sup></sidenote>
+          <content> in the title heading, ...</content>
+        </subparagraph>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="long target and no comment">
+      <x:context mode="addFootnotes">
+        <subparagraph identifier="/s2/g/2/H" id="HAE7F91EDEC29400881442AC95DB0C24C"
+          class="bill-dtd-OLC">
+          <num value="H">(H)</num>
+          <sidenote topic="olrcClassification" role="longTarget">t6/s101 nt, t6/s131 tr to t6/s671,
+            t6/s671 tr fr t6/s131, t6/s132 tr to t6/s672, t6/s672 tr fr t6/s132, t6/s133 tr to
+            t6/s673, t6/s673 tr fr t6/s133, t6/s134 tr to t6/s674, t6/s674 tr fr t6/s134</sidenote>
+          <sidenote topic="olrcStamp">TU</sidenote>
+          <content> in subtitle B, ...</content>
+        </subparagraph>
+      </x:context>
+      <x:expect label="replace target with sup-a">
+        <subparagraph identifier="/s2/g/2/H" id="HAE7F91EDEC29400881442AC95DB0C24C"
+          class="bill-dtd-OLC">
+          <num value="H">(H)</num>
+          <sidenote topic="olrcClassification" role="longTarget"><sup>a</sup></sidenote>
+          <sidenote topic="olrcStamp">TU</sidenote>
+          <content> in subtitle B, ...</content>
+        </subparagraph>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="long target and comment">
+      <x:context mode="addFootnotes">
+        <subparagraph identifier="/s2/g/2/H" id="HAE7F91EDEC29400881442AC95DB0C24C"
+          class="bill-dtd-OLC">
+          <num value="H">(H)</num>
+          <sidenote topic="olrcClassification" role="longTarget" note="TU">t6/s101 nt, t6/s131 tr to t6/s671,
+            t6/s671 tr fr t6/s131, t6/s132 tr to t6/s672, t6/s672 tr fr t6/s132, t6/s133 tr to
+            t6/s673, t6/s673 tr fr t6/s133, t6/s134 tr to t6/s674, t6/s674 tr fr t6/s134</sidenote>
+          <sidenote topic="olrcClassification" role="publicComment">Part B, Critical Infrastructure
+            Information, transferred to subchapter XVIII (6/671 et seq.) Editorial redesignation of
+            Part C (6/141 prec) of subchapter II as B and Part D (6/161 prec) of subchapter II as C;
+            Codification notes citing sec. 2(g)(2)(K) ECCT: 6/131 nt (Pub. L. 114–113, div. N, title
+            II, §202, Dec. 18, 2015, 129 Stat. 2956) tr to 6/671 nt 6/131 nt (Pub. L. 114–113, div.
+            N, title II, §210, Dec. 18, 2015, 129 Stat. 2962) tr to 6/671 nt</sidenote>
+          <content> in subtitle B, ...</content>
+        </subparagraph>
+      </x:context>
+      <x:expect label="replace target with sup-a and sup-1 for comment">
+        <subparagraph identifier="/s2/g/2/H" id="HAE7F91EDEC29400881442AC95DB0C24C"
+          class="bill-dtd-OLC">
+          <num value="H">(H)</num>
+          <sidenote topic="olrcClassification" role="longTarget, publicComment"><sup>a</sup><sup>,</sup><sup>1</sup></sidenote>
+          <sidenote topic="olrcStamp">TU</sidenote>
+          <content> in subtitle B, ...</content>
+        </subparagraph>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="Scenario for testing page elements">
+    <x:scenario label="missing meta info">
+      <x:variable name="meta" as="element()"><xpf:map key="bill_meta">
+        <xpf:string key="congressphrase">One Hundred Seventeenth Congress of the United States of America</xpf:string>
+        <xpf:string key="sessionphrase">At the First Session</xpf:string>
+        <xpf:number key="statpage">280</xpf:number>
+        <xpf:string key="statvolume">135</xpf:string>
+        <xpf:string key="publaw">117-16</xpf:string>
+        <xpf:string key="enacted_date">2021-06-08</xpf:string>
+      </xpf:map></x:variable>
+      <!-- The select attributes are needed here to make the node types line up. -->
+      <!-- Can't add these as pages since the linebreaks don't work. -->
+      <x:context>
+        <x:param name="meta" select="$meta" as="element()" tunnel="yes"/>
+        <x:param name="billnumber" select="'117hr2523enr'" as="xs:string" tunnel="yes"/>
+        <bill xmlns:dc="http://purl.org/dc/elements/1.1/" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://schemas.gpo.gov/xml/uslm uslm-2.0.10.xsd" xml:lang="en"><?page 1?>
+          <main>
+            <longTitle>
+              <docTitle>AN ACT</docTitle>
+              <officialTitle>To amend the American Rescue Plan Act of 2021.</officialTitle>
+            </longTitle>
+            <enactingFormula>Be it enacted by the Senate and House of Representatives of the United States of America in Congress assembled,</enactingFormula>
+            <section identifier="/s2" id="H351D25FDA5A842C8A429E28B83EA15FC">
+              <num value="2">SEC. 2.</num>
+              <heading>IMPROVEMENTS TO COVID–19 VETERAN RAPID RETRAINING ASSISTANCE PROGRAM.</heading>
+              <subsection identifier="/s2/a" id="HE9B0DB1D9E314A12B6D5C4D7FDE1F29C">
+                <num value="a">(a)</num>
+                <heading>In General.—</heading>
+                <chapeau>Section 8006 of the American Rescue Plan Act of 2021 (Public Law 117–2) is amended—</chapeau>
+                <paragraph identifier="/s2/a/4" id="H112EAE248651426C8E428702D8930DD8">
+                  <num value="4">(4)</num>
+                  <content> by inserting after subsection (e) the following new subsections:<quotedContent>
+                    <subsection identifier="/s2/a/4/qB/f" id="H3D5028C085BC4CF2AD75393D157F726E">
+                      <num value="f">“(f)</num>
+                      <heading> Employee Assistance.—</heading>
+                      <chapeau>The Secretary of Veterans Affairs, ...</chapeau>
+                      <paragraph identifier="/s2/a/4/qB/f/1" id="H6D6EC051CE0D4313AB5FF3B899D26779">
+                        <num value="1">“(1)</num>
+                        <content> not later than 30 days ... veteran<?page 2?>of the availability of employment placement services upon completion of the program; and</content></paragraph>
+                    </subsection></quotedContent>;</content>
+                </paragraph>
+              </subsection>
+            </section>
+          </main>
+        </bill>
+      </x:context>
+      <x:expect label="add missing meta element">
+        <bill xmlns:dc="http://purl.org/dc/elements/1.1/"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.gpo.gov/xml/uslm uslm-2.0.12.xsd"
+          xml:lang="en">
+          <meta class="addedMeta"><x:text>&#xa;</x:text>
+            <docNumber>2523</docNumber><x:text>&#xa;</x:text>
+            <citableAs>117hr2523enr</citableAs><x:text>&#xa;</x:text>
+            <citableAs>117 H.R. 2523 ENR</citableAs><x:text>&#xa;</x:text>
+            <dc:publisher>United States Government Publishing Office</dc:publisher><x:text>&#xa;</x:text>
+            <dc:format>text/xml</dc:format><x:text>&#xa;</x:text>
+            <dc:language>EN</dc:language><x:text>&#xa;</x:text>
+            <dc:rights>Pursuant to Title 17 Section 105 of the United States Code, this file is not subject to copyright protection and is in the public domain.</dc:rights><x:text>&#xa;</x:text>
+            <docStage>ENR</docStage><x:text>&#xa;</x:text>
+            <processedBy>...</processedBy><processedDate>...</processedDate>
+            <congress>117</congress><x:text>&#xa;</x:text>
+            <session>1</session><x:text>&#xa;</x:text>
+            <publicPrivate>public</publicPrivate><x:text>&#xa;</x:text>
+          </meta><x:text>&#xa;</x:text>
+          <preface class="addedPreface"><x:text>&#xa;</x:text>
+            <page id="page1">H. R. 2523—1</page>
+            <dc:type>H. R. </dc:type><docNumber>2523</docNumber><x:text>&#xa;</x:text>
+            <congress value="117">One Hundred Seventeenth Congress of the United States of America</congress><x:text>&#xa;</x:text>
+            <session value="1">At the First Session</session><x:text>&#xa;</x:text>
+          </preface><x:text>&#xa;</x:text>
+          <main>
+            <longTitle>
+              <docTitle>AN ACT</docTitle>
+              <officialTitle>To amend the American Rescue Plan Act of 2021.</officialTitle>
+            </longTitle>
+            <enactingFormula>Be it enacted by the Senate and House of Representatives of the United States of America in Congress assembled,</enactingFormula>
+            <section identifier="/s2" id="H351D25FDA5A842C8A429E28B83EA15FC">
+              <num value="2">SEC. 2.</num>
+              <heading>IMPROVEMENTS TO COVID–19 VETERAN RAPID RETRAINING ASSISTANCE PROGRAM.</heading>
+              <subsection identifier="/s2/a" id="HE9B0DB1D9E314A12B6D5C4D7FDE1F29C">
+                <num value="a">(a)</num>
+                <heading>In General.—</heading>
+                <chapeau>Section 8006 of the American Rescue Plan Act of 2021 (Public Law 117–2) is amended—</chapeau>
+                <paragraph identifier="/s2/a/4" id="H112EAE248651426C8E428702D8930DD8">
+                  <num value="4">(4)</num>
+                  <content> by inserting after subsection (e) the following new subsections:<quotedContent>
+                    <subsection identifier="/s2/a/4/qB/f" id="H3D5028C085BC4CF2AD75393D157F726E">
+                      <num value="f">“(f)</num>
+                      <heading> Employee Assistance.—</heading>
+                      <chapeau>The Secretary of Veterans Affairs, ...</chapeau>
+                      <paragraph identifier="/s2/a/4/qB/f/1" id="H6D6EC051CE0D4313AB5FF3B899D26779">
+                        <num value="1">“(1)</num>
+                        <content> not later than 30 days ... veteran
+<page id="page2">H. R. 2523—2</page>of the availability of employment placement services upon completion of the program; and</content>
+                      </paragraph>
+                    </subsection>
+                  </quotedContent>;</content>
+                </paragraph>
+              </subsection>
+            </section>
+          </main>
+        </bill>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="info in file">
+      <x:context>
+        <bill>
+          <?page 1?>
+          <meta>
+            <dc:type>Senate Bill</dc:type>
+            <docNumber>863</docNumber>
+            <citableAs>116 S 863 ENR</citableAs>
+            <citableAs>116s863enr</citableAs>
+            <citableAs>116 S. 863 ENR</citableAs>
+            <docStage>ENR</docStage>
+            <congress>116</congress><session>1</session>
+            <publicPrivate>public</publicPrivate>
+          </meta>
+          <preface>
+            <dc:type>S.</dc:type><docNumber>863</docNumber>
+          </preface>
+          <main id="H6F65C4D404A7412595EA8604375D83B2"><longTitle>
+              <docTitle>AN ACT</docTitle>
+                <officialTitle>To amend title 38, United States Code, to clarify ...</officialTitle></longTitle>
+            <section id="HFF3314C8397B4F1B9AB9092FCF7909FC" identifier="/s1" class="bill-dtd-OLC"
+              pagenum="1">
+              <num value="1">Section 1.</num>
+              <heading> Clarification of grade ...</heading>
+              <subsection id="H0814C694F08E424EB661D6505EA35377" identifier="/s1/b"
+                class="bill-dtd-OLC" pagenum="1">
+                <num value="b">(b)</num><heading> Pay.—</heading>
+                <paragraph id="HEF47F8D8C81C45F2BA18411860B446BF" identifier="/s1/b/5"
+                  class="bill-dtd-OLC" pagenum="1">
+                  <num value="5">(5)</num>
+                  <heading> Technical amendment.—</heading>
+                  <?page 2?>
+                </paragraph></subsection></section></main></bill>
+      </x:context>
+      <!-- note the sidenotes here are spurious; from using the one JSON file for all tests -->
+      <x:expect label="turn into page elements">
+        <bill>
+          <meta>
+            <dc:type>Senate Bill</dc:type><docNumber>863</docNumber><citableAs>116 S 863 ENR</citableAs>
+            <citableAs>116s863enr</citableAs>
+            <citableAs>116 S. 863 ENR</citableAs>
+            <docStage>ENR</docStage>
+            <processedBy>...</processedBy>
+            <processedDate>...</processedDate>
+            <congress>116</congress>
+            <session>1</session>
+            <publicPrivate>public</publicPrivate>
+          </meta>
+          <preface><x:text>&#xa;</x:text>
+            <page id="page1">S. 863—1</page>
+            <dc:type>S.</dc:type>
+            <docNumber>863</docNumber>
+          </preface>
+          <main
+            id="H6F65C4D404A7412595EA8604375D83B2">
+            <sidenote topic="olrcClassification"
+              role="target" note="PN">31/501 nt new</sidenote>
+            <longTitle>
+                <docTitle>AN ACT</docTitle>
+                <officialTitle>To amend title 38, United States Code, to clarify ...</officialTitle>
+            </longTitle>
+            <section id="HFF3314C8397B4F1B9AB9092FCF7909FC" identifier="/s1" class="bill-dtd-OLC">
+              <num value="1">Section 1.</num>
+              <heading> Clarification of grade ...</heading>
+              <subsection id="H0814C694F08E424EB661D6505EA35377" identifier="/s1/b"
+                class="bill-dtd-OLC">
+                <num value="b">(b)</num>
+                <heading> Pay.—</heading>
+                <paragraph id="HEF47F8D8C81C45F2BA18411860B446BF" identifier="/s1/b/5"
+                  class="bill-dtd-OLC">
+                  <num value="5">(5)</num>
+                  <heading> Technical amendment.—</heading><x:text>&#xa;</x:text>
+                  <page id="page2">S. 863—2</page>
+                </paragraph>
+              </subsection>
+            </section>
+          </main></bill>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
+  <x:scenario label="Scenario for testing page PI">
+    <x:scenario label="in main">
+    <x:context>
+      <main>
+        <paragraph identifier="/s2/a/qB/tXXII/stA/s2202/c/3" id="H489503599EAD42C188323DBF3710F7B7"
+          class="bill-dtd-OLC" pagenum="2"><num value="3">“(3)</num><content> carry out the
+            responsibilities of the Secretary to secure Federal information and information systems
+            consistent with law, including subchapter II of <ref href="/us/usc-chapter/44/35">chapter
+              35</ref> of title 44, United States Code, and the Cybersecurity Act of 2015 (contained <?page 3?>
+            in division N of the Consolidated Appropriations Act, 2016 (<ref
+              href="/us/pl/114/113">Public Law 114–113</ref>));</content></paragraph>
+      </main>
+    </x:context>
+    <x:expect label="add page element">
+      <main>
+        <paragraph identifier="/s2/a/qB/tXXII/stA/s2202/c/3" id="H489503599EAD42C188323DBF3710F7B7"
+          class="bill-dtd-OLC"><num value="3">“(3)</num><content> carry out the
+            responsibilities of the Secretary to secure Federal information and information systems
+            consistent with law, including subchapter II of <ref href="/us/usc-chapter/44/35">chapter
+              35</ref> of title 44, United States Code, and the Cybersecurity Act of 2015 (contained 
+<page id="page3">S. 579—3</page>
+            in division N of the Consolidated Appropriations Act, 2016 (<ref
+              href="/us/pl/114/113">Public Law 114–113</ref>));</content></paragraph>
+      </main>
+    </x:expect>
+    </x:scenario>
+    <x:scenario label="not in main">
+      <x:context>
+        <?page 1?><meta>
+          <dc:title pagenum="1">117 H. R. 1437 ENR: ...</dc:title>
+          <dc:type>House Bill</dc:type>
+          <dc:creator>U.S. House of Representatives</dc:creator>
+          <congress>117</congress>
+          <session>2</session>
+          <docNumber>1437</docNumber>
+          <processedBy>...</processedBy>
+          <processedDate>...</processedDate>
+          <publicPrivate>public</publicPrivate>
+        </meta>
+        <preface>
+          <dc:type>H. R. </dc:type>
+          <docNumber>1437</docNumber>
+          <congress value="117">...</congress>
+          <session value="2">AT THE SECOND SESSION</session>
+          <enrolledDateline>...</enrolledDateline>
+        </preface>
+      </x:context>
+      <x:expect label="move to preface">
+        <meta>
+          <dc:title>117 H. R. 1437 ENR: ...</dc:title>
+          <dc:type>House Bill</dc:type>
+          <dc:creator>U.S. House of Representatives</dc:creator>
+          <congress>117</congress>
+          <session>2</session>
+          <docNumber>1437</docNumber>
+          <processedBy>...</processedBy>
+          <processedDate>...</processedDate>
+          <publicPrivate>public</publicPrivate>
+        </meta>
+        <preface><x:text>&#xa;</x:text>
+          <page id="page1">H.R. 1437—1</page>
+          <dc:type>H. R. </dc:type>
+          <docNumber>1437</docNumber>
+          <congress value="117">...</congress>
+          <session value="2">AT THE SECOND SESSION</session>
+          <enrolledDateline>...</enrolledDateline>
+        </preface>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="in tables">
+      <x:scenario label="one page PI">
+        <x:context>
+          <table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0" cellspacing="0" rules="none"
+            width="95%"
+            style="border-collapse:collapse; border-top:2px solid #C0C0C0; border-bottom:2px solid #C0C0C0; border-left:2px solid #C0C0C0; border-right:2px solid #C0C0C0; "
+            summary="Align to level: section; Subformat: ">
+            <col class="column1" width="625"/>
+            <col class="column2" width="185" align="center"/>
+            <col class="column3" width="185" align="center"/>
+            <col class="column4" width="185" align="center"/>
+            <thead style="font-size:17px">
+              <tr>
+                <td class="column1" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >“Type of loan</td>
+                <td class="column2" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >Active duty<br/> veteran</td>
+                <td class="column3" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >Reservist</td>
+                <td class="column4" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >Other<br/> obligor</td>
+              </tr>
+            </thead>
+            <tbody style="font-size:13.6px">
+              <tr>
+                <td class="dot-leader" align="left" valign="top"
+                  style="border-right:0 solid #FFFFFF; ">row 1</td>
+                <td class="column2" align="right" valign="top" style="border-right:0 solid #FFFFFF; "
+                  >1.25</td>
+                <td class="column3" valign="top" style="border-right:0 solid #FFFFFF; ">1.25</td>
+                <td class="column4" align="right" valign="top" style="border-right:0 solid #FFFFFF; "
+                  >NA</td>
+              </tr>
+              <?page 10?>
+              <tr>
+                <td class="dot-leader" align="left" valign="top"
+                  style="border-right:0 solid #FFFFFF; ">row 2</td>
+                <td class="column2" align="right" valign="top" style="border-right:0 solid #FFFFFF; "
+                  >1.50</td>
+                <td class="column3" valign="top" style="border-right:0 solid #FFFFFF; ">1.75</td>
+                <td class="column4" align="right" valign="top" style="border-right:0 solid #FFFFFF; "
+                  >NA</td>
+              </tr>
+            </tbody>
+          </table>
+        </x:context>
+        <x:expect label="split the table">
+          <table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0" cellspacing="0" rules="none"
+            width="110%"
+            style="border-collapse:collapse; border-top:2px solid #C0C0C0; border-bottom:2px solid #C0C0C0; border-left:2px solid #C0C0C0; border-right:2px solid #C0C0C0; "
+            summary="Align to level: section; Subformat: ">
+            <col class="column1" width="625"/>
+            <col class="column2" width="185" align="center"/>
+            <col class="column3" width="185" align="center"/>
+            <col class="column4" width="185" align="center"/>
+            <thead style="font-size:17px">
+              <tr>
+                <td class="column1" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >“Type of loan</td>
+                <td class="column2" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >Active duty<br/> veteran</td>
+                <td class="column3" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >Reservist</td>
+                <td class="column4" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >Other<br/> obligor</td>
+              </tr>
+            </thead>
+            <tbody style="font-size:13.6px">
+              <tr>
+                <td class="dot-leader" align="left" valign="top"
+                  style="border-right:0 solid #FFFFFF; ">row 1</td>
+                <td class="column2" align="right" valign="top" style="border-right:0 solid #FFFFFF; "
+                  >1.25</td>
+                <td class="column3" valign="top" style="border-right:0 solid #FFFFFF; ">1.25</td>
+                <td class="column4" align="right" valign="top" style="border-right:0 solid #FFFFFF; "
+                  >NA</td>
+              </tr>
+            </tbody>
+          </table><x:text>&#xa;</x:text>
+          <page id="page10">S. 579—10</page>
+          <table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0" cellspacing="0" rules="none"
+            width="110%"
+            style="border-collapse:collapse; border-top:2px solid #C0C0C0; border-bottom:2px solid #C0C0C0; border-left:2px solid #C0C0C0; border-right:2px solid #C0C0C0; "
+            summary="Align to level: section; Subformat: ">
+            <col class="column1" width="625"/>
+            <col class="column2" width="185" align="center"/>
+            <col class="column3" width="185" align="center"/>
+            <col class="column4" width="185" align="center"/>
+            <thead style="font-size:17px">
+              <tr>
+                <td class="column1" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >“Type of loan</td>
+                <td class="column2" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >Active duty<br/> veteran</td>
+                <td class="column3" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >Reservist</td>
+                <td class="column4" align="center" rowspan="1"
+                  style="padding-left:5px; padding-right:1px; border-bottom:2px solid #C0C0C0; border-right:0 solid #FFFFFF; "
+                  >Other<br/> obligor</td>
+              </tr>
+            </thead>
+            <tbody style="font-size:13.6px">
+              <tr>
+                <td class="dot-leader" align="left" valign="top"
+                  style="border-right:0 solid #FFFFFF; ">row 2</td>
+                <td class="column2" align="right" valign="top" style="border-right:0 solid #FFFFFF; "
+                  >1.50</td>
+                <td class="column3" valign="top" style="border-right:0 solid #FFFFFF; ">1.75</td>
+                <td class="column4" align="right" valign="top" style="border-right:0 solid #FFFFFF; "
+                  >NA</td>
+              </tr>
+            </tbody>
+          </table>
+        </x:expect>
+      </x:scenario>
+      <x:scenario label="three page PIs">
+        <x:context>
+          <table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0" cellspacing="0" rules="none">
+            <col class="column1"/>
+            <col class="column2"/>
+            <col class="column3"/>
+            <col class="column4"/>
+            <thead>
+              <tr>
+                <td class="column1" rowspan="1">“Type of loan</td>
+                <td class="column2" rowspan="1">Active duty<br/> veteran</td>
+                <td class="column3" rowspan="1">Reservist</td>
+                <td class="column4" rowspan="1">Other<br/> obligor</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="dot-leader">row 1</td>
+                <td class="column2">1.25</td>
+                <td class="column3">1.25</td>
+                <td class="column4">NA</td>
+              </tr>
+              <?page 10?>
+              <tr>
+                <td class="dot-leader">row 2</td>
+                <td class="column2">1.50</td>
+                <td class="column3">1.75</td>
+                <td class="column4">NA</td>
+              </tr>
+              <?page 11?>
+              <tr>
+                <td class="dot-leader">row 3</td>
+                <td class="column2">1.25</td>
+                <td class="column3">1.25</td>
+                <td class="column4">NA</td>
+              </tr>
+              <?page 12?>
+              <tr>
+                <td class="dot-leader">row 4</td>
+                <td class="column2">1.50</td>
+                <td class="column3">1.75</td>
+                <td class="column4">NA</td>
+              </tr>
+            </tbody>
+          </table>
+        </x:context>
+        <x:expect label="split table into 4 pieces">
+          <table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0" cellspacing="0" rules="none">
+            <col class="column1"/>
+            <col class="column2"/>
+            <col class="column3"/>
+            <col class="column4"/>
+            <thead>
+              <tr>
+                <td class="column1" rowspan="1">“Type of loan</td>
+                <td class="column2" rowspan="1">Active duty<br/> veteran</td>
+                <td class="column3" rowspan="1">Reservist</td>
+                <td class="column4" rowspan="1">Other<br/> obligor</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="dot-leader">row 1</td>
+                <td class="column2">1.25</td>
+                <td class="column3">1.25</td>
+                <td class="column4">NA</td>
+              </tr>
+            </tbody>
+          </table><x:text>&#xa;</x:text>
+          <page id="page10">S. 579—10</page>
+          <table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0" cellspacing="0" rules="none">
+            <col class="column1"/>
+            <col class="column2"/>
+            <col class="column3"/>
+            <col class="column4"/>
+            <thead>
+              <tr>
+                <td class="column1" rowspan="1">“Type of loan</td>
+                <td class="column2" rowspan="1">Active duty<br/> veteran</td>
+                <td class="column3" rowspan="1">Reservist</td>
+                <td class="column4" rowspan="1">Other<br/> obligor</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="dot-leader">row 2</td>
+                <td class="column2">1.50</td>
+                <td class="column3">1.75</td>
+                <td class="column4">NA</td>
+              </tr>
+            </tbody>
+          </table><x:text>&#xa;</x:text>
+          <page id="page11">S. 579—11</page>
+          <table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0" cellspacing="0" rules="none">
+            <col class="column1"/>
+            <col class="column2"/>
+            <col class="column3"/>
+            <col class="column4"/>
+            <thead>
+              <tr>
+                <td class="column1" rowspan="1">“Type of loan</td>
+                <td class="column2" rowspan="1">Active duty<br/> veteran</td>
+                <td class="column3" rowspan="1">Reservist</td>
+                <td class="column4" rowspan="1">Other<br/> obligor</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="dot-leader">row 3</td>
+                <td class="column2">1.25</td>
+                <td class="column3">1.25</td>
+                <td class="column4">NA</td>
+              </tr>
+            </tbody>
+          </table><x:text>&#xa;</x:text>
+          <page id="page12">S. 579—12</page>
+          <table xmlns="http://www.w3.org/1999/xhtml" cellpadding="0" cellspacing="0" rules="none">
+            <col class="column1"/>
+            <col class="column2"/>
+            <col class="column3"/>
+            <col class="column4"/>
+            <thead>
+              <tr>
+                <td class="column1" rowspan="1">“Type of loan</td>
+                <td class="column2" rowspan="1">Active duty<br/> veteran</td>
+                <td class="column3" rowspan="1">Reservist</td>
+                <td class="column4" rowspan="1">Other<br/> obligor</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="dot-leader">row 4</td>
+                <td class="column2">1.50</td>
+                <td class="column3">1.75</td>
+                <td class="column4">NA</td>
+              </tr>
+            </tbody>
+          </table>
+        </x:expect>
+      </x:scenario>
+    </x:scenario>
+  </x:scenario>
+
+  
+  <x:scenario label="Scenario for testing template with match 'attribute::pagenum'">
+    <x:context>
+      <section identifier="/s1" id="H4DFDC59F718C4536A4A9F3A7BC1BD257" class="bill-dtd-OLC"
+        pagenum="1"><num value="1">Section 1.</num>
+      </section>
+    </x:context>
+    <x:expect label="delete pagenum attribute">
+      <section identifier="/s1" id="H4DFDC59F718C4536A4A9F3A7BC1BD257" class="bill-dtd-OLC"><num
+          value="1">Section 1.</num>
+      </section>
+    </x:expect>
+  </x:scenario>
+
+</x:description>

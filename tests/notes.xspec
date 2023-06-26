@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+  xmlns="http://schemas.gpo.gov/xml/uslm" xmlns:olrc="http://uscode.house.gov"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xpf="http://www.w3.org/2005/xpath-functions"  xmlns:functx="http://www.functx.com" 
+  stylesheet="../transforms/addClassification.xsl">
+  
+  <x:import href="merged.xspec"/>
+  
+  <x:param name="id-docMeta" select="map{
+    'H7066D508519046A0A29C7DFF1BCD16A0':'CO',
+    'H4DFB8347DFF7435F87D899C3C58030AC':'CO',
+    'H4DFB8347DFF7435F87D899C3C58030AB':'CO',
+    'H138E6E6949BE42E29F642F0CF1EB7AA2':'CO',
+    'HF422D9E0659A11ED173909173F13E4C5':'PN',
+    'HAE7F91EDEC29400881442AC95DB0C24C':'TU',
+    'H5963241AF71543AC96824535E17E3A8D':'TU',
+    'HA91E3FD4AE814508870B3C0064FEBCB3':'CO'
+    }">
+  </x:param>
+  
+  <x:scenario label="Scenario for testing template createTargetSidenote">
+    <x:scenario label="found bug 116hjres31 bug1">
+      <x:call template="createTargetSidenote">
+        <x:param name="targetMap" select="$id-target"/>
+        <x:param name="locationId" select="'H190E3D49159B466CAA40B44E9EB298E1'"/>
+        <x:param name="targetInFootnoteMap" select="$id-targetInFootnote"/>
+        <x:param name="docMetaMap" select="$id-docMeta"/>
+      </x:call>
+      <x:expect label="no t or s">
+        <sidenote topic="olrcClassification"
+          role="target">22/3948 nt new</sidenote>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="simple version">
+      <x:call template="createTargetSidenote">
+        <x:param name="targetMap" select="$id-target"/>
+        <x:param name="locationId" select="'H74694BCC4D204AD78BAB69D509203F27'"/>
+        <x:param name="targetInFootnoteMap" select="$id-targetInFootnote"/>
+        <x:param name="docMetaMap" select="$id-docMeta"/>
+      </x:call>
+      <x:expect label="create simple sidenote">
+        <sidenote topic="olrcClassification"
+          role="target">6/124h</sidenote>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="Title has appendix">
+      <x:call template="createTargetSidenote">
+        <x:param name="targetMap" select="$id-target"/>
+        <x:param name="locationId" select="'H7066D508519046A0A29C7DFF1BCD16A0'"/>
+        <x:param name="targetInFootnoteMap" select="$id-targetInFootnote"/>
+        <x:param name="docMetaMap" select="$id-docMeta"/>
+      </x:call>
+      <x:expect label="create simple sidenote">
+        <sidenote topic="olrcClassification"
+          role="target" note="CO">5A/11 nt IG Act</sidenote>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="out version">
+      <x:call template="createTargetSidenote">
+        <x:param name="targetMap" select="$id-target"/>
+        <x:param name="locationId" select="'H24DCBCAE46FD4C6399D9E13B78360EB5'"/>
+        <x:param name="targetInFootnoteMap" select="$id-targetInFootnote"/>
+        <x:param name="docMetaMap" select="$id-docMeta"/>
+      </x:call>
+      <x:expect label="create out sidenote">
+        <sidenote topic="olrcClassification"
+          class="out">✓</sidenote>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="OUT version">
+      <x:call template="createTargetSidenote">
+        <x:param name="targetMap" select="$id-target-caps"/>
+        <x:param name="locationId" select="'H24DCBCAE46FD4C6399D9E13B78360EB5'"/>
+        <x:param name="targetInFootnoteMap" select="$id-targetInFootnote"/>
+        <x:param name="docMetaMap" select="$id-docMeta"/>
+      </x:call>
+      <x:expect label="create out sidenote">
+        <sidenote topic="olrcClassification"
+          class="out">✓</sidenote>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="CO version">
+      <x:call template="createTargetSidenote">
+        <x:param name="targetMap" select="$id-target"/>
+        <x:param name="locationId" select="'H4DFB8347DFF7435F87D899C3C58030AC'"/>
+        <x:param name="targetInFootnoteMap" select="$id-targetInFootnote"/>
+        <x:param name="docMetaMap" select="$id-docMeta"/>
+      </x:call>
+      <x:expect label="create CO sidenote with long target">
+        <sidenote topic="olrcClassification"
+          role="longTarget" note="CO">42/300x prec and then more really long with \n so we get a long target to test with CO stamps</sidenote>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="CO and out version">
+      <x:call template="createTargetSidenote">
+        <x:param name="targetMap" select="$id-target"/>
+        <x:param name="locationId" select="'H138E6E6949BE42E29F642F0CF1EB7AA2'"/>
+        <x:param name="targetInFootnoteMap" select="$id-targetInFootnote"/>
+        <x:param name="docMetaMap" select="$id-docMeta"/>
+      </x:call>
+      <x:expect label="create CO sidenote with out">
+        <sidenote topic="olrcClassification"
+          class="out" note="CO">✓</sidenote>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="long target version">
+      <x:call template="createTargetSidenote">
+        <x:param name="targetMap" select="$id-target"/>
+        <x:param name="locationId" select="'HAE7F91EDEC29400881442AC95DB0C24C'"/>
+        <x:param name="targetInFootnoteMap" select="$id-targetInFootnote"/>
+        <x:param name="docMetaMap" select="$id-docMeta"/>
+      </x:call>
+      <x:expect label="create long target sidenote">
+        <sidenote topic="olrcClassification"
+          role="longTarget" note="TU">6/101 nt, 6/131 tr to 6/671, 6/671 tr fr 6/131, 6/132 tr to 6/672, 6/672 tr fr 6/132, 6/133 tr to 6/673, 6/673 tr fr 6/133, 6/134 tr to 6/674, 6/674 tr fr 6/134</sidenote>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="show target in footnote version">
+      <x:call template="createTargetSidenote">
+        <x:param name="targetMap" select="$id-target"/>
+        <x:param name="locationId" select="'S1'"/>
+        <x:param name="targetInFootnoteMap" select="$id-targetInFootnote"/>
+        <x:param name="docMetaMap" select="$id-docMeta"/>
+      </x:call>
+      <x:expect label="create long target sidenote">
+        <sidenote topic="olrcClassification"
+          role="longTarget">4/1 note</sidenote>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="Scenario for testing adding sidenotes when id doesn't match main">
+    <x:scenario label="out">
+      <!-- 117s3884 -->
+      
+    </x:scenario>
+    <x:scenario label="PN stamp when ids match">
+      <!-- 117s3510, if ids match (JSON in testInput.json) -->
+      <x:context>
+        <main id="HF422D9E0659A11ED173909173F13E4C5">
+          <section identifier="/s1" id="idd323b9ba-c30e-45dc-a321-c14e48fa7e95" class="bill-dtd-OLC"
+            pagenum="1">
+            <num value="1">SECTION 1.</num>
+            <heading class="uppercase"> Short title.</heading>
+            <content class="indent0">This Act may be cited as the “<shortTitle>Disaster Resiliency Planning Act</shortTitle>”.</content></section>
+        </main>
+      </x:context>
+      <x:expect label="add PN stamp">
+        <main id="HF422D9E0659A11ED173909173F13E4C5">
+          <sidenote topic="olrcClassification"
+            role="target" note="PN">31/501 nt new</sidenote>
+          <section identifier="/s1" id="idd323b9ba-c30e-45dc-a321-c14e48fa7e95" class="bill-dtd-OLC">
+            <num value="1">SECTION 1.</num>
+            <heading class="uppercase"> Short title.</heading>
+            <content class="indent0">This Act may be cited as the “<shortTitle>Disaster Resiliency Planning Act</shortTitle>”.</content></section>
+        </main>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="PN stamp when ids don't match">
+      <!-- 117s3510, if ids don't match (JSON in testInput.json) uses '/' identifier on main to match -->
+      <x:context>
+        <main id="H34749AD865A511ED173909173F13E4C5">
+          <section identifier="/s1" id="idd323b9ba-c30e-45dc-a321-c14e48fa7e95" class="bill-dtd-OLC"
+            pagenum="1">
+            <num value="1">SECTION 1.</num>
+            <heading class="uppercase"> Short title.</heading>
+            <content class="indent0">This Act may be cited as the “<shortTitle>Disaster Resiliency Planning Act</shortTitle>”.</content></section>
+        </main>
+      </x:context>
+      <x:expect label="add PN stamp">
+        <main id="H34749AD865A511ED173909173F13E4C5">
+          <sidenote topic="olrcClassification"
+            role="target" note="PN">31/501 nt new</sidenote>
+          <section identifier="/s1" id="idd323b9ba-c30e-45dc-a321-c14e48fa7e95" class="bill-dtd-OLC">
+            <num value="1">SECTION 1.</num>
+            <heading class="uppercase"> Short title.</heading>
+            <content class="indent0">This Act may be cited as the “<shortTitle>Disaster Resiliency Planning Act</shortTitle>”.</content></section>
+        </main>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
+  
+  
+  <x:scenario label="Scenario for testing template createPageInfo in the month of ">
+    <x:scenario label="Feb">
+      <x:call template="createPageInfo">
+        <x:param name="pageInfo" select="$pageInfo"/>
+        <x:param name="pageNumber" select="1"/>
+      </x:call>
+      <x:expect label="create elements">
+        <notes xmlns="http://schemas.gpo.gov/xml/uslm"
+          xmlns:olrc="http://uscode.house.gov"
+          xmlns:xpf="http://www.w3.org/2005/xpath-functions"
+          topic="olrcClassification"><x:text>&#xa;</x:text>
+          <note role="pLaw">Pub. L. 115-123</note><x:text>&#xa;</x:text>
+          <note role="enactDate">Feb. 9, 2018</note><x:text>&#xa;</x:text>
+          <note role="statute" id="statpage65">132 Stat. 65</note>
+        </notes>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="June">
+      <x:call template="createPageInfo">
+        <x:param name="pageInfo" select="$pageInfoJune"/>
+        <x:param name="pageNumber" select="1"/>
+      </x:call>
+      <x:expect label="create elements">
+        <notes xmlns="http://schemas.gpo.gov/xml/uslm"
+          xmlns:olrc="http://uscode.house.gov"
+          xmlns:xpf="http://www.w3.org/2005/xpath-functions"
+          topic="olrcClassification"><x:text>&#xa;</x:text>
+          <note role="pLaw">Pub. L. 115-123</note><x:text>&#xa;</x:text>
+          <note role="enactDate">June 9, 2018</note><x:text>&#xa;</x:text>
+          <note role="statute" id="statpage65">132 Stat. 65</note>
+        </notes>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="July">
+      <x:call template="createPageInfo">
+        <x:param name="pageInfo" select="$pageInfoJuly"/>
+        <x:param name="pageNumber" select="1"/>
+      </x:call>
+      <x:expect label="create elements">
+        <notes xmlns="http://schemas.gpo.gov/xml/uslm"
+          xmlns:olrc="http://uscode.house.gov"
+          xmlns:xpf="http://www.w3.org/2005/xpath-functions"
+          topic="olrcClassification"><x:text>&#xa;</x:text>
+          <note role="pLaw">Pub. L. 115-123</note><x:text>&#xa;</x:text>
+          <note role="enactDate">July 9, 2018</note><x:text>&#xa;</x:text>
+          <note role="statute" id="statpage65">132 Stat. 65</note>
+        </notes>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="Sept.">
+      <x:call template="createPageInfo">
+        <x:param name="pageInfo" select="$pageInfoSep"/>
+        <x:param name="pageNumber" select="1"/>
+      </x:call>
+      <x:expect label="create elements">
+        <notes xmlns="http://schemas.gpo.gov/xml/uslm"
+          xmlns:olrc="http://uscode.house.gov"
+          xmlns:xpf="http://www.w3.org/2005/xpath-functions"
+          topic="olrcClassification"><x:text>&#xa;</x:text>
+          <note role="pLaw">Pub. L. 115-123</note><x:text>&#xa;</x:text>
+          <note role="enactDate">Sept. 9, 2018</note><x:text>&#xa;</x:text>
+          <note role="statute" id="statpage65">132 Stat. 65</note>
+        </notes>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
+
+</x:description>

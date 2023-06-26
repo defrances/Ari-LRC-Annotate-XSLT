@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/css/uslm.css"?>
+<?xml-stylesheet type="text/css" href="/css/uslm-classification.css"?>
+<bill xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.gpo.gov/xml/uslm" xsi:schemaLocation="http://schemas.gpo.gov/xml/uslm uslm-2.0.11.xsd" xml:lang="en">
+  <meta><dc:title>116 HR 3245 ENR: To transfer a bridge over the Wabash River to the New Harmony River Bridge Authority and the New Harmony and Wabash River Bridge Authority, and for other purposes.</dc:title>
+    <dc:type>House Bill</dc:type>
+    <docNumber>3245</docNumber>
+    <citableAs>116 HR 3245 ENR</citableAs>
+    <citableAs>116hr3245enr</citableAs>
+    <citableAs>116 H.R. 3245 ENR</citableAs>
+    <dc:creator>United States House of Representatives</dc:creator>
+    <dc:publisher>United States Government Publishing Office</dc:publisher>
+    <dc:format>text/xml</dc:format>
+    <dc:language>EN</dc:language>
+    <dc:rights>Pursuant to Title 17 Section 105 of the United States Code, this file is not subject to copyright protection and is in the public domain.</dc:rights><docStage>ENR</docStage>
+    <processedBy>GPO Locator to USLM Converter 3.7.10;Stage2.20201027</processedBy><processedDate>2020-12-23</processedDate>
+    <congress>116</congress>
+    <session>1</session>
+    <publicPrivate>public</publicPrivate>
+  </meta>
+  <preface>
+    <page id="page1">H. R. 3245—1</page>
+    <dc:type>H. R.</dc:type>
+    <docNumber>3245</docNumber>
+    <congress value="116">One Hundred Sixteenth Congress of the United States of America</congress>
+    <session value="1">AT THE FIRST SESSION</session>
+    <enrolledDateline>Begun and held at the City of Washington on Thursday, the third day of January, two thousand and nineteen</enrolledDateline>
+  </preface>
+  <main id="H8A3C6962276443BFBA543FBFEAFA568D">
+    <longTitle>
+        <docTitle>AN ACT</docTitle>
+        <officialTitle>To transfer a bridge over the Wabash River to the New Harmony River Bridge Authority and
+          the New Harmony and Wabash River Bridge Authority, and for other purposes.</officialTitle>
+    </longTitle>
+    <enactingFormula>Be it enacted by the Senate and House of Representatives of the United States of
+      America in Congress assembled,</enactingFormula>
+    <section identifier="/s1" id="HE98DC0AF53254B9D857DE6286C0B9762" class="bill-dtd-OLC">
+      <num value="1">Section 1.</num>
+      <heading> Short title</heading>
+      <content class="indent0">This Act may be cited as the <quotedContent>“<shortTitle>Restore the
+        Harmony Way Bridge Act</shortTitle>”</quotedContent>.</content>
+    </section>
+    <section identifier="/s2" id="HD13AF476B6444F4295A36808283127F6" class="bill-dtd-OLC">
+      <num value="2"><sidenote topic="olrcClassification" role="longTarget">1/1 tr to 1/11, 1/11 tr fr 1/1, 2/2 tr to
+        2/222, 2/222 tr fr 2/2, 3/3 tr to 3/33, 3/33 tr fr 3/3, 4/4 tr to 4/444, 4/444 tr fr 4/4, 5/5
+        tr to 5/50505, 5/50505 tr fr 5/5, 6/6 tr to 6/77, 6/77 tr fr 6/6</sidenote><sidenote topic="olrcClassification" role="publicComment">Prior Provisions notes: 2/222, 6/77</sidenote>Sec. 2.</num>
+      <heading> Transfer of bridge and land</heading>
+      <content class="indent0">Notwithstanding any provision of the Act of April 12, 1941 (55 Stat.
+        140, chapter 71), not later than 180 days after the date of enactment of this Act, the White
+        County Bridge Commission shall convey, without consideration, to the New Harmony River Bridge
+        Authority and the New Harmony and Wabash River Bridge Authority, any and all right, title, and
+        interest of such Commission in and to the bridge across the Wabash River at or near New
+        Harmony, Indiana, in the approaches thereto, and in land underneath or adjacent to such bridge
+        and its approaches.</content>
+    </section>
+    <section identifier="/s3" id="H3408BC26247F43B18AD1F0FB5EA84856" class="bill-dtd-OLC">
+      <num value="3">Sec. 3.</num>
+      <heading> Repeal</heading>
+      <content class="indent0">The Act of April 12, 1941 (55 Stat. 140, chapter 71) is repealed
+        effective on the date that the White County Bridge Commission completes the conveyance
+        described in section 2.</content>
+    </section>
+  </main>
+  <signatures><signature><role>Speaker of the House of Representatives.</role></signature><signature><role>Vice President of the United States and President of the Senate.</role></signature></signatures></bill>

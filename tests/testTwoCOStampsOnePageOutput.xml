@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bill xmlns="http://schemas.gpo.gov/xml/uslm" xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.gpo.gov/xml/uslm uslm-2.0.11.xsd" xml:lang="en">
+<meta>
+<dc:title>117 H. R. 7666 EH: To amend the Public Health Service Act to reauthorize certain programs relating to mental health and substance use disorders, and for other purposes.</dc:title>
+<dc:type>House Bill</dc:type>
+<dc:creator>U.S. House of Representatives</dc:creator>
+<congress>117</congress>
+<session>2</session>
+<docNumber>7666</docNumber>
+<docStage>EH</docStage><processedBy>Annotation service last modified: 2022-05-10</processedBy>
+<citableAs>117hr7666eh</citableAs>
+<citableAs>117 H. R. 7666 EH</citableAs>
+</meta>
+<preface>
+    <notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 117-3</note>
+<note role="enactDate">Mar. 23, 2021</note>
+<note role="statute"
+            id="statpage246">135 Stat. 246</note></notes><page id="page1">H.R. 7666—1</page>
+<dc:type>H. R. </dc:type>
+<docNumber>7666</docNumber>
+<congress value="117">117th CONGRESS</congress>
+<session value="2">AT THE SECOND SESSION</session>
+</preface>
+<main id="H126A4A1871D04E26AAE4B215DD0B369C">
+<section identifier="/tII/stD/s241" id="H0E7A2FB2A8C341B3AD46EC36A4203D0F" class="bill-dtd-OLC">
+    <num value="241">SEC. 241.</num><heading class="uppercase"> Eliminating stigmatizing language relating to substance use.</heading>
+    <subsection identifier="/tII/stD/s241/a" id="H455AF579E88449C3AD9848F8DC6A17FA" class="bill-dtd-OLC">
+        <num value="a">(a)</num>
+        <heading class="titlecase"> Block Grants for Prevention and Treatment of Substance Use.—</heading>
+        <chapeau>Part B of title XIX of the Public Health Service Act (<ref href="/us/usc/42/300x">42 U.S.C. 300x et seq.</ref>) is amended—</chapeau>
+<notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 117-3</note>
+<note role="enactDate">Mar. 23, 2021</note>
+<note role="statute" 
+    id="statpage371">135 Stat. 371</note></notes><page id="page126">H.R. 7666—126</page>
+<paragraph identifier="/tII/stD/s241/a/1" id="H4DFB8347DFF7435F87D899C3C58030AC" class="bill-dtd-OLC"><num value="1"><sidenote topic="olrcClassification" role="target">42/300x prec</sidenote><sidenote topic="olrcStamp" class="CO">CO</sidenote>(1)</num>
+        <content> in the part heading, by striking “<quotedText><inline class="smallCaps"><b>Substance Abuse</b></inline></quotedText>” and inserting “<quotedText><inline class="smallCaps"><b>Substance Use</b></inline></quotedText>”; </content></paragraph>
+<paragraph identifier="/tII/stD/s241/a/2" id="HBF1186D755EF4B0EBE2D1E23B6EE34C4" class="bill-dtd-OLC"><num value="2"><sidenote topic="olrcClassification" role="target">42/300x-21 prec</sidenote><sidenote topic="olrcStamp" class="CO">CO</sidenote>(2)</num>
+        <content> in subpart II, by amending the subpart heading to read as follows: “<quotedText><b>Block grants for substance use prevention, treatment, and recovery services</b></quotedText>”;</content></paragraph>
+        <notes topic="olrcClassification">
+<note role="pLaw">Pub. L. 117-3</note>
+<note role="enactDate">Mar. 23, 2021</note>
+<note role="statute" 
+    id="statpage372">135 Stat. 372</note></notes><page id="page127">H.R. 7666—127</page>
+</subsection></section>
+</main>
+</bill>

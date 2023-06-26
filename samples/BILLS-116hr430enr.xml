@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bill xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xml.house.gov/schemas/uslm/1.0" xsi:schemaLocation="http://xml.house.gov/schemas/uslm/1.0 USLM-1.0.18.xsd" xml:lang="en"><?page 1?><meta><dc:title pagenum="1"> HR 430 ENR: TANF Extension Act of 2019</dc:title><dc:publisher>U.S. House of Representatives</dc:publisher><dc:date/><dc:format>text/xml</dc:format><dc:language>EN</dc:language><dc:rights>Pursuant to Title 17 Section 105 of the United States Code, this file is not subject to copyright protection and is in the public domain.</dc:rights><dc:creator>Xcential BillDTD to USLM Converter v20190809</dc:creator><property role="congress">One Hundred Sixteenth Congress of the United States of America</property><property role="session">At the First Session</property><property role="legis-type">AN ACT</property><property role="legis-num">H. R. 430</property></meta>
+  <main id="H1D5C10D48C88426FB3706A008FCC0813" name="HR430">
+  <longTitle>
+    <content>
+      <p>AN ACT</p>
+      <p>To extend the program of block grants to States for temporary assistance for needy families
+        and related programs through June 30, 2019.</p>
+    </content>
+  </longTitle>
+  <enactingFormula>Be it enacted by the Senate and House of Representatives of the United States of
+    America in Congress assembled,</enactingFormula>
+  <section identifier="/s1" id="HA393E1888F8B486682695FAE869224AF" class="bill-dtd-OLC" pagenum="1">
+    <num value="1">Section 1.</num>
+    <heading> Short title</heading>
+    <content class="indent0">This Act may be cited as the <quotedContent>“<shortTitle>TANF Extension
+      Act of 2019</shortTitle>”</quotedContent>.</content>
+  </section>
+  <section identifier="/s2" id="HC3AD2B9D5346491C8670924F31ED46F2" class="bill-dtd-OLC" pagenum="1">
+    <num value="2">Sec. 2.</num>
+    <heading> Extension of the Temporary Assistance for Needy Families Program and related programs
+      through June 30, 2019</heading>
+    <content class="indent0">Activities authorized by part A of title IV and section 1108(b) of the
+      Social Security Act shall continue through June 30, 2019, in the manner authorized for fiscal
+      year 2018, and out of any money in the Treasury of the United States not otherwise
+      appropriated, there are hereby appropriated such sums as may be necessary for such
+      purpose.</content>
+  </section>
+</main>
+  <signatures><signature><role>Speaker of the House of Representatives.</role></signature><signature><role>Vice President of the United States and President of the Senate.</role></signature></signatures></bill>

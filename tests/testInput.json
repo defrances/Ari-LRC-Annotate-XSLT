@@ -1,0 +1,212 @@
+{
+    "_id": "604b047309124df0f291209e",
+    "actionDate": "",
+    "billCongressTypeNumber": "117s579",
+    "billCongressTypeNumberVersion": "117s579enr",
+    "billnumber": "117s579enr",
+    "dateIssued": "2021-03-12",
+    "user": "comparefinal",
+    "data": {
+        "id716E27646FDD4084A95B064FF1D64D59": {
+            "id": "id716E27646FDD4084A95B064FF1D64D59",
+            "identifier": "/s1/a",
+            "text": "Section 2(b) of the ALS Disability Insurance Access Act of 2019 (Public Law 116\u2013250) is amended by striking \u201c\"applications for disability insurance benefits filed after the date of enactment of this Act\"\u201d and inserting \u201c\"applications for disability insurance benefits approved after the date that is 5 months before the date of enactment of this Act\"\u201d.",
+            "amendmentOrdinal": 1,
+            "source": {
+                "xml": "<section identifier=\"/s1\" id=\"idD81BE3E224704145B96503389351DBA8\" class=\"bill-dtd-OLC\" pagenum=\"1\">\n\t<num value=\"1\">SECTION 1.</num>\n\t<heading> Retroactive access to social security disability benefits individuals with amyotrophic lateral sclerosis (ALS).</heading>\n\t<subsection identifier=\"/s1/a\" id=\"id716E27646FDD4084A95B064FF1D64D59\" class=\"bill-dtd-OLC\" pagenum=\"1\">\n\t\t<num value=\"a\">(a)</num>\n\t\t<heading> In general.\u2014</heading>\n\t\t<content>Section 2(b) of the ALS Disability Insurance Access Act of 2019 (<ref href=\"/us/pl/116/250\">Public Law 116\u2013250</ref>) is amended by striking \u201c<quotedText>applications for disability insurance benefits filed after the date of enactment of this Act</quotedText>\u201d and inserting \u201c<quotedText>applications for disability insurance benefits approved after the date that is 5 months before the date of enactment of this Act</quotedText>\u201d.</content>\n\t</subsection>\n</section>\n",
+                "text": "Section 2(b) of the ALS Disability Insurance Access Act of 2019 (Public Law 116\u2013250) is amended by striking \u201c\"applications for disability insurance benefits filed after the date of enactment of this Act\"\u201d and inserting \u201c\"applications for disability insurance benefits approved after the date that is 5 months before the date of enactment of this Act\"\u201d."
+            },
+            "execution": {"NLparseerror": "Lex failed: token <applications> not found."},
+            "cite": {
+                "cite_text": "Section 2(b) of the ALS Disability Insurance Access Act of 2019 (Public Law 116\u2013250)",
+                "cimpl": "select (law(\"ALS Disability Insurance Access\"+\"Act\"+\"of\"+\"2019\"):section( \"2(b)\"))#parallel(law(\"public law\"+ \"116-250\"));",
+                "main": {
+                    "identifiers": ["/us/named/als_disability_insurance_access_act_of_2019/s2/b"],
+                    "doc_names": ["ALS Disability Insurance Access Act of 2019"],
+                    "ctx_provision_identifiers": ["/us/named/als_disability_insurance_access_act_of_2019/s2"],
+                    "ctx_provision_names": ["Section 2"],
+                    "full_provision_names": ["Section 2(b)"]
+                },
+                "parallel": {
+                    "identifiers": ["/us/pl/116/250"]
+                }
+            },
+            "label": "1(a)",
+            "billpage": "1",
+            "text_offset": "839:1203",
+            "treeLevel": 2,
+            "targetSection": "t42/s423 nt",
+            "target": "t42/s423 nt",
+            "author": "comparefinal"
+        },
+        "HF422D9E0659A11ED173909173F13E4C5": {
+            "id": "HF422D9E0659A11ED173909173F13E4C5",
+            "identifier": "/",
+            "text": "AN ACTTo require the Director of the Office of Management and Budget to issue guidance with respect to natural disaster resilience, and for other purposes.Be it enacted by the Senate and House of Representatives of the United States of America in Congress assembled,",
+            "label": "S3510",
+            "billpage": "1",
+            "text_offset": "629:3215",
+            "treeLevel": 0,
+            "docMeta": {
+                "otherDesignationCombined": "PN",
+                "otherDesignation": "PN"
+            },
+            "targetSection": "t31/s501 nt new",
+            "target": "t31/s501 nt new",
+            "author": "jwagner",
+            "privateComment": "Sec. 1 is PN"
+        },
+        "id5C6C239C96C74EEF8644FED752202F94": {
+            "id": "id5C6C239C96C74EEF8644FED752202F94",
+            "identifier": "/s1/b",
+            "text": "The amendment made by this section shall take effect as if included in the enactment of the ALS Disability Insurance Access Act of 2019 (Public Law 116\u2013250).",
+            "label": "1(b)",
+            "billpage": "1",
+            "text_offset": "1203:1380",
+            "treeLevel": 2,
+            "targetSection": "t42/s423 nt new",
+            "target": "t42/s423 nt new",
+            "author": "comparefinal"
+        },
+         "H4DFB8347DFF7435F87D899C3C58030AC": {
+            "id": "H4DFB8347DFF7435F87D899C3C58030AC",
+            "identifier": "/tII/stD/s241/a/1",
+            "text": " in the part heading, by striking “Substance Abuse” and inserting “Substance Use”; ",
+            "amendmentOrdinal": 147,
+            "source": {
+                "xml": "<title identifier=\"/tII\" id=\"H396CBA5F13EA496A9D4DC9B6DF8D477D\" class=\"bill-dtd-OLC\" pagenum=\"73\">\n\t<num value=\"II\">TITLE II—</num>\n\t<heading class=\"uppercase\">Substance Use Disorder Prevention, Treatment, and Recovery Services</heading>\n\t<subtitle identifier=\"/tII/stD\" id=\"H783D92F7C6C645B5B2E51BEAB56B98C7\" class=\"bill-dtd-OLC\" pagenum=\"125\">\n\t\t<num value=\"D\">Subtitle D—</num>\n\t\t<heading class=\"titlecase\">Substance Use Prevention, Treatment, and Recovery Services Block Grant</heading>\n\t\t<section identifier=\"/tII/stD/s241\" id=\"H0E7A2FB2A8C341B3AD46EC36A4203D0F\" class=\"bill-dtd-OLC\" pagenum=\"125\">\n\t\t\t<num value=\"241\">SEC. 241.</num>\n\t\t\t<heading class=\"uppercase\"> Eliminating stigmatizing language relating to substance use.</heading>\n\t\t\t<subsection identifier=\"/tII/stD/s241/a\" id=\"H455AF579E88449C3AD9848F8DC6A17FA\" class=\"bill-dtd-OLC\" pagenum=\"125\">\n\t\t\t\t<num value=\"a\">(a)</num>\n\t\t\t\t<heading class=\"titlecase\"> Block Grants for Prevention and Treatment of Substance Use.—</heading>\n\t\t\t\t<chapeau>Part B of title XIX of the Public Health Service Act (<ref href=\"/us/usc/42/300x\">42 U.S.C. 300x et seq.</ref>) is amended—</chapeau>\n\t\t\t\t<paragraph identifier=\"/tII/stD/s241/a/1\" id=\"H4DFB8347DFF7435F87D899C3C58030AC\" class=\"bill-dtd-OLC\" pagenum=\"126\">\n\t\t\t\t\t<num value=\"1\">(1)</num>\n\t\t\t\t\t<content> in the part heading, by striking “<quotedText>\n\t\t\t\t\t\t\t<inline class=\"smallCaps\">\n\t\t\t\t\t\t\t\t<b>Substance Abuse</b>\n\t\t\t\t\t\t\t</inline>\n\t\t\t\t\t\t</quotedText>” and inserting “<quotedText>\n\t\t\t\t\t\t\t<inline class=\"smallCaps\">\n\t\t\t\t\t\t\t\t<b>Substance Use</b>\n\t\t\t\t\t\t\t</inline>\n\t\t\t\t\t\t</quotedText>”; </content>\n\t\t\t\t</paragraph>\n\t\t\t</subsection>\n\t\t</section>\n\t</subtitle>\n</title>\n",
+                "text": "Part B of title XIX of the Public Health Service Act (42 U.S.C. 300x et seq.) is amended— in the part heading, by striking “Substance Abuse” and inserting “Substance Use”; "
+            },
+            "execution": {"ampl": "select this#component(part()):heading; strike search(\"Substance Abuse\"); insert \"Substance Use\";"},
+            "cite": {
+                "cite_text": "Part B of title XIX of the Public Health Service Act (42 U.S.C. 300x et seq.)",
+                "cimpl": "select (law(\"Public Health Service\"+\"Act\"):title( \"XIX\"):part( \"B\"))#parallel(law(\"united states code\"):title(\"42\"):section( \"300x\"));",
+                "main": {
+                    "identifiers": ["/us/named/public_health_service_act/tXIX/ptB"],
+                    "doc_names": ["Public Health Service Act"],
+                    "ctx_provision_identifiers": ["/us/named/public_health_service_act/tXIX/ptB"],
+                    "ctx_provision_names": ["Part B of Title XIX"],
+                    "full_provision_names": ["Part B of Title XIX"]
+                },
+                "parallel": {
+                    "identifiers": ["/us/usc/t42/s300x"]
+                }
+            },
+            "label": "tII stD 241(a)(1)",
+            "billpage": "126",
+            "text_offset": "125972:126058",
+            "treeLevel": 5,
+            "publicComment": null,
+            "privateComment": "Blueline: 42/300x prec (Part B heading)",
+            "docMeta": {
+                "otherDesignationCombined": "CO",
+                "otherDesignation": "CO"
+            },
+            "showTargetInFootnote": null,
+            "target": "t42/s300x prec and some more long content to test out the CO stamp with long classifications",
+            "author": "jwagner",
+            "xml_card": "<section xmlns=\"http://schemas.gpo.gov/xml/uslm\" identifier=\"/tII/stD/s241\" id=\"H0E7A2FB2A8C341B3AD46EC36A4203D0F\" class=\"bill-dtd-OLC\"><num value=\"241\">SEC. 241.</num><heading class=\"uppercase\"> Eliminating stigmatizing language relating to substance use.</heading><subsection identifier=\"/tII/stD/s241/a\" id=\"H455AF579E88449C3AD9848F8DC6A17FA\" class=\"bill-dtd-OLC\" ><num value=\"a\">(a)</num><heading class=\"titlecase\"> Block Grants for Prevention and Treatment of Substance Use.—</heading><chapeau>Part B of title XIX of the Public Health Service Act (<ref href=\"/us/usc/42/300x\">42 U.S.C. 300x et seq.</ref>) is amended—</chapeau><?page 126?><?page 127?><?page 128?><paragraph identifier=\"/tII/stD/s241/a/1\" id=\"H4DFB8347DFF7435F87D899C3C58030AC\" class=\"bill-dtd-OLC\" ><num value=\"1\">(1)</num><content> in the part heading, by striking “<quotedText><inline class=\"smallCaps\"><b>Substance Abuse</b></inline></quotedText>” and inserting “<quotedText><inline class=\"smallCaps\"><b>Substance Use</b></inline></quotedText>”; </content></paragraph></subsection></section>"
+        },
+        "HBF1186D755EF4B0EBE2D1E23B6EE34C4": {
+            "id": "HBF1186D755EF4B0EBE2D1E23B6EE34C4",
+            "identifier": "/tII/stD/s241/a/2",
+            "text": " in subpart II, by amending the subpart heading to read as follows: “Block grants for substance use prevention, treatment, and recovery services”;",
+            "amendmentOrdinal": 148,
+            "source": {
+                "xml": "<title identifier=\"/tII\" id=\"H396CBA5F13EA496A9D4DC9B6DF8D477D\" class=\"bill-dtd-OLC\" pagenum=\"73\">\n\t<num value=\"II\">TITLE II—</num>\n\t<heading class=\"uppercase\">Substance Use Disorder Prevention, Treatment, and Recovery Services</heading>\n\t<subtitle identifier=\"/tII/stD\" id=\"H783D92F7C6C645B5B2E51BEAB56B98C7\" class=\"bill-dtd-OLC\" pagenum=\"125\">\n\t\t<num value=\"D\">Subtitle D—</num>\n\t\t<heading class=\"titlecase\">Substance Use Prevention, Treatment, and Recovery Services Block Grant</heading>\n\t\t<section identifier=\"/tII/stD/s241\" id=\"H0E7A2FB2A8C341B3AD46EC36A4203D0F\" class=\"bill-dtd-OLC\" pagenum=\"125\">\n\t\t\t<num value=\"241\">SEC. 241.</num>\n\t\t\t<heading class=\"uppercase\"> Eliminating stigmatizing language relating to substance use.</heading>\n\t\t\t<subsection identifier=\"/tII/stD/s241/a\" id=\"H455AF579E88449C3AD9848F8DC6A17FA\" class=\"bill-dtd-OLC\" pagenum=\"125\">\n\t\t\t\t<num value=\"a\">(a)</num>\n\t\t\t\t<heading class=\"titlecase\"> Block Grants for Prevention and Treatment of Substance Use.—</heading>\n\t\t\t\t<chapeau>Part B of title XIX of the Public Health Service Act (<ref href=\"/us/usc/42/300x\">42 U.S.C. 300x et seq.</ref>) is amended—</chapeau>\n\t\t\t\t<paragraph identifier=\"/tII/stD/s241/a/2\" id=\"HBF1186D755EF4B0EBE2D1E23B6EE34C4\" class=\"bill-dtd-OLC\" pagenum=\"126\">\n\t\t\t\t\t<num value=\"2\">(2)</num>\n\t\t\t\t\t<content> in subpart II, by amending the subpart heading to read as follows: “<quotedText>\n\t\t\t\t\t\t\t<b>Block grants for substance use prevention, treatment, and recovery services</b>\n\t\t\t\t\t\t</quotedText>”;</content>\n\t\t\t\t</paragraph>\n\t\t\t</subsection>\n\t\t</section>\n\t</subtitle>\n</title>\n",
+                "text": "Part B of title XIX of the Public Health Service Act (42 U.S.C. 300x et seq.) is amended— in subpart II, by amending the subpart heading to read as follows: “Block grants for substance use prevention, treatment, and recovery services”;"
+            },
+            "execution": {"ampl": "select subpart( \"II\"); rewrite (this#component(subpart()):heading) as \"Block grants for substance use prevention, treatment, and recovery services\";"},
+            "cite": {
+                "cite_text": "Part B of title XIX of the Public Health Service Act (42 U.S.C. 300x et seq.)",
+                "cimpl": "select (law(\"Public Health Service\"+\"Act\"):title( \"XIX\"):part( \"B\"))#parallel(law(\"united states code\"):title(\"42\"):section( \"300x\"));",
+                "main": {
+                    "identifiers": ["/us/named/public_health_service_act/tXIX/ptB"],
+                    "doc_names": ["Public Health Service Act"],
+                    "ctx_provision_identifiers": ["/us/named/public_health_service_act/tXIX/ptB"],
+                    "ctx_provision_names": ["Part B of Title XIX"],
+                    "full_provision_names": ["Part B of Title XIX"]
+                },
+                "parallel": {
+                    "identifiers": ["/us/usc/t42/s300x"]
+                }
+            },
+            "label": "tII stD 241(a)(2)",
+            "billpage": "126",
+            "text_offset": "126058:126207",
+            "treeLevel": 5,
+            "publicComment": null,
+            "privateComment": "Blueline: 42/300x-21 prec (Subpart II heading)",
+            "docMeta": {
+                "otherDesignationCombined": "CO",
+                "otherDesignation": "CO"
+            },
+            "showTargetInFootnote": null,
+            "target": "t42/s300x-21 prec",
+            "author": "jwagner",
+            "xml_card": "<section xmlns=\"http://schemas.gpo.gov/xml/uslm\" identifier=\"/tII/stD/s241\" id=\"H0E7A2FB2A8C341B3AD46EC36A4203D0F\" class=\"bill-dtd-OLC\"><num value=\"241\">SEC. 241.</num><heading class=\"uppercase\"> Eliminating stigmatizing language relating to substance use.</heading><subsection identifier=\"/tII/stD/s241/a\" id=\"H455AF579E88449C3AD9848F8DC6A17FA\" class=\"bill-dtd-OLC\" ><num value=\"a\">(a)</num><heading class=\"titlecase\"> Block Grants for Prevention and Treatment of Substance Use.—</heading><chapeau>Part B of title XIX of the Public Health Service Act (<ref href=\"/us/usc/42/300x\">42 U.S.C. 300x et seq.</ref>) is amended—</chapeau><?page 126?><?page 127?><?page 128?><paragraph identifier=\"/tII/stD/s241/a/2\" id=\"HBF1186D755EF4B0EBE2D1E23B6EE34C4\" class=\"bill-dtd-OLC\" ><num value=\"2\">(2)</num><content> in subpart II, by amending the subpart heading to read as follows: “<quotedText><b>Block grants for substance use prevention, treatment, and recovery services</b></quotedText>”;</content></paragraph></subsection></section>"
+        },
+        "H138E6E6949BE42E29F642F0CF1EB7AA2": {
+            "id": "H138E6E6949BE42E29F642F0CF1EB7AA2",
+            "identifier": "/tIII/s308/b/11",
+            "text": " In the title heading of title III, by striking “Office of Compliance” and inserting “Office of Congressional Workplace Rights”.",
+            "source": {
+                "xml": "<title identifier=\"/tIII\" id=\"H1B203BA043974CEFA5A5CEE8A19FF030\" class=\"bill-dtd-OLC\" pagenum=\"24\">\n\t<num value=\"III\">Title III—</num>\n\t<heading>Miscellaneous Reforms</heading>\n\t<section identifier=\"/tIII/s308\" id=\"H994DCA8C58AC4D1A82A0B483DE2347A2\" class=\"bill-dtd-OLC\" pagenum=\"29\">\n\t\t<num value=\"308\">Sec. 308.</num>\n\t\t<heading> Renaming Office of Compliance as Office of Congressional Workplace Rights</heading>\n\t\t<subsection identifier=\"/tIII/s308/b\" id=\"HE52DCF2F721149CF9E33CCDF869711B7\" class=\"bill-dtd-OLC\" pagenum=\"30\">\n\t\t\t<num value=\"b\">(b)</num>\n\t\t\t<heading> Conforming amendments to Congressional Accountability Act of 1995.—</heading>\n\t\t\t<chapeau>The Congressional Accountability Act of 1995, as amended by section 305(a), is further amended as follows:</chapeau>\n\t\t\t<paragraph identifier=\"/tIII/s308/b/11\" id=\"H138E6E6949BE42E29F642F0CF1EB7AA2\" class=\"bill-dtd-OLC\" pagenum=\"30\">\n\t\t\t\t<num value=\"11\">(11)</num>\n\t\t\t\t<content> In the title heading of title III, by striking <quotedContent>“Office of Compliance”</quotedContent> and inserting <quotedContent>“Office of Congressional Workplace Rights”</quotedContent>.</content>\n\t\t\t</paragraph>\n\t\t</subsection>\n\t</section>\n</title>\n",
+                "text": "The Congressional Accountability Act of 1995, as amended by section 305(a), is further amended as follows: In the title heading of title III, by striking “Office of Compliance” and inserting “Office of Congressional Workplace Rights”."
+            },
+            "execution": {"ampl": "select title( \"III\"):[this#component(title()):heading]; strike search(\"Office of Compliance\"); insert \"Office of Congressional Workplace Rights\";"},
+            "cite": {
+                "cite_text": "The Congressional Accountability Act of 1995, as amended by section 305(a),",
+                "cimpl": "select law(\"congressional accountability\"+\"act\"+\"of\"+\"1995\")#dependency(\"amended\",section( \"305(a)\"));",
+                "main": {
+                    "identifiers": ["/us/named/congressional_accountability_act_of_1995"],
+                    "doc_names": ["The congressional accountability act of 1995"],
+                    "ctx_provision_identifiers": ["/us/named/congressional_accountability_act_of_1995"],
+                    "ctx_provision_names": [""],
+                    "full_provision_names": [""]
+                }
+            },
+            "label": "tIII 308(b)(11)",
+            "billpage": "30",
+            "text_offset": "81055:81187",
+            "treeLevel": 4,
+            "docMeta": {"otherDesignation": "CO"},
+            "targetSection": "out",
+            "privateComment": "Blueline: 2/1381 prec ",
+            "author": "jwagner",
+            "publicComment": "Codification note (2/1381 prec) "
+        }
+    },
+    "datakeys": [
+        "HF422D9E0659A11ED173909173F13E4C5",
+        "HD015A11682F811EB190809173F13E4C5",
+        "idD81BE3E224704145B96503389351DBA8",
+        "id716E27646FDD4084A95B064FF1D64D59",
+        "id5C6C239C96C74EEF8644FED752202F94",
+        "H4DFB8347DFF7435F87D899C3C58030AC",
+        "HBF1186D755EF4B0EBE2D1E23B6EE34C4"
+    ],
+    "billtitle": "116 S579 ENR: To make a technical correction to the ALS Disability Insurance Access Act of 2019.",
+    "session": "1",
+    "uslm_converter_version": "Xcential BillDTD to USLM Converter v20201209",
+    "citation_contexts": [],
+    "extractor_version": "1.0.56",
+    "lastUpdated": "2021-03-12T06:04:35.477Z",
+    "bill_info_ref_id": "6040943bbf3153f6e924cd4b",
+    "_etag": "605b628ad9192a5a7a0dfd4a",
+    "ranges": [],
+    "markFinalHistory": [
+        {
+            "user": "jwagner",
+            "updateDate": 1615916738441,
+            "markedFinal": true
+        }
+    ],
+    "markedFinal": true,
+    "bill_meta": {
+        "statpage": 246,
+        "statvolume": "135",
+        "publaw": "117-3",
+        "enacted_date": "2021-03-23"
+    }
+}

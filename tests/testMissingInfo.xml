@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bill xmlns="http://schemas.gpo.gov/xml/uslm" xmlns:dc="http://purl.org/dc/elements/1.1/" >
+  <meta>
+    <dc:title> S227 ENR: Savanna’s Act</dc:title>
+  </meta>
+  <preface>
+    <page id="page1">S. 227—1</page>
+  </preface>
+  <main id="HB27883C1FD8611EA189709173F13E4C5">
+    <section identifier="/s1" id="ida9c1894f-ccc0-4215-9d43-2728c482cbfa">
+      <num value="1"><sidenote topic="olrcClassification" role="target">25/5701 nt new</sidenote><sidenote topic="olrcStamp">PN</sidenote>Section 1.</num>
+      <heading> Short title.</heading>
+      <content class="indent0">This Act may be cited as “<quotedText><shortTitle><marker
+              id="ida9c1894f-ccc0-4215-9d43-2728c482cbfa-u-Savanna_s_1_Act_2_len_13-start"
+              role="markerStart"/><sidenote topic="olrcClassification" class="out" role="target" note="CO">✓</sidenote><sidenote topic="olrcClassification" role="publicComment">New Chapter 49, Savanna's Act (25/5701 et seq.)</sidenote>Savanna’s Act<marker
+              id="ida9c1894f-ccc0-4215-9d43-2728c482cbfa-u-Savanna_s_1_Act_2_len_13-end"
+              role="markerEnd" class="undefined"/></shortTitle></quotedText>”.</content>
+    </section>
+    <section identifier="/s2" id="idb8a4f617-5388-41a8-805a-5c41a04c8231">
+      <num value="2"><sidenote topic="olrcClassification" role="target">25/5701 new</sidenote>Sec. 2.</num>
+      <heading> Purposes.</heading>
+      <chapeau class="block">The purposes of this Act are—</chapeau>
+    </section>
+    <section identifier="/s3" id="id0b6b42c7-d14b-4621-9434-1e227f705df3">
+      <num value="3"><sidenote topic="olrcClassification" role="target">25/5702 new</sidenote>Sec. 3.</num>
+      <heading> Definitions.</heading>
+      <chapeau class="block">In this Act:</chapeau>
+      <page id="page2">S. 227—2</page>
+    </section>
+    <section identifier="/s4" id="ida65dab91-8f43-4d1d-a4c7-e6ed1845c502">
+      <num value="4"><sidenote topic="olrcClassification" role="target">25/5703 new</sidenote>Sec. 4.</num>
+      <heading> Improving Tribal access to databases.</heading>
+      <subsection identifier="/s4/b" id="idd3eef010-4f71-4e90-b90c-796e9501c6eb">
+        <num value="b">(b)</num>
+        <heading> Consultation.—</heading>
+        <paragraph identifier="/s4/b/3" id="idd9dcecec-f414-4cf0-8904-26010c83ed77">
+          <num value="3"><sidenote topic="olrcClassification" role="target">34/20126</sidenote><sidenote topic="olrcClassification" role="publicComment">Dual classification</sidenote>(3)</num>
+          <heading> Annual consultation.—</heading>
+          <chapeau>Section 903(b) of the Violence ...—</chapeau>
+        </paragraph>
+      </subsection>
+    </section>
+    <page id="page3">S. 227—3</page>
+    <section identifier="/s5" id="id3c2306d4-3b02-469b-b12d-96487068b474">
+      <num value="5"><sidenote topic="olrcClassification" role="target">25/5704 new</sidenote>Sec. 5.</num>
+      <heading> Guidelines for responding to cases of missing or murdered Indians.</heading>
+      <subsection identifier="/s5/c" id="ide5eafe5a-ea38-4406-9c85-f90462689f92">
+        <num value="c">(c)</num>
+        <heading> Compliance.—</heading>
+        <paragraph identifier="/s5/c/3" id="ida4af46a8-eee5-4380-b7df-1a6161ec0434">
+          <num value="3">(3)</num>
+          <heading> Determination.—</heading>
+          <content>Not later than the end of each fiscal year beginning ... 
+            <page id="page4">S. 227—4</page>or local law enforcement agency ...</content>
+        </paragraph>
+      </subsection>
+    </section>
+    <section identifier="/s6" id="idd59b307a-7d51-4208-a840-e46b32a24439">
+      <num value="6"><sidenote topic="olrcClassification" role="target">25/5705 new</sidenote>Sec. 6.</num>
+      <heading> Annual reporting requirements.</heading>
+      <subsection identifier="/s6/a" id="id9516f31d-d06a-44a6-ba3a-94d55fd2d066">
+        <num value="a">(a)</num>
+        <heading> Annual reporting.—</heading>
+        <chapeau>Beginning in the first fiscal year ...—</chapeau>
+        <page id="page5">S. 227—5</page>
+        <paragraph identifier="/s6/a/4" id="id5c0c186d-c6fd-41cc-990f-ab0ced8e0f9e">
+          <num value="4">(4)</num>
+          <chapeau> includes—</chapeau>
+        </paragraph>
+      </subsection>
+    </section>
+    <section identifier="/s7" id="idfd10e036c9444474a1fda40ded8f3298">
+      <num value="7">Sec. 7.</num>
+      <heading> Implementation and incentive.</heading>
+      <subsection identifier="/s7/a" id="id090F28022C3A4A5783BB55F82CF521E4">
+        <num value="a"><sidenote topic="olrcClassification" role="target">34/10461</sidenote>(a)</num>
+        <heading> Grant authority.—</heading>
+        <content>Section 2101(b) of the Omnibus Crime Control ...:</content>
+      </subsection>
+      <page id="page6">S. 227—6</page>
+      <subsection identifier="/s7/b" id="id4F57DD143CCE428D96EB9EF284C3DA85">
+        <num value="b"><sidenote topic="olrcClassification" role="target">34/10452</sidenote>(b)</num>
+        <heading> Grants to Indian Tribal governments.—</heading>
+        <chapeau>Section 2015 of the Omnibus Crime Control and Safe Streets Act...—</chapeau>
+      </subsection>
+    </section>
+  </main>
+</bill>
