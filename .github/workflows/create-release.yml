@@ -24,11 +24,6 @@ jobs:
           COMMIT_SHA=$(echo "$COMMIT_SHA" | tr -cd '[:alnum:]-_')
           echo "Commit SHA: $COMMIT_SHA"
 
-      - name: Generate version format
-        run: |
-          VERSION="debug-$(date +'%Y%m%d')-${COMMIT_SHA}"
-          echo "Version: $VERSION"
-
       - name: Update version in package.json
         run: |
           # Read the current version from package.json
@@ -39,15 +34,10 @@ jobs:
     
           # Update the package.json file with the new version
           node -e "const fs = require('fs'); const packageJson = require('./package.json'); packageJson.version = '${NEW_VERSION}'; fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));"
-
-
-      - name: Create or update release branch
-        run: |
-          BRANCH_NAME="release"
-          git fetch origin ${BRANCH_NAME} || git checkout -b ${BRANCH_NAME}
-          git reset --hard origin/main
-          git merge --no-commit --no-ff HEAD main
-          git push origin ${BRANCH_NAME}
+          
+          # Create release branch with the updated version
+          git checkout -b release/v${NEW_VERSION}
+          git push origin release/v${NEW_VERSION}
 
       - name: Set Git user
         run: |
@@ -60,16 +50,16 @@ jobs:
           echo "$COMMIT_MESSAGES" >> commit_messages.txt
           git add commit_messages.txt
           git commit -m "Update commit messages"
-          git push origin release
+          git push origin release/v${NEW_VERSION}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Create release pull request
-          branch: release   # Specify release as the 'head'  branch
-          base: main        # Specify main as the 'base' branch
-          title: "Release: ${{ github.sha }}"
+          branch: release/v${NEW_VERSION}   # Specify the release branch
+          base: main                        # Specify main as the 'base' branch
+          title: "Release: v${NEW_VERSION}"
           body: This pull request is automatically created to trigger the release process.
           add-paths: -A
           committer: GitHub <andrey02061987@gmail.com>
