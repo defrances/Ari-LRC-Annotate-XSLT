@@ -1,34 +1,39 @@
-name: Create Release
+name: Release Workflow
 
 on:
   push:
     tags:
-      - v*.*.*
+      - 'v*.*.*'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # to allow getting previous tags
+          fetch-depth: 0 # Set fetch depth to 0 to fetch all tags
       
-      # Only release from main branch
+      # Only release from the main branch
       - name: Exit if not on main branch
-        if: endsWith(github.event.base_ref, 'main') == false
+        if: github.ref != 'refs/heads/main'
         run: exit -1
 
-      - name: Setup Node.js environment
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: '16.x'
 
-      - run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
+      - name: Configure NPM authentication
+        run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
+
       # Update the version in package.json from the tag number
-      - run: npm version $(echo $GITHUB_REF | cut -d / -f 3 | sed 's/^v//') --no-git-tag-version
-      - run: npm install -g npm
-      - run: npm ci
+      - name: Update package version
+        run: npm version $(echo ${{ github.ref }} | cut -d / -f 3 | sed 's/^v//') --no-git-tag-version
+
+      - name: Install dependencies
+        run: npm ci
 
       # Commit the new version to the repo 
       - name: Commit new version
@@ -37,18 +42,22 @@ jobs:
           git config --local user.email "arihershowitz@gmail.com"
           git config --local user.name "Ari Hershowitz"
           git add package.json package-lock.json
-          git commit -m "Update version to $(echo $GITHUB_REF | cut -d / -f 3 | sed 's/^v//')"
+          git commit -m "Update version to $(echo ${{ github.ref }} | cut -d / -f 3 | sed 's/^v//')"
           git push
 
       #- run: npm run build
       #- run: npm test
-      - run: zip -r lrc-annotate.zip transforms/** styles/** README.md
+
+      - name: Create release archive
+        run: zip -r lrc-annotate.zip transforms/** styles/** README.md
+
       - name: Generate Changelog
         run: |
           export VERSION=$(git tag --sort=-committerdate | head -1)
           export PREVIOUS_VERSION=$(git tag --sort=-committerdate | head -2 | awk '{split($0, tags, "\n")} END {print tags[1]}')
           export CHANGES=$(git log --pretty="- %s" $VERSION...$PREVIOUS_VERSION)
           printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
+
       - name: Upload Release
         uses: softprops/action-gh-release@v1
         with:
