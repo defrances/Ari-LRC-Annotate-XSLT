@@ -44,7 +44,7 @@ jobs:
           git config user.email "you@example.com"
           git config user.name "Your Name"
 
-      - name: Collect commit messages into release branch
+      - name: Collect commit messages into release  branch
         run: |
           COMMIT_MESSAGES=$(git log --pretty=format:"- %s" --no-merges)
           echo "$COMMIT_MESSAGES" >> commit_messages.txt
@@ -69,7 +69,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Create release pull request
           branch: release/v${NEW_VERSION}   # Use the correct branch name stored in the PR_BRANCH environment variable
-          base: main                     # Specify main as the 'base' branch
+          base: main                        # Specify main as the 'base' branch
           title: "Release: v${{ env.NEW_VERSION }}"  # Use the correct title for the pull request using the NEW_VERSION environment variable
           body: This pull request is automatically created to trigger the release process.
           draft: false
