@@ -61,12 +61,13 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Create release pull request
-          branch: release/${{ github.sha }}
+          branch: release/base   # Specify a different branch as the 'base' branch
           title: "Release: ${{ github.sha }}"
           body: This pull request is automatically created to trigger the release process.
           add-paths: -A
-          committer: GitHub <noreply@github.com>
-          author: defrances <defrances@users.noreply.github.com>
+          committer: GitHub <andrey02061987@gmail.com>
+          author: defrances <andrey02061987@gmail.com>
           signoff: false
           delete-branch: false
           draft: false
+
