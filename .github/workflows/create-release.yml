@@ -55,10 +55,10 @@ jobs:
       - name: Create or update release branch
         run: |
           BRANCH_NAME="release/v${NEW_VERSION}"
-          git fetch origin ${BRANCH_NAME} || git checkout -b ${BRANCH_NAME}
-          git reset --hard origin/main
-          git merge --no-commit --no-ff HEAD main
+          git fetch origin || true
+          git checkout -B ${BRANCH_NAME} origin/main
           git push origin ${BRANCH_NAME}
+
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
