@@ -33,10 +33,10 @@ jobs:
         run: |
           sed -i "s/\"version\": \".*\",/\"version\": \"${VERSION}\",/" package.json
 
-      - name: Create and switch to release branch
+      - name: Create and switch to release/base branch
         run: |
-          git checkout -b release/${{ github.sha }}
-          git push origin release/${{ github.sha }}
+          git checkout -b release/base
+          git push origin release/base
 
       - name: Collect commit messages
         id: collect_commits
