@@ -49,10 +49,19 @@ jobs:
           export CHANGES=$(git log --pretty="- %s" $VERSION...$PREVIOUS_VERSION)
           printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
 
-      - name: Automatic Release
-        uses: marvinpinto/action-automatic-releases@latest
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
+          body: ${{ github.workspace }}-CHANGELOG.md
+          draft: false
           prerelease: false
-          files: lrc-annotate.zip
-          body_path: ${{ github.workspace }}-CHANGELOG.md
+          
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: lrc-annotate.zip
+          asset_name: lrc-annotate.zip
+          asset_content_type: application/zip
