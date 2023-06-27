@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 14
 
-      - name: Extract commit SHA from  ref
+      - name: Extract commit SHA from ref
         run: |
           COMMIT_SHA=$(echo "${{ github.ref }}" | awk -F'/' '{print $3}')
           COMMIT_SHA=$(echo "$COMMIT_SHA" | tr -cd '[:alnum:]-_')
