@@ -31,18 +31,22 @@ jobs:
 
       - name: Update version in package.json
         run: |
+          VERSION="2.0.12"
           sed -i "s/\"version\": \".*\",/\"version\": \"${VERSION}\",/" package.json
 
-      - name: Create and switch to release/base branch
+      - name: Create or update release/base branch
         run: |
           git checkout -b release/base
+          git pull origin release/base
           git push origin release/base
 
-      - name: Collect commit messages
-        id: collect_commits
+      - name: Collect commit messages into release/base branch
         run: |
-          COMMIT_MESSAGES=$(git log --pretty=format:"%s" origin/main..)
-          echo "::set-output name=commit_messages::$COMMIT_MESSAGES"
+          COMMIT_MESSAGES=$(git log --pretty=format:"- %s" --no-merges)
+          echo "$COMMIT_MESSAGES" >> commit_messages.txt
+          git add commit_messages.txt
+          git commit -m "Update commit messages"
+          git push origin release/base
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -51,14 +55,10 @@ jobs:
           commit-message: Create release pull request
           branch: release/${{ github.sha }}
           title: "Release: ${{ github.sha }}"
-          body: |
-            This pull request is automatically created to trigger the release process.
-            
-            **Commit Messages:**
-            ${{ steps.collect_commits.outputs.commit_messages }}
+          body: This pull request is automatically created to trigger the release process.
           add-paths: -A
-          committer: GitHub <andrey02061987@gmail.com>
-          author: defrances <andrey02061987@gmail.com>
+          committer: GitHub <noreply@github.com>
+          author: defrances <defrances@users.noreply.github.com>
           signoff: false
           delete-branch: false
           draft: false
