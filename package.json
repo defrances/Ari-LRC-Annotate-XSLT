@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Xcential-Corporation/LRC-Annotate-XSLT.git"
+    "url": "git+https://github.com/defrances/Ari-LRC-Annotate-XSLT.git"
   },
   "keywords": [
     "LRC",
@@ -28,7 +28,7 @@
   "author": "Lauren Wood",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/Xcential-Corporation/LRC-Annotate-XSLT/issues"
+    "url": "https://github.com/defrances/Ari-LRC-Annotate-XSLT/issues"
   },
-  "homepage": "https://github.com/Xcential-Corporation/LRC-Annotate-XSLT#readme"
+  "homepage": "https://github.com/defrances/Ari-LRC-Annotate-XSLT#readme"
 }
