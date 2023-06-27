@@ -76,6 +76,3 @@ jobs:
           title: "Release: v${{ env.PR_TITLE }}"  # Use the correct title for the pull request using the PR_TITLE environment variable
           body: This pull request is automatically created to trigger the release process.
           draft: false
-
-
-
