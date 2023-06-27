@@ -39,11 +39,6 @@ jobs:
       - name: Install dependencies
         run: npm ci     
 
-      # Retrieve the latest Git tag
-      - name: Retrieve latest Git tag
-        id: latest_tag
-        run: echo "::set-output name=tag::$(git describe --abbrev=0)"
-
       - name: Create release archive
         run: zip -r lrc-annotate.zip transforms/** styles/** README.md
 
@@ -54,14 +49,10 @@ jobs:
           export CHANGES=$(git log --pretty="- %s" $VERSION...$PREVIOUS_VERSION)
           printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
 
-      - name: Upload Release
-        uses: softprops/action-gh-release@v1
+      - name: Automatic Release
+        uses: marvinpinto/action-automatic-releases@latest
         with:
-          tag_name: ${{ steps.latest_tag.outputs.tag }}
-          body_path: ${{ github.workspace }}-CHANGELOG.md
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
           files: lrc-annotate.zip
-
-      - name: Publish to NPM
-        run: npm publish
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          body_path: ${{ github.workspace }}-CHANGELOG.md
