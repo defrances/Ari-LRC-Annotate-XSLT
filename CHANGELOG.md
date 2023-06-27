@@ -1,5 +1,43 @@
 # Changelog
 
+## [2.2.0](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v2.1.0...v2.2.0) (2023-06-27)
+
+
+### Features
+
+* minor fix ([2950db3](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/2950db38d28f5aef6b60ca17bcbdba64245afb1b))
+
+
+### Bug Fixes
+
+* bug fix ([a6c6df9](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/a6c6df9a98433df1d6d1859de3072903a2c8ab05))
+* bug fix ([daadeda](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/daadeda3d085759953b589bf79b18e2c7dcc909d))
+* bug fix ([d073011](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/d0730111f853314810e21991d47273a4457f195f))
+
+
+### Miscellaneous
+
+* **main:** release 2.0.13 ([b7c7f12](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/b7c7f12905adcd9ac3982d4062bf5bd62a45d6ea))
+* **main:** release 2.1.0 ([7e2f4fa](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/7e2f4fa3743c31c023696db0d7c75860a729a230))
+* **main:** release 2.1.1 ([62f9255](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/62f9255bef8b7baf637d06c5966204af911b9e29))
+* **main:** release 2.1.2 ([f91390e](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/f91390edd93ceddf4e2182fc53af144562e30598))
+* **main:** release 2.1.3 ([80b20a0](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/80b20a0b20a5e736e46cebaab4c39749cc9f87b7))
+* **main:** release 2.1.4 ([461eee5](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/461eee58f03dd021cbb4898f0c64b5876dd5efbd))
+* **main:** release 2.2.0 ([65881de](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/65881dedd985939012a4db966d72208ac79680b3))
+* **main:** release 2.2.1 ([a805d65](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/a805d653cc2fb653bf6c48c77513209fe7e00cea))
+* **main:** release 2.2.2 ([b867ea5](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/b867ea51105c26297e206a5de3f3f574f409bae0))
+* minor fix ([699d75d](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/699d75da2ffb951c35d6e4f0085d623f0c6490ae))
+* minor fix ([b28d4bd](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/b28d4bd5b58602489ff9eb52ba1378c9b43996bf))
+* minor fix ([86bc1df](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/86bc1dfc49f63022faa9f9dbdbd10df788b2c8a8))
+* minor fix ([3e1d60b](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/3e1d60be9449ac29986ce1bc0c6891783d44f1d8))
+* minor fix ([d7e13ea](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/d7e13eaaacb2c49666ccf44373bd92b2edec06a2))
+* minor fix ([7931b97](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/7931b97b9b70358fb17a9c50450d5a3095e56aa9))
+* minor fix ([53603cd](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/53603cd532c953c37f7d6c7f9950e8906f7ecdeb))
+* minor fix ([ad13ee9](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/ad13ee9a907e70a18e2455d17f8a8c9b077da5d7))
+* minor fix ([83d3f43](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/83d3f4350f8008a159e6123329f95c120d96e21b))
+* minor fix ([6295c14](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/6295c146c6a5f11a0b4fb36173fc8270f5490d18))
+* minor fix ([728a5c6](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/728a5c61c5f3157276036fd633158d4aa09aade0))
+
 ## [2.1.0](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v2.0.13...v2.1.0) (2023-06-27)
 
 
