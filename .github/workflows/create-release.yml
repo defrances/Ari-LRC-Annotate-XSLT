@@ -34,9 +34,8 @@ jobs:
           VERSION="2.0.12"
           sed -i "s/\"version\": \".*\",/\"version\": \"${VERSION}\",/" package.json
 
-      - name: Create or update main branch
+      - name: Update main branch
         run: |
-          git checkout -b main
           git stash    # Stash the unstaged changes
           git pull --rebase origin main
           # Resolve any conflicts manually
