@@ -57,6 +57,7 @@ jobs:
           BRANCH_NAME="release/v${NEW_VERSION}"
           git fetch origin || true
           git checkout -B ${BRANCH_NAME} origin/main
+          git pull origin main --no-commit
           git push origin ${BRANCH_NAME}
 
 
