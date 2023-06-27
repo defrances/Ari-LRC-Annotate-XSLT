@@ -37,7 +37,7 @@ jobs:
       - name: Create or update release branch
         run: |
           BRANCH_NAME="release"
-          git fetch origin ${BRANCH_NAME} || git checkout --orphan ${BRANCH_NAME}
+          git fetch origin ${BRANCH_NAME} || git checkout -b ${BRANCH_NAME}
           git reset --hard origin/main
           git merge --no-commit --no-ff HEAD main
 
