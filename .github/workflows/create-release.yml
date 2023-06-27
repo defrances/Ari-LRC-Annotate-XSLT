@@ -60,6 +60,9 @@ jobs:
           git pull origin ${BRANCH_NAME} --no-commit
           git push --force origin ${BRANCH_NAME}
 
+      - name: Set environment variable for pull request title
+        run: echo "PR_TITLE=Release: v${NEW_VERSION}" >> $GITHUB_ENV
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -67,6 +70,6 @@ jobs:
           commit-message: Create release pull request
           branch: "release/v${NEW_VERSION}"   # Specify the release branch
           base: main                          # Specify main as the 'base' branch
-          title: "Release: v${NEW_VERSION}"
+          title: ${{ env.PR_TITLE }}
           body: This pull request is automatically created to trigger the release process.
           draft: false
