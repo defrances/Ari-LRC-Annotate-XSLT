@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v2.1.1...v2.1.2) (2023-06-27)
+
+
+### Bug Fixes
+
+* bug fix ([daadeda](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/daadeda3d085759953b589bf79b18e2c7dcc909d))
+
 ## [2.1.1](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v2.1.0...v2.1.1) (2023-06-27)
 
 
