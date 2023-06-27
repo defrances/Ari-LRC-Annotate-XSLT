@@ -74,7 +74,8 @@ jobs:
           commit-message: Create release pull request
           branch: "release/v${NEW_VERSION}"   # Specify the correct release branch
           base: main                          # Specify main as the 'base' branch
-          title: "${{ env.PR_TITLE }}"        # Use double quotes to reference the environment variable
+          title: "Release: v${{ env.NEW_VERSION }}"   # Set the title based on the new version
           body: This pull request is automatically created to trigger the release process.
           draft: false
+
 
