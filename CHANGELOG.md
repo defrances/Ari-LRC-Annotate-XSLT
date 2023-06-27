@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.1.6](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v3.1.5...v3.1.6) (2023-06-27)
+
+
+### Miscellaneous
+
+* message 1 ([c70790e](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/c70790e1abe66f1320c7cae20637d66b5f5095ef))
+* message 1 ([94f185f](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/94f185ff1cf1500db2c04778810a205ca04aa6a2))
+* message 1 ([f5cda9c](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/f5cda9c66eeecb60bb0b80bc1810bb6dc13be33b))
+* message 1 ([ba50ab4](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/ba50ab4791865bfe921644d608c9a966af938e09))
+* message 1 ([a8e8478](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/a8e84784cc7c7dd858b41d8beed6e2b283732bdb))
+* message 1 ([26a88f2](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/26a88f252c50cb1da620a28e5af8bdaec1238a72))
+* message 1 ([0b52635](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/0b52635d9f1110c0f679e64af8099c661cc7494c))
+* message 1 ([bd10d89](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/bd10d8932c1c1c8bc84fe03f649ac895630e01c5))
+* message 1 ([a9c8867](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/a9c8867c41f7e8967e5cf50870bee5889279e820))
+* message 1 ([9941dd8](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/9941dd8bbb60ae445435157974438e37e5ce4cf7))
+* message 1 ([7d4cf47](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/7d4cf47af54a30ee60ff4fdf1aab33d5dbf868c4))
+* message 1 ([47073c5](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/47073c5ba53991749a0aacdc99f5808f483f5305))
+* message 1 ([5a76f67](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/5a76f677d7f6e62bfd0a6433180b6944ae592d87))
+
 ## [3.1.5](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v3.1.4...v3.1.5) (2023-06-27)
 
 
