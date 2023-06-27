@@ -28,7 +28,7 @@
         </dependencies>
         <configuration>
           <testDir>tests</testDir>
-          <!-- extractRange is not yet implemented  -->
+          <!-- extractRange is not yet implemented -->
           <!-- This excludes directive did not work
           <excludes>
             <exclude>extractRange*</exclude>
