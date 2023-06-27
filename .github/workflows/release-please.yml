@@ -1,10 +1,9 @@
-
 on:
   push:
     branches:
       - main
   workflow_run:
-    workflows: ["First Workflow"]
+    workflows: ["Release Workflow"]
     branches:
       - main
 
