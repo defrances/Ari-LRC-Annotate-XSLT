@@ -36,8 +36,8 @@ jobs:
           node -e "const fs = require('fs'); const packageJson = require('./package.json'); packageJson.version = '${NEW_VERSION}'; fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));"
           
           # Create release branch with the updated version
-          git checkout -b release/v${NEW_VERSION}
-          git push --set-upstream origin release/v${NEW_VERSION}
+          git checkout -b "release/v${NEW_VERSION}"
+          git push --set-upstream origin "release/v${NEW_VERSION}"
 
       - name: Set Git user
         run: |
@@ -50,12 +50,13 @@ jobs:
           echo "$COMMIT_MESSAGES" >> commit_messages.txt
           git add commit_messages.txt
           git commit -m "Update commit messages"
-          git push origin HEAD:release/v${NEW_VERSION}
+          git push origin HEAD:"release/v${NEW_VERSION}"
 
       - name: Create or update release branch
         run: |
           BRANCH_NAME="release/v${NEW_VERSION}"
           git fetch origin
+          git checkout -B ${BRANCH_NAME} origin/main
           git pull origin ${BRANCH_NAME} --no-commit
           git push --force origin ${BRANCH_NAME}
 
@@ -64,8 +65,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Create release pull request
-          branch: release/v${NEW_VERSION}   # Specify the release branch
-          base: main                        # Specify main as the 'base' branch
+          branch: "release/v${NEW_VERSION}"   # Specify the release branch
+          base: main                          # Specify main as the 'base' branch
           title: "Release: v${NEW_VERSION}"
           body: This pull request is automatically created to trigger the release process.
           draft: false
