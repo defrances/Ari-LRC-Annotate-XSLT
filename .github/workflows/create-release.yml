@@ -61,7 +61,7 @@ jobs:
           git push --force origin ${BRANCH_NAME}
 
       - name: Set environment variable for pull request title
-        run: echo "PR_TITLE=Release: v${NEW_VERSION}" >> $GITHUB_ENV
+        run: echo "PR_TITLE=Release: v${{ env.NEW_VERSION }}" >> $GITHUB_ENV
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
