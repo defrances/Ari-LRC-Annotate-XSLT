@@ -59,7 +59,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Create release pull request
-          branch: release   # Specify release as the 'base' branch
+          branch: release   # Specify release as the 'head' branch
+          base: main        # Specify main as the 'base' branch
           title: "Release: ${{ github.sha }}"
           body: This pull request is automatically created to trigger the release process.
           add-paths: -A
