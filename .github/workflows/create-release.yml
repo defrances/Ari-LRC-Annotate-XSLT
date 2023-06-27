@@ -39,7 +39,12 @@ jobs:
           git checkout -b release/base
           git stash    # Stash the unstaged changes
           git pull --rebase origin release/base
+          # Resolve any conflicts manually
+          # After resolving conflicts, add the resolved files
+          git add .
+          git rebase --continue
           git push --force origin release/base
+
 
 
 
