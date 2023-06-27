@@ -2,8 +2,8 @@ name: Release Workflow
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - main
 
 jobs:
   build:
@@ -38,7 +38,6 @@ jobs:
       # Commit the new version to the repo 
       - name: Commit new version
         run: |
-          git checkout main 
           git config --local user.email "arihershowitz@gmail.com"
           git config --local user.name "Ari Hershowitz"
           git add package.json package-lock.json
