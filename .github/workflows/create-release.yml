@@ -1,4 +1,4 @@
-name: Create Release Pull Request!
+name: Create Release Pull Request
 
 on:
   push:
@@ -31,12 +31,23 @@ jobs:
 
       - name: Update version in package.json
         run: |
-          VERSION="2.0.12"
           sed -i "s/\"version\": \".*\",/\"version\": \"${VERSION}\",/" package.json
 
+      - name: Check if pull request exists
+        id: pr_check
+        run: |
+          PR_EXISTS=$(curl -s -o /dev/null -w "%{http_code}" -X GET \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls?head=release/${{ github.sha }}")
 
+          if [[ $PR_EXISTS == "200" ]]; then
+            echo "::set-output name=pull_request_exists::true"
+          else
+            echo "::set-output name=pull_request_exists::false"
+          fi
 
-      - name: Create Pull Request123
+      - name: Create Pull Request
+        if: steps.pr_check.outputs.pull_request_exists != 'true'
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
