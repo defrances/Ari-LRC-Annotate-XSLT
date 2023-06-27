@@ -52,7 +52,13 @@ jobs:
           git commit -m "Update commit messages"
           git push origin HEAD:release/v${NEW_VERSION}
 
-
+      - name: Create or update release branch
+        run: |
+          BRANCH_NAME="release/v${NEW_VERSION}"
+          git fetch origin ${BRANCH_NAME} || git checkout -b ${BRANCH_NAME}
+          git reset --hard origin/main
+          git merge --no-commit --no-ff HEAD main
+          git push origin ${BRANCH_NAME}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
