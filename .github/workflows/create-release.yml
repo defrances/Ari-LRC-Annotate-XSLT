@@ -40,11 +40,12 @@ jobs:
           git fetch origin ${BRANCH_NAME} || git checkout -b ${BRANCH_NAME}
           git reset --hard origin/main
           git merge --no-commit --no-ff HEAD main
+          git push origin ${BRANCH_NAME}
 
       - name: Set Git user
         run: |
-          git config user.email "andrey02061987@gmail.com"
-          git config user.name "defrances"
+          git config user.email "you@example.com"
+          git config user.name "Your Name"
 
       - name: Collect commit messages into release branch
         run: |
