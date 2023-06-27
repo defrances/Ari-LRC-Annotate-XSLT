@@ -34,34 +34,31 @@ jobs:
           VERSION="2.0.12"
           sed -i "s/\"version\": \".*\",/\"version\": \"${VERSION}\",/" package.json
 
-      - name: Create or update release/base branch
+      - name: Create or update main branch
         run: |
-          git checkout -b release/base
+          git checkout -b main
           git stash    # Stash the unstaged changes
-          git pull --rebase origin release/base
+          git pull --rebase origin main
           # Resolve any conflicts manually
           # After resolving conflicts, add the resolved files
           git add .
           git rebase --continue
-          git push --force origin release/base
+          git push --force origin main
 
-
-
-
-      - name: Collect commit messages into release/base branch
+      - name: Collect commit messages into main branch
         run: |
           COMMIT_MESSAGES=$(git log --pretty=format:"- %s" --no-merges)
           echo "$COMMIT_MESSAGES" >> commit_messages.txt
           git add commit_messages.txt
           git commit -m "Update commit messages"
-          git push origin release/base
+          git push origin main
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Create release pull request
-          branch: release/base   # Specify a different branch as the 'base' branch
+          branch: main   # Specify main as the 'base' branch
           title: "Release: ${{ github.sha }}"
           body: This pull request is automatically created to trigger the release process.
           add-paths: -A
@@ -70,4 +67,3 @@ jobs:
           signoff: false
           delete-branch: false
           draft: false
-
