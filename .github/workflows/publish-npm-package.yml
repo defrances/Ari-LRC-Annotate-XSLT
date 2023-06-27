@@ -37,20 +37,20 @@ jobs:
         run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
 
       # Update the version in package.json from the tag number
-      - name: Update package version
-        run: npm version $(echo ${{ github.ref }} | cut -d / -f 3 | sed 's/^v//') --no-git-tag-version
+      #- name: Update package version
+      #  run: npm version $(echo ${{ github.ref }} | cut -d / -f 3 | sed 's/^v//') --no-git-tag-version
 
       - name: Install dependencies
         run: npm ci
 
       # Commit the new version to the repo 
-      - name: Commit new version
-        run: |
-          git config --local user.email "arihershowitz@gmail.com"
-          git config --local user.name "Ari Hershowitz"
-          git add package.json package-lock.json
-          git commit -m "Update version to $(echo ${{ github.ref }} | cut -d / -f 3 | sed 's/^v//')"
-          git push
+      #- name: Commit new version
+      #  run: |
+      #    git config --local user.email "arihershowitz@gmail.com"
+      #    git config --local user.name "Ari Hershowitz"
+      #    git add package.json package-lock.json
+      #    git commit -m "Update version to $(echo ${{ github.ref }} | cut -d / -f 3 | sed 's/^v//')"
+      #    git push
 
       #- run: npm run build
       #- run: npm test
