@@ -1,8 +1,8 @@
 on:
-  push:
+  merge:
     branches:
       - main
-name: release-please
+name: publish-npm-package
 jobs:
   release-please:
     runs-on: ubuntu-latest
