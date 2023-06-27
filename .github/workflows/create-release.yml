@@ -66,6 +66,9 @@ jobs:
         run: echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
 
 
+      - name: Set environment variable for pull request branch
+        run: echo "PR_BRANCH=release/v${{ env.NEW_VERSION }}" >> $GITHUB_ENV
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -73,6 +76,6 @@ jobs:
           commit-message: Create release pull request
           branch: ${{ env.PR_BRANCH }}   # Use the correct branch name stored in the PR_BRANCH environment variable
           base: main                     # Specify main as the 'base' branch
-          title: "Release: v${{ env.PR_TITLE }}"  # Use the correct title for the pull request using the PR_TITLE environment variable
+          title: "Release: v${{ env.NEW_VERSION }}"  # Use the correct title for the pull request using the NEW_VERSION environment variable
           body: This pull request is automatically created to trigger the release process.
           draft: false
