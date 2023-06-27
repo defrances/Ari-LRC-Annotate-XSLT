@@ -71,8 +71,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Create release pull request
-          branch: "release/v${{ env.PR_TITLE }}"   # Specify the correct branch using the PR_TITLE environment variable
-          base: main                             # Specify main as the 'base' branch
+          branch: ${{ env.PR_BRANCH }}   # Use the correct branch name stored in the PR_BRANCH environment variable
+          base: main                     # Specify main as the 'base' branch
           title: "Release: v${{ env.PR_TITLE }}"  # Use the correct title for the pull request using the PR_TITLE environment variable
           body: This pull request is automatically created to trigger the release process.
           draft: false
