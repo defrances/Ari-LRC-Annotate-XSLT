@@ -37,7 +37,7 @@ jobs:
           
           # Create release branch with the updated version
           git checkout -b release/v${NEW_VERSION}
-          git push origin release/v${NEW_VERSION}
+          git push --set-upstream origin release/v${NEW_VERSION}
 
       - name: Set Git user
         run: |
@@ -55,9 +55,8 @@ jobs:
       - name: Create or update release branch
         run: |
           BRANCH_NAME="release/v${NEW_VERSION}"
-          git fetch origin || true
-          git checkout -B ${BRANCH_NAME} origin/main
-          git reset --hard origin/main
+          git fetch origin
+          git pull origin ${BRANCH_NAME} --no-commit
           git push --force origin ${BRANCH_NAME}
 
       - name: Create Pull Request
