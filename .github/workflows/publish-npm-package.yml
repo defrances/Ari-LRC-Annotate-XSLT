@@ -33,8 +33,7 @@ jobs:
         with:
           node-version: '16.x'
       - run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
-      # Update the version in package.json from the tag number
-      - run: npm version $(echo $GITHUB_REF | cut -d / -f 3 | sed 's/^v//') --no-git-tag-version
+      # Update the version in package.json from the tag number      
       - run: npm install -g npm
       - run: npm ci
 
