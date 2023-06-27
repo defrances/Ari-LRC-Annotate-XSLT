@@ -1,14 +1,5 @@
 name: Release Workflow
 
-on:
-  push:
-    branches:
-      - main
-  workflow_run:
-    workflows: ["release-please"]
-    branches:
-      - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -57,8 +48,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: lrc-annotate.zip
-          tag_name: v3.1.6
-          name: Release v3.1.6
+          tag_name: v3.1.7
+          name: Release v3.1.7
           body_path: /home/runner/work/Ari-LRC-Annotate-XSLT/Ari-LRC-Annotate-XSLT-CHANGELOG.md
           draft: false
           prerelease: false

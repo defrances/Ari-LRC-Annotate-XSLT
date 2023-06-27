@@ -1,4 +1,4 @@
-name: Run Workflows
+name: Run Main Workflows
 
 on:
   push:
