@@ -50,7 +50,8 @@ jobs:
           echo "$COMMIT_MESSAGES" >> commit_messages.txt
           git add commit_messages.txt
           git commit -m "Update commit messages"
-          git push origin release/v${NEW_VERSION}
+          git push origin HEAD:release/v${NEW_VERSION}
+
 
 
       - name: Create Pull Request
