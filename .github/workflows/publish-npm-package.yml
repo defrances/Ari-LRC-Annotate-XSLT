@@ -33,7 +33,6 @@ jobs:
         with:
           node-version: '16.x'
       - run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
-      # Update the version in package.json from the tag number      
       - run: npm install -g npm
       - run: npm ci
 
@@ -57,8 +56,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: lrc-annotate.zip
-          tag_name: v3.1.5
-          name: Release v3.1.5
+          tag_name: v3.1.6
+          name: Release v3.1.6
           body_path: /home/runner/work/Ari-LRC-Annotate-XSLT/Ari-LRC-Annotate-XSLT-CHANGELOG.md
           draft: false
           prerelease: false
