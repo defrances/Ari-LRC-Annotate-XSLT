@@ -58,7 +58,8 @@ jobs:
           git fetch origin || true
           git checkout -B ${BRANCH_NAME} origin/main
           git pull origin main --no-commit
-          git push origin ${BRANCH_NAME}
+          git push --set-upstream origin ${BRANCH_NAME}
+        shell: /usr/bin/bash -e {0}
 
 
       - name: Create Pull Request
