@@ -37,8 +37,10 @@ jobs:
       - name: Create or update release/base branch
         run: |
           git checkout -b release/base
+          git stash    # Stash the unstaged changes
           git pull --rebase origin release/base
           git push --force origin release/base
+
 
 
       - name: Collect commit messages into release/base branch
