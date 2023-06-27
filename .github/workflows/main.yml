@@ -1,4 +1,4 @@
-name: Run Main Workflows
+name: Run Workflows
 
 on:
   push:
@@ -21,17 +21,12 @@ jobs:
           github/workflows/release-please.yml
         continue-on-error: true
 
-  run-second-workflow:
-    needs: run-first-workflow
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run second workflow
+      - name: Trigger second workflow
+        if: ${{ success() }}
         run: |
-          # Run the second workflow
-          # Replace 'path/to/publish-npm-package.yml' with the actual path to your second YAML file
-          echo "Running second workflow..."
-          github/workflows/publish-npm-package.yml
+          echo "Triggering second workflow..."
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/owner/repo/dispatches \
+            -d '{"event_type": "run-second-workflow"}'
