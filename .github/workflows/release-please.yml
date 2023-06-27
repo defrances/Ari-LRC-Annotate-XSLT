@@ -1,7 +1,7 @@
 on:
-  pull_request:
-    types:
-      - opened
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -13,21 +13,8 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Get comments
-        id: comments
-        uses: actions/github-script@v5
+      - uses: google-github-actions/release-please-action@v3
         with:
-          script: |
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number
-            });
-            console.log(JSON.stringify(comments));
-
-      - name: Use the comments
-        run: |
-          echo "${{ steps.comments.outputs.result }}" > comments.json
+          release-type: node
+          package-name: release-please-action
+          changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
