@@ -36,7 +36,7 @@ jobs:
       - name: Configure NPM authentication
         run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}    
 
-      - name: Install dependencies
+      - name: Install  dependencies
         run: npm ci     
 
       # Retrieve the latest Git tag
