@@ -34,26 +34,15 @@ jobs:
           node-version: '16.x'
 
       - name: Configure NPM authentication
-        run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
-
-      # Update the version in package.json from the tag number
-      #- name: Update package version
-      #  run: npm version $(echo ${{ github.ref }} | cut -d / -f 3 | sed 's/^v//') --no-git-tag-version
+        run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}    
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci     
 
-      # Commit the new version to the repo 
-      #- name: Commit new version
-      #  run: |
-      #    git config --local user.email "arihershowitz@gmail.com"
-      #    git config --local user.name "Ari Hershowitz"
-      #    git add package.json package-lock.json
-      #    git commit -m "Update version to $(echo ${{ github.ref }} | cut -d / -f 3 | sed 's/^v//')"
-      #    git push
-
-      #- run: npm run build
-      #- run: npm test
+      # Retrieve the latest Git tag
+      - name: Retrieve latest Git tag
+        id: latest_tag
+        run: echo "::set-output name=tag::$(git describe --abbrev=0)"
 
       - name: Create release archive
         run: zip -r lrc-annotate.zip transforms/** styles/** README.md
@@ -68,6 +57,7 @@ jobs:
       - name: Upload Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ steps.latest_tag.outputs.tag }}
           body_path: ${{ github.workspace }}-CHANGELOG.md
           files: lrc-annotate.zip
 
