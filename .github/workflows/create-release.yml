@@ -31,8 +31,15 @@ jobs:
 
       - name: Update version in package.json
         run: |
-          VERSION="2.0.12"
-          sed -i "s/\"version\": \".*\",/\"version\": \"${VERSION}\",/" package.json
+          # Read the current version from package.json
+          CURRENT_VERSION=$(node -pe "require('./package.json').version")
+    
+          # Increase the version
+          NEW_VERSION=$(echo $CURRENT_VERSION | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
+    
+          # Update the package.json file with the new version
+          node -e "const fs = require('fs'); const packageJson = require('./package.json'); packageJson.version = '${NEW_VERSION}'; fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));"
+
 
       - name: Create or update release branch
         run: |
