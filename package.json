@@ -1,5 +1,5 @@
 {
-  "name": "@xcential-corporation/annotate-xslt",
+  "name": "@defrances/annotate-xslt",
   "version": "3.1.5",
   "description": "Stylesheets to create annotated bills (LRC) and CSS to style the resulting XML",
   "publishConfig": {
