@@ -50,11 +50,18 @@ jobs:
           printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: actions/create-release@v1
         with:
           files: lrc-annotate.zip
           tag_name: v3.1.5 # Replace with the actual tag name
-          body_path: ${{ github.workspace }}-CHANGELOG.md
+          name: Release v3.1.5 # Replace with the actual tag name
+          body: |
+            $(cat ${{ github.workspace }}-CHANGELOG.md)
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
