@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.4](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v3.1.3...v3.1.4) (2023-06-27)
+
+
+### Miscellaneous
+
+* update publish-npm-package.yml ([1e6c244](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/1e6c244e3d9d2a351bd982e73d455bfa846e34b7))
+
 ## [3.1.3](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v3.1.2...v3.1.3) (2023-06-27)
 
 
