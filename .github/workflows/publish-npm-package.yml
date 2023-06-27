@@ -1,23 +1,61 @@
-name: Publish package to GitHub Packages
+name: Create Release
+
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - v*.*.*
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+
     steps:
       - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to GitHub Packages
-      - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
-          registry-url: 'https://npm.pkg.github.com'
-          # Defaults to the user or organization that owns the workflow file
-          scope: '@octocat'
+          fetch-depth: 0 # to allow getting previous tags
+      
+      # Only release from main branch
+      - name: Exit if not on main branch
+        if: endsWith(github.event.base_ref, 'main') == false
+        run: exit -1
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
+      # Update the version in package.json from the tag number
+      - run: npm version $(echo $GITHUB_REF | cut -d / -f 3 | sed 's/^v//') --no-git-tag-version
+      - run: npm install -g npm
       - run: npm ci
-      - run: npm publish
+
+      # Commit the new version to the repo 
+      - name: Commit new version
+        run: |
+          git checkout main 
+          git config --local user.email "arihershowitz@gmail.com"
+          git config --local user.name "Ari Hershowitz"
+          git add package.json package-lock.json
+          git commit -m "Update version to $(echo $GITHUB_REF | cut -d / -f 3 | sed 's/^v//')"
+          git push
+
+      #- run: npm run build
+      #- run: npm test
+      - run: zip -r lrc-annotate.zip transforms/** styles/** README.md
+      - name: Generate Changelog
+        run: |
+          export VERSION=$(git tag --sort=-committerdate | head -1)
+          export PREVIOUS_VERSION=$(git tag --sort=-committerdate | head -2 | awk '{split($0, tags, "\n")} END {print tags[1]}')
+          export CHANGES=$(git log --pretty="- %s" $VERSION...$PREVIOUS_VERSION)
+          printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
+      - name: Upload Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: ${{ github.workspace }}-CHANGELOG.md
+          files: lrc-annotate.zip
+
+      - name: Publish to NPM
+        run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
