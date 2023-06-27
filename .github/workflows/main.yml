@@ -1,0 +1,37 @@
+name: Run Workflows
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-first-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run first workflow
+        run: |
+          # Run the first workflow
+          # Replace 'path/to/release-please.yml' with the actual path to your first YAML file
+          echo "Running first workflow..."
+          github/workflows/release-please.yml
+        continue-on-error: true
+
+  run-second-workflow:
+    needs: run-first-workflow
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run second workflow
+        run: |
+          # Run the second workflow
+          # Replace 'path/to/publish-npm-package.yml' with the actual path to your second YAML file
+          echo "Running second workflow..."
+          github/workflows/publish-npm-package.yml
