@@ -21,17 +21,15 @@ jobs:
           bash .github/workflows/firststep/release-please.yml
         continue-on-error: true
 
-
       - name: Trigger second workflow
         if: ${{ success() }}
         uses: actions/github-script@v4
         with:
-           github-token: ${{ secrets.GITHUB_TOKEN }}
-           script: |
-             const { data } = await github.actions.createWorkflowDispatch({
-             owner: context.repo.owner,
-             repo: context.repo.repo,
-             workflow_file: '.github/workflows/secondstep/publish-npm-package.yml'
-             });
-      console.log(`Second workflow triggered: ${data.status}`);
-
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data } = await github.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_file: '.github/workflows/secondstep/publish-npm-package.yml'
+            });
+            console.log(`Second workflow triggered: ${data.status}`);
