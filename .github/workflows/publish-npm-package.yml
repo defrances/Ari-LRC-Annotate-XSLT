@@ -50,8 +50,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: lrc-annotate.zip
-          tag_name: v3.1.8
-          name: Release v3.1.8
+          tag_name: v3.1.11
+          name: Release v3.1.11
           body_path: /home/runner/work/Ari-LRC-Annotate-XSLT/Ari-LRC-Annotate-XSLT-CHANGELOG.md
           draft: false
           prerelease: false
