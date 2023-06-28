@@ -50,9 +50,11 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: lrc-annotate.zip
-          tag_name: ${{ steps.get-latest-tag.outputs.tag }}
-          name: Release ${{ steps.get-latest-tag.outputs.tag }}
-          body_path: /home/runner/work/Ari-LRC-Annotate-XSLT/Ari-LRC-Annotate-XSLT-CHANGELOG.md
+          #tag_name: ${{ steps.get-latest-tag.outputs.tag }}
+          #name: Release ${{ steps.get-latest-tag.outputs.tag }}
+          tag_name: v3.1.13
+          name: Release v3.1.13
+          body_path: ${{ github.workspace }}-CHANGELOG.md
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
