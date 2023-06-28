@@ -52,8 +52,8 @@ jobs:
           files: lrc-annotate.zip
           #tag_name: ${{ steps.get-latest-tag.outputs.tag }}
           #name: Release ${{ steps.get-latest-tag.outputs.tag }}
-          tag_name: v3.1.13
-          name: Release v3.1.13
+          tag_name: v3.1.14
+          name: Release v3.1.14
           body_path: ${{ github.workspace }}-CHANGELOG.md
           draft: false
           prerelease: false
