@@ -18,7 +18,7 @@ jobs:
           # Run the first workflow
           # Replace 'path/to/first-workflow.yml' with the actual path to your first YAML file
           echo "Running first workflow..."
-          github/workflows/firststep/release-please.yml
+          .github/workflows/firststep/release-please.yml
         continue-on-error: true
 
       - name: Trigger second workflow
@@ -30,6 +30,6 @@ jobs:
             const { data } = await github.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_file: 'github/workflows/secondstep/publish-npm-package.yml' 
+              workflow_file: '.github/workflows/secondstep/publish-npm-package.yml' 
             });
             console.log(`Second workflow triggered: ${data.status}`);
