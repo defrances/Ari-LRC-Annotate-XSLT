@@ -20,6 +20,15 @@ jobs:
         with:
           fetch-depth: 0 # Set fetch depth to 0 to fetch all tags
       # Check if it's a new tag
+      - name: Check if new tag111111
+        id: check-new-tag
+        run: |
+          PREVIOUS_TAG=$(git describe --abbrev=0 --tags HEAD^ --always)
+          if [[ "$(git describe --abbrev=0 --tags)" == "$PREVIOUS_TAG" ]]; then
+            echo "::set-output name=is_new_tag::false"
+          else
+            echo "::set-output name=is_new_tag::true"
+          fi
       - name: Check if new tag
         id: check-tag
         run: |
