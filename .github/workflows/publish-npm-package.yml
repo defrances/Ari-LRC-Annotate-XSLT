@@ -37,8 +37,8 @@ jobs:
         run: npm ci     
 
       - name: Create release archive
-        run: zip -r lrc-annotate.zip transforms/** styles/** README.md ./README.md             
-
+        run: zip -r lrc-annotate.zip transforms/** styles/** README.adoc
+             
       - name: Generate Changelog
         run: |
           export VERSION=$(git tag --sort=-committerdate | head -1)
