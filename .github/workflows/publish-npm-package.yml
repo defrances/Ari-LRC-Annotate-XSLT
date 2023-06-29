@@ -1,13 +1,13 @@
 name: Deploy new version to NPM
-
 on:
-  pull_request:
+  workflows_run:
+    workflow:
+      - "Create release pull request"
     types:
-      - closed
-
+      - completed
 jobs:
   build:
-    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'refs/heads/release-please--branches--main--components--release-please-action'
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     steps:
