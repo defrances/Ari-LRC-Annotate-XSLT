@@ -1,43 +1,59 @@
-# Release please documentation
-In our solution we have two yml files:
-    - release-please.yml
-    - publish-npm-package.yml
-# release-please.yml overview
-This file is used to create a PR release when into the main branch. It will create a release with the version number of the tag that was created. It will also create a changelog based on the commit messages.
+# Release Please
 
-The action is configured with the following parameters:
+This repository contains a `release-please` configuration file for automating releases using GitHub Actions.
 
-- release-type: Specifies the release type as "node". Adjust this value based on your project's needs.
-- package-name: Specifies the name of the package. Modify this value to match the package you're working with.
-- changelog-types: Specifies an array of changelog types and their corresponding sections. In this example, the types "feat" (Features), "fix" (Bug Fixes), and                "chore" (Miscellaneous) are defined. You can customize this array to match your project's changelog structure.
+## Workflow
 
-# publish-npm-package.yml overview
-This is a GitHub Actions workflow named "Release Workflow" that automates the release process when a pull request is closed. It performs various tasks such as building the project, generating a changelog, creating a GitHub release, and publishing to NPM. Here's a breakdown of the workflow:
-** Workflow Triggers
-The workflow is triggered by the closing of a pull request:
+The workflow defined in this configuration is triggered on a push event to the `main` branch.
 
-on:
-  pull_request:
-    types:
-      - closed
+### Permissions
 
- ** Workflow Jobs
- The workflow consists of a single job named "build" that runs on the latest Ubuntu environment:
- jobs:
-  build:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
+The following permissions are required for the workflow:
 
- ** Job Steps
- The job contains several steps that perform different tasks:
-- Checkout code: This step checks out the code from the repository:
-  '- name: Checkout code
-  uses: actions/checkout@v3
-  with:
-    fetch-depth: 0 # Set fetch depth to 0 to fetch all tags
-'
+- Contents: Write
+- Pull Requests: Write
 
+## Jobs
 
+### release-please
 
+This job runs on `ubuntu-latest` and performs the following steps:
 
+1. It uses the `google-github-actions/release-please-action` version 3 to automate releases.
+2. The `release-type` is set to `node`.
+3. The `package-name` is specified as `release-please-action`.
+4. The `changelog-types` are defined as follows:
+   - `feat` changes will be included in the "Features" section of the changelog.
+   - `fix` changes will be included in the "Bug Fixes" section of the changelog.
+   - `chore` changes will be included in the "Miscellaneous" section of the changelog.
+
+Please refer to the [release-please documentation](https://github.com/google-github-actions/release-please-action) for more details on how to use the action.
+
+# Release Workflow
+
+This repository contains a release workflow configuration for automating the release process using GitHub Actions. The workflow is triggered when a pull request is closed.
+
+## Workflow
+
+The workflow defined in this configuration has the following specifications:
+
+- Event: Pull request closed
+- Job: build
+
+### Job: build
+
+This job runs on `ubuntu-latest` and performs the following steps:
+
+1. Checks out the code using the `actions/checkout` action, fetching all tags.
+2. Exits the workflow if the pull request is not merged.
+3. Sets up Node.js using the `actions/setup-node` action with Node.js version 16.x.
+4. Sets up NPM authentication using the `npm set` command with the GitHub token stored in the `GITHUB_TOKEN` secret.
+5. Installs npm globally and runs `npm ci` to install project dependencies.
+6. Creates a release archive by zipping specified files and directories.
+7. Retrieves the package version from the `package.json` file.
+8. Generates a changelog by comparing the previous version tag with the current HEAD using Git commands.
+9. Creates a GitHub release using the `softprops/action-gh-release` action, uploading the release archive, providing a tag name, release name, and release notes from the changelog file.
+10. Publishes the package to NPM using the `npm publish` command with the `GITHUB_TOKEN` environment variable set to the GitHub token.
+
+Please note that you should configure the required secrets, such as `GITHUB_TOKEN`, for this workflow to function properly.
 
