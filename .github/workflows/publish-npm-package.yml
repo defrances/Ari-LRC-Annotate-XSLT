@@ -31,11 +31,12 @@ jobs:
 
       - name: Debug Output1
         run: |
-          echo "Package version from main branch:: ${{ steps.get-package-version1.outputs.version }}"
+          echo "Package version from main branch: ${{ steps.get-package-version1.outputs.version }}"
       
       - name: Debug Output2
         run: |
-          echo "Package version from release branch:: ${{ steps.get-package-version2.outputs.version }}"
+          echo "Package version from release branch: ${{ steps.get-package-version2.outputs.version }}"
+
 
       - name: Checkout code
         uses: actions/checkout@v3
