@@ -7,7 +7,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
-workflows:
+workflows_run:
   workflow:
     - "Deploy new version to NPM"
   types:
