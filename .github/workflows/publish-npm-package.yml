@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0 # Set fetch depth to 0 to fetch all tags
       # Only release when the pull request is merged
       - name: Exit if pull request not merged
-        if: github.event_name == 'pull_request' && github.event.pull_request.merged == false
+        if: github.event_name == 'pull_request' && github.event.pull_request.merged == false && github.event.pull_request.base.ref != 'release-please--branches--main--components--release-please-action'
         run: exit -1
 
       - name: Setup Node.js
