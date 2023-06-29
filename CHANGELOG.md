@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.2.0](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v5.1.0...v5.2.0) (2023-06-29)
+
+
+### Features
+
+* Add test-execution.yml ([f4f4018](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/f4f401815e324aca07676b60833d62db3eb7e6f8))
+
 ## [5.1.0](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v5.0.0...v5.1.0) (2023-06-29)
 
 
