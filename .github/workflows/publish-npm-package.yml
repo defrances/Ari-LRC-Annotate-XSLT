@@ -37,7 +37,7 @@ jobs:
         run: npm ci     
 
       - name: Create release archive
-        run: zip -r lrc-annotate.zip transforms/** styles/** README.md
+        run: zip -r lrc-annotate.zip transforms/** styles/** README.md ./README.md             
 
       - name: Generate Changelog
         run: |
