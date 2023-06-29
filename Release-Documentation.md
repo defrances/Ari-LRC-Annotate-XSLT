@@ -1,6 +1,6 @@
-# Release Please
+# Create release pull request
 
-This repository contains a `release-please` configuration file for automating releases using GitHub Actions.
+This repository contains a configuration to automate the creation of release pull requests using GitHub Actions.
 
 ## Workflow
 
@@ -19,7 +19,7 @@ The following permissions are required for the workflow:
 
 This job runs on `ubuntu-latest` and performs the following steps:
 
-1. It uses the `google-github-actions/release-please-action` version 3 to automate releases.
+1. It uses the `google-github-actions/release-please-action` version 3 to automate the creation of release pull requests.
 2. The `release-type` is set to `node`.
 3. The `package-name` is specified as `release-please-action`.
 4. The `changelog-types` are defined as follows:
@@ -29,16 +29,13 @@ This job runs on `ubuntu-latest` and performs the following steps:
 
 Please refer to the [release-please documentation](https://github.com/google-github-actions/release-please-action) for more details on how to use the action.
 
-# Release Workflow
+# Deploy new version to NPM
 
-This repository contains a release workflow configuration for automating the release process using GitHub Actions. The workflow is triggered when a pull request is closed.
+This repository contains a configuration to automate the deployment of a new version to NPM using GitHub Actions.
 
 ## Workflow
 
-The workflow defined in this configuration has the following specifications:
-
-- Event: Pull request closed
-- Job: build
+The workflow defined in this configuration is triggered when a pull request is closed.
 
 ### Job: build
 
@@ -49,11 +46,13 @@ This job runs on `ubuntu-latest` and performs the following steps:
 3. Sets up Node.js using the `actions/setup-node` action with Node.js version 16.x.
 4. Sets up NPM authentication using the `npm set` command with the GitHub token stored in the `GITHUB_TOKEN` secret.
 5. Installs npm globally and runs `npm ci` to install project dependencies.
-6. Creates a release archive by zipping specified files and directories.
-7. Retrieves the package version from the `package.json` file.
-8. Generates a changelog by comparing the previous version tag with the current HEAD using Git commands.
-9. Creates a GitHub release using the `softprops/action-gh-release` action, uploading the release archive, providing a tag name, release name, and release notes from the changelog file.
-10. Publishes the package to NPM using the `npm publish` command with the `GITHUB_TOKEN` environment variable set to the GitHub token.
+6. Configures NPM authentication using the `npm set` command with the GitHub token.
+7. Installs project dependencies using `npm ci`.
+8. Creates a release archive by zipping specified files and directories.
+9. Retrieves the package version from the `package.json` file.
+10. Generates a changelog by comparing the previous version tag with the current HEAD using Git commands.
+11. Creates a GitHub release using the `softprops/action-gh-release` action, uploading the release archive, providing a tag name, release name, and release notes from the changelog file.
+12. Publishes the package to NPM using the `npm publish` command with the `NPM_TOKEN` environment variable set to the GitHub token.
 
 Please note that you should configure the required secrets, such as `GITHUB_TOKEN`, for this workflow to function properly.
 
