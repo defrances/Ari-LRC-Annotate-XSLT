@@ -66,6 +66,6 @@ In case if you need increase second digit after the major version you can use th
 - git commit -am 'chore:Update documentation'
 - git commit -am 'fix:bug#123'
 
-How to increase "3"
+### How to increase "3"
 In case if you need increase first digit after the major version you can use this commit message:
 -  git commit -am 'feat:new features & updates'
