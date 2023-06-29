@@ -46,9 +46,10 @@ jobs:
       - name: Generate Changelog
         run: |
           VERSION=${{ steps.get-package-version.outputs.version }}
-          PREVIOUS_VERSION=$(git tag --sort=-creatordate --exclude $VERSION* --list | head -n 1)
+          PREVIOUS_VERSION=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1) 2>/dev/null || echo "No previous version")
           CHANGES=$(git log --pretty="- %s" $PREVIOUS_VERSION..HEAD)
           printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
+
 
       
 
