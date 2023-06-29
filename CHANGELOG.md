@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.4](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v3.2.3...v3.2.4) (2023-06-29)
+
+
+### Miscellaneous
+
+* message1 feat:message2 fix: message3 ([b6d2161](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/b6d2161689172ac0c7c15383fde6dbc0742a4e30))
+
 ## [3.2.3](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v3.2.2...v3.2.3) (2023-06-29)
 
 
