@@ -26,8 +26,10 @@ jobs:
           PREVIOUS_TAG=$(git describe --abbrev=0 --tags HEAD^ --always)
           if [[ "$(git describe --abbrev=0 --tags)" == "$PREVIOUS_TAG" ]]; then
             echo "::set-output name=is_new_tag::false"
+            echo "Previous tag: $PREVIOUS_TAG"
           else
             echo "::set-output name=is_new_tag::true"
+            echo "Previous tag: $PREVIOUS_TAG"
           fi
       - name: Check if new tag
         id: check-tag
