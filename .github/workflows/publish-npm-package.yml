@@ -1,11 +1,6 @@
 name: Deploy new version to NPM
 
 on:
-  workflow_run:
-    workflows:
-      - "Create release pull request"
-    types:
-      - completed
   push:
     tags:
       - '*'
@@ -20,83 +15,27 @@ jobs:
         with:
           fetch-depth: 0 # Set fetch depth to 0 to fetch all tags
 
-      # Check if it's a new tag
-      - name: Check if new tag PREVIOUS_TAG
-        id: check-new-tag
-        run: |
-          PREVIOUS_TAG=$(git describe --abbrev=0 --tags HEAD^ --always)
-          if [[ "$(git describe --abbrev=0 --tags)" == "$PREVIOUS_TAG" ]]; then
-            echo "::set-output name=is_new_tag::false"
-            echo "Previous tag: $PREVIOUS_TAG"
-          else
-            echo "::set-output name=is_new_tag::true"
-            echo "Previous tag: $PREVIOUS_TAG"
-          fi
-      - name: Prnt PREVIOUS_TAG
-        run: echo $PREVIOUS_TAG
-      - name: Get previous version
-        id: get-previous-version
-        run: |
-          PREVIOUS_VERSION=$(git describe --abbrev=0 --tags HEAD^ --always)
-          echo "Previous version: $PREVIOUS_VERSION"
-
-      - name: Check if new tag
-        id: check-tag
-        run: |
-          if [[ "${{ github.event_name }}" == "push" && "${{ startsWith(github.ref, 'refs/tags/') }}" == "true" ]]; then
-            echo "::set-output name=is_new_tag::true"
-          else
-            echo "::set-output name=is_new_tag::false"
-          fi
-
-      # Perform actions based on whether it's a new tag or not
-      - name: New tag workflow
-        if: steps.check-tag.outputs.is_new_tag == 'true'
-        run: |
-          # Perform actions for a new tag
-          echo "This is a new tag"
-
-      - name: Not a new tag workflow
-        if: steps.check-tag.outputs.is_new_tag == 'false'
-        run: |
-          # Perform actions for a non-new tag
-          echo "This is not a new tag"
-
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
 
-      - run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
-      - run: npm install -g npm
-      - run: npm ci
-
-      - name: Configure NPM authentication
-        run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}    
-
       - name: Install dependencies
-        run: npm ci     
-
-      - name: Create release archive
-        run: zip -r lrc-annotate.zip transforms/** styles/** README.md
-
-      - name: Get package version
-        id: get-package-version
-        run: echo "::set-output name=version::$(node -p "require('./package.json').version")"
+        run: npm ci
 
       - name: Generate Changelog
         run: |
-          VERSION=v${{ steps.get-package-version.outputs.version }}
-          PREVIOUS_VERSION=$(git describe --abbrev=0 --tags HEAD^ --always)
-          CHANGES=$(git log --pretty="- %s" $PREVIOUS_VERSION..HEAD)
+          VERSION=$(git describe --abbrev=0 --tags)
+          PREVIOUS_VERSION=$(git describe --abbrev=0 --tags ${VERSION}^ --always)
+          CHANGES=$(git log --pretty="- %s" ${PREVIOUS_VERSION}..${VERSION})
           printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           files: lrc-annotate.zip
-          tag_name: v${{ steps.get-package-version.outputs.version }}
-          name: Release v${{ steps.get-package-version.outputs.version }}
+          tag_name: ${{ github.ref }}
+          name: Release ${{ github.ref }}
           body_path: ${{ github.workspace }}-CHANGELOG.md
           draft: false
           prerelease: false
