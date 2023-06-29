@@ -41,7 +41,7 @@ jobs:
 
       - name: Set Git user
         run: |
-          git config user.email  "you@example.com"
+          git config user.email "you@example.com"
           git config user.name "Your Name"
 
       - name: Collect commit messages into release  branch
