@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-    #if: github.event_name == 'workflow_run' && github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success' #&& github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.base_branch == 'release-please--branches--main--components--release-please-action'
     runs-on: ubuntu-latest
 
     steps:
@@ -19,22 +18,22 @@ jobs:
           echo ${{ github.event.workflow_run.event }}
           echo ${{ github.event.workflow_run.conclusion }}
           echo ${{ github.event.workflow_run.head_branch }}
-          echo ${{ github.event.workflow_run.bae_branch }}
-          echo ${{ github.event.workflow_run.PR_BRANCH }} }} 
-
-       - name: Get package version from main branch
+          echo ${{ github.event.workflow_run.base_branch }}
+          echo ${{ github.event.workflow_run.PR_BRANCH }}
+          
+      - name: Get package version from main branch
         id: get-package-version1
         run: echo "::set-output name=version::$(git show main:package.json | jq -r '.version')"
       
-       - name: Get package version from release branch
+      - name: Get package version from release branch
         id: get-package-version2
         run: echo "::set-output name=version::$(git show release-please--branches--main--components--release-please-action:package.json | jq -r '.version')"
 
       - name: Debug Output1
-        run: echo "Package version: ${{ steps.get-package-version1.outputs.version }}"
+        run: echo "Package version from main branch: ${{ steps.get-package-version1.outputs.version }}"
       
       - name: Debug Output2
-        run: echo "Package version: ${{ steps.get-package-version2.outputs.version }}"
+        run: echo "Package version from release branch: ${{ steps.get-package-version2.outputs.version }}"
 
       - name: Checkout code
         uses: actions/checkout@v3
