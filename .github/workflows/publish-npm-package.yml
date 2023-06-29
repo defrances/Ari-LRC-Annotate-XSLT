@@ -1,7 +1,7 @@
 name: Deploy new version to NPM
 on:
-  workflows_run:
-    workflow:
+  workflow_run:
+    workflows:
       - "Create release pull request"
     types:
       - completed
