@@ -39,7 +39,7 @@ jobs:
       - name: Create release archive
         run: zip -r lrc-annotate.zip transforms/** styles/** README.adoc
              
-      - name: Generate  Changelog
+      - name: Generate Changelog
         run: |
           export VERSION=$(git tag --sort=-committerdate | head -1)
           export PREVIOUS_VERSION=$(git tag --sort=-committerdate | head -2 | awk '{split($0, tags, "\n")} END {print tags[1]}')
