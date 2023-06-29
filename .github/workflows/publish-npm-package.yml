@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    if: github.event_name == 'workflow_run' && github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.base_branch == 'release-please--branches--main--components--release-please-action'
+    #if: github.event_name == 'workflow_run' && github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.base_branch == 'release-please--branches--main--components--release-please-action'
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,8 @@ jobs:
           echo ${{ github.event.workflow_run.event }}
           echo ${{ github.event.workflow_run.conclusion }}
           echo ${{ github.event.workflow_run.head_branch }}
-          echo ${{ github.event.workflow_run.base_branch }} 
+          echo ${{ github.event.workflow_run.bae_branch }}
+          echo ${{ github.event.workflow_run.PR_BRANCH }} }} 
       - name: Checkout code
         uses: actions/checkout@v3
         with:
