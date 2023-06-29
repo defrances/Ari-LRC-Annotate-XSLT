@@ -43,11 +43,11 @@ jobs:
         id: get-package-version
         run: echo "::set-output name=version::$(node -p "require('./package.json').version")"
 
-      - name: Generate  Changelog
+      - name: Generate Changelog
         run: |
           VERSION=${{ steps.get-package-version.outputs.version }}
-          PREVIOUS_VERSION=$(git describe --abbrev=0 --tags $VERSION^)
-          CHANGES=$(git log --pretty="- %s" $PREVIOUS_VERSION...$VERSION)
+          PREVIOUS_VERSION=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
+          CHANGES=$(git log --pretty="- %s" $PREVIOUS_VERSION..HEAD)
           printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
 
       
