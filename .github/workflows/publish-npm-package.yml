@@ -46,7 +46,7 @@ jobs:
           export CHANGES=$(git log --pretty="- %s" $VERSION...$PREVIOUS_VERSION)
           printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
      
-      - name: Get package version
+      - name: Get package  version
         id: get-package-version
         run: echo "::set-output name=version::$(node -p "require('./package.json').version")"
 
