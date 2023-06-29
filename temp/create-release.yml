@@ -24,7 +24,7 @@ jobs:
           COMMIT_SHA=$(echo "$COMMIT_SHA" | tr -cd '[:alnum:]-_')
           echo "Commit SHA: $COMMIT_SHA"
 
-      - name: Update  version  in package.json
+      - name: Update  version in package.json
         run: |
           # Read the current version from package.json
           CURRENT_VERSION=$(node -pe "require('./package.json').version")
