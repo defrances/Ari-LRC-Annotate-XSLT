@@ -9,15 +9,18 @@ on:
 
 jobs:
   build:
-    echo github.event_name
-    echo github.event.workflow_run.event
-    echo github.event.workflow_run.conclusion
-    echo github.event.workflow_run.head_branch
-    echo github.event.workflow_run.base_branch    
-    if: github.event_name == 'workflow_run' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'ref/remotes/origin/release-please--branches--main--components--release-please-action' && github.event.workflow_run.base_branch == 'ref/remotes/origin/main'
+    
+    #if: github.event_name == 'workflow_run' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'ref/remotes/origin/release-please--branches--main--components--release-please-action' && github.event.workflow_run.base_branch == 'ref/remotes/origin/main'
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug Output
+        run: |
+          echo ${{ github.event_name }}
+          echo ${{ github.event.workflow_run.event }}
+          echo ${{ github.event.workflow_run.conclusion }}
+          echo ${{ github.event.workflow_run.head_branch }}
+          echo ${{ github.event.workflow_run.base_branch }} 
       - name: Checkout code
         uses: actions/checkout@v3
         with:
