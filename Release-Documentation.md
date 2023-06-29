@@ -61,4 +61,11 @@ Please note that you should configure the required secrets, such as `GITHUB_TOKE
 - "4": This number denotes the major version. Major versions usually represent significant updates to a software product, often including new features, major changes, or architectural modifications.
 - "3": The first digit after the major version represents a minor version. Minor versions usually indicate smaller updates or enhancements to the software, such as bug fixes or additional functionality.
 - "1": The second digit after the major version signifies a patch or revision number. Patch versions generally consist of minor updates or bug fixes intended to address issues or improve stability.
+### How to increase "1"
+In case if you need increase second digit after the major version you can use this commit message:
+- git commit -am 'chore:Update documentation'
+- git commit -am 'fix:bug#123'
 
+How to increase "3"
+In case if you need increase first digit after the major version you can use this commit message:
+-  git commit -am 'feat:new features & updates'
