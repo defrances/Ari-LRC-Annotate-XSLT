@@ -56,3 +56,9 @@ This job runs on `ubuntu-latest` and performs the following steps:
 
 Please note that you should configure the required secrets, such as `GITHUB_TOKEN`, for this workflow to function properly.
 
+# Explanation what does  version means: v4.3.1
+- "v": The letter "v" often stands for "version" and is commonly used to indicate the start of a version number.
+- "4": This number denotes the major version. Major versions usually represent significant updates to a software product, often including new features, major changes, or architectural modifications.
+- "3": The first digit after the major version represents a minor version. Minor versions usually indicate smaller updates or enhancements to the software, such as bug fixes or additional functionality.
+- "1": The second digit after the major version signifies a patch or revision number. Patch versions generally consist of minor updates or bug fixes intended to address issues or improve stability.
+
