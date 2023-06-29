@@ -54,10 +54,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: lrc-annotate.zip
-          #tag_name: ${{ steps.get-latest-tag.outputs.tag }}
-          #name: Release ${{ steps.get-latest-tag.outputs.tag }}
-          #tag_name: v3.1.14
-          #name: Release v3.1.14
           tag_name: v${{ steps.get-package-version.outputs.version }}
           name: Release v${{ steps.get-package-version.outputs.version }}
           body_path: ${{ github.workspace }}-CHANGELOG.md
