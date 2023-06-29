@@ -69,3 +69,7 @@ In case if you need increase second digit after the major version you can use th
 ### How to increase "3"
 In case if you need increase first digit after the major version you can use this commit message:
 -  git commit -am 'feat:new features & updates'
+
+### How to increase "4"
+In case if you need increase first digit you can use this commit message:
+-  git commit --allow-empty -m "chore: release 4.3.1" -m "Release-As: 5.0.0"
