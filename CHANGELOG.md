@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.14.0](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v5.13.0...v5.14.0) (2023-06-29)
+
+
+### Features
+
+* Updated execution dependency ([c050c60](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/c050c60caa3d998c34ffb324d253260eb54f8aff))
+
 ## [5.13.0](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v5.12.0...v5.13.0) (2023-06-29)
 
 
