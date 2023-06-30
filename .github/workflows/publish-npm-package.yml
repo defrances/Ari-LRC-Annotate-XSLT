@@ -3,9 +3,6 @@ name: Deploy new version to NPM
 on:
   
   push:
-    branches:
-      - main
-      - release-please--branches--main--components--release-please-action 
     tags:
       - 'v*'
       - 'v*.*.*'
