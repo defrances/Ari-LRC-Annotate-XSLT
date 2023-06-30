@@ -22,48 +22,51 @@ jobs:
             {"type":"fix","section":"Bug Fixes","hidden":false},
             {"type":"chore","section":"Miscellaneous","hidden":false}
             ]'
-      
+    outputs:
+     release_created: ${{ steps.release.outputs.release_created }}
+
+  build_release:
+    if: ${{ needs.release-please.outputs.release_created }}
+    needs: release-please
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout code
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Set   fetch depth to 0 to fetch all tags
-      # Only release when the pull request is merged
-      #- name: Exit  if pull request not merged
-      #  if: github.event_name == 'pull_request' && github.event.pull_request.merged == false
-      #  run: exit -1
-
+      
       - name: Setup Node.js
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       - name: Install dependencies
-        if: ${{ steps.release.outputs.release_created }}        
+        #if: ${{ steps.release.outputs.release_created }}        
         run: |
           npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
           npm install -g npm
           npm ci
 
       - name: Configure NPM authentication
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}    
 
       - name: Install dependencies
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         run: npm ci     
 
       - name: Create release archive
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         run: zip -r lrc-annotate.zip transforms/** styles/** README.md
 
       - name: Get package version
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         id: get-package-version
         run: echo "::set-output name=version::$(node -p "require('./package.json').version")"
 
       - name: Generate Changelog
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         run: |
           VERSION=v${{ steps.get-package-version.outputs.version }}
           PREVIOUS_VERSION=$(git describe --abbrev=0 --tags HEAD^ --always)
@@ -71,7 +74,7 @@ jobs:
           printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
 
       - name: Create GitHub Release
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         uses: softprops/action-gh-release@v1
         with:
           files: lrc-annotate.zip
@@ -83,7 +86,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to NPM
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         run: npm publish
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
