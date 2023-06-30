@@ -1,6 +1,6 @@
 {
   "name": "@defrances/annotate-xslt",
-  "version": "5.26.0",
+  "version": "5.27.0",
   "description": "Stylesheets to create annotated bills (LRC) and CSS to style the resulting XML",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
