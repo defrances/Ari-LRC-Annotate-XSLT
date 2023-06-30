@@ -4,7 +4,8 @@ on:
   
   pull_request:
     branches:
-      - main      
+      - main
+      - release-please--branches--main--components--release-please-action      
     tags:
       - 'v*'
       - 'v*.*.*'
