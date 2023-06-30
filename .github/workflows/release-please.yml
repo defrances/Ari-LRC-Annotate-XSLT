@@ -104,7 +104,6 @@ jobs:
           printf "# 🎁 Release notes (\`$VERSION\`)\n\n## Changes\n\n$CHANGES\n\n## Metadata\n\n\`\`\`csv\nThis version -------- $VERSION\nPrevious version ---- $PREVIOUS_VERSION\nTotal commits ------- $(echo "$CHANGES" | wc -l)\n\`\`\`\n" > ${{ github.workspace }}-CHANGELOG.md
 
       - name: Create GitHub Release
-        #if: ${{ steps.release.outputs.release_created }}
         uses: softprops/action-gh-release@v1
         with:
           files: lrc-annotate.zip
@@ -116,8 +115,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to NPM
-        #if: ${{ steps.release.outputs.release_created }}
         run: npm publish
-        #run: echo "Publishing to NPM"
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
