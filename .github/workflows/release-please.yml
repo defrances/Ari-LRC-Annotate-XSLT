@@ -117,4 +117,4 @@ jobs:
       - name: Publish to NPM
         run: npm publish
         env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.PAT }}
