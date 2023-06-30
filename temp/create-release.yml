@@ -39,7 +39,7 @@ jobs:
           git checkout -b "release/v${NEW_VERSION}"
           git push --set-upstream origin "release/v${NEW_VERSION}"
 
-      - name: Set Git user
+      - name: Set  Git user
         run: |
           git config user.email "you@example.com"
           git config user.name "Your Name"
