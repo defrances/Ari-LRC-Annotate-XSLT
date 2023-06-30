@@ -1,10 +1,9 @@
 name: Deploy new version to NPM
 
-on:
-  
+on:  
   push:
     tags:
-      - 'v*'
+      - '*'
       - 'v*.*.*'
       - 'v*.*'
 
