@@ -39,7 +39,7 @@ jobs:
           node-version: '16.x'
       - name: Install dependencies
         if: ${{ steps.release.outputs.release_created }}        
-      - run: |
+        run: |
           npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
           npm install -g npm
           npm ci
