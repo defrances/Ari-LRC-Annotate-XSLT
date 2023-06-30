@@ -35,9 +35,7 @@ To use this workflow, make sure you have the necessary permissions for writing c
 
 The workflow is triggered on push events to the `main` branch.
 
-## Jobs
-
-### release-please
+## Jobs release-please
 
 This job runs on `ubuntu-latest` and performs the following steps:
 
@@ -57,9 +55,9 @@ This repository contains a configuration to automate the deployment of a new ver
 
 ## Workflow
 
-The workflow defined in this configuration is triggered when a pull request is closed.
+The workflow defined in this configuration is triggered when `release-please` step is finished successfully
 
-### Job: build
+### Job: build-release
 
 This job runs on `ubuntu-latest` and performs the following steps:
 
