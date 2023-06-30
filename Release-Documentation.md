@@ -1,17 +1,39 @@
 # Create release pull request
 
-This repository contains a configuration to automate the creation of release pull requests using GitHub Actions.
+This workflow sets up a pipeline for creating a release pull request. It runs tests, generates release notes, creates a GitHub release, and publishes the release to NPM if applicable.
 
-## Workflow
+## Workflow Description
 
-The workflow defined in this configuration is triggered on a push event to the `main` branch.
+The workflow consists of the following jobs:
 
-### Permissions
+### run-tests
 
-The following permissions are required for the workflow:
+- This job runs tests for the project using Maven.
+- It caches the local Maven repository to improve build performance.
+- The test results are archived as artifacts.
 
-- Contents: Write
-- Pull Requests: Write
+### release-please
+
+- This job is dependent on the `run-tests` job.
+- It uses the `google-github-actions/release-please-action` to generate release notes.
+- The release type, package name, and changelog types can be configured.
+
+### build-release
+
+- This job is dependent on the `release-please` job.
+- It builds the release artifact and prepares it for publishing.
+- The code is checked out and the fetch depth is set to 0 to fetch all tags.
+- Node.js is set up and dependencies are installed.
+- The release archive is created and the package version is obtained.
+- The changelog is generated based on the changes since the previous version.
+- A GitHub release is created with the release archive and changelog.
+- Optionally, the release can be published to NPM.
+
+## Workflow Configuration
+
+To use this workflow, make sure you have the necessary permissions for writing contents and pull requests.
+
+The workflow is triggered on push events to the `main` branch.
 
 ## Jobs
 
