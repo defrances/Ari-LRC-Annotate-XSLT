@@ -117,7 +117,7 @@ jobs:
 
       - name: Publish to NPM
         #if: ${{ steps.release.outputs.release_created }}
-        #run: npm publish
-        run: echo "Publishing to NPM"
+        run: npm publish
+        #run: echo "Publishing to NPM"
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
