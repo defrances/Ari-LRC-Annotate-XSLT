@@ -4,8 +4,9 @@ on:
   pull_request:
     types:
       - closed
-  tags:
-    - v*
+  push:
+    tags:
+      - v*
 
 jobs:
   build:
