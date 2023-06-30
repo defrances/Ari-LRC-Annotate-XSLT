@@ -3,9 +3,10 @@ name: Deploy new version to NPM
 on:
   
   pull_request:
+    types: [closed]
     branches:
       - main
-      - release-please--branches--main--components--release-please-action      
+      - release-please--branches--main--components--release-please-action 
     tags:
       - 'v*'
       - 'v*.*.*'
