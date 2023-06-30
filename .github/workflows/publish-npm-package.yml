@@ -1,13 +1,15 @@
 name: Deploy new version to NPM
 
 on:
-  push:
+  
+  pull_request:
+    types: [closed]
+    branches:
+      - main
     tags:
-      - v*
       - 'v*'
       - 'v*.*.*'
-      
-
+      - 'v*.*'
 
 jobs:
   build:
