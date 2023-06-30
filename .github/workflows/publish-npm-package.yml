@@ -2,7 +2,7 @@ name: Deploy new version to NPM
 
 on:
   
-  publish:
+  push:
     branches:
       - main
       - release-please--branches--main--components--release-please-action 
