@@ -2,6 +2,8 @@ name: Deploy new version to NPM
 
 on:
   push:
+    branches:
+      - main
     tags:
     - v*
 
