@@ -115,6 +115,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to NPM
-        run: npm publish
+        #run: npm publish
+        run: echo ('Publish to NPM')
         env:
           NPM_TOKEN: ${{ secrets.PAT }}
