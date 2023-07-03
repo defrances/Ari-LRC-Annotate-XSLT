@@ -1,5 +1,17 @@
 # Changelog
 
+## [7.3.0](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v7.2.1...v7.3.0) (2023-07-03)
+
+
+### Features
+
+* Update create-release.yml ([754dec4](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/754dec4040f02ae452a4b0089fb123ebcc8a4587))
+
+
+### Bug Fixes
+
+* Update release-please.yml ([27dcb06](https://github.com/defrances/Ari-LRC-Annotate-XSLT/commit/27dcb0676d505706ce2154f20e7f6c6277383a01))
+
 ## [7.2.1](https://github.com/defrances/Ari-LRC-Annotate-XSLT/compare/v7.2.0...v7.2.1) (2023-07-01)
 
 
