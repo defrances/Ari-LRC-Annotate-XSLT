@@ -116,6 +116,6 @@ jobs:
 
       - name: Publish to NPM
         #run: npm publish
-        run: echo ('Publish to NPM')
+        run: echo "npm publish"
         env:
           NPM_TOKEN: ${{ secrets.PAT }}
