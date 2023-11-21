@@ -1,6 +1,6 @@
 # LRC-Annotate-XSLT
 
-XSLT to annotate bills with classification data
+XSLT to annotate bills with classification data 
 
 Note the default branch is the main branch, and uses USLM2.
 
